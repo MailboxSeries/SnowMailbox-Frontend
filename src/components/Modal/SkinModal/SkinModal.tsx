@@ -23,21 +23,27 @@ function SkinModal({closeModal, isOpen}: Props) {
   const [boxType, setBoxType] = useState<number>(data.boxType);
   const [ornamentType, setOrnamentType] = useState<number>(data.ornamentType);
   
-  /*
-  //TODO: 요청에 성공했을 때 recoil로 저장
-  const newHomeData = {
-    refreshToken: data.refreshToken,
-    accessToken: data.accessToken,
-    nickname: data.nickname,
-    treeType: treeType,
-    characterType: characterType,
-    starType: starType,
-    boxType: boxType,
-    ornamentType: boxType,
-    nowDate: data.nowDate,
-  };
-  setSkinData(newHomeData);
-  */
+
+
+  const handleSelectSkin = () => {
+    //TODO: api 호출 후 성공하면 recoil로 저장하고 모달 닫기.
+
+      /*
+    //TODO: 요청에 성공했을 때 recoil로 저장
+    const newHomeData = {
+      refreshToken: data.refreshToken,
+      accessToken: data.accessToken,
+      nickname: data.nickname,
+      treeType: treeType,
+      characterType: characterType,
+      starType: starType,
+      boxType: boxType,
+      ornamentType: boxType,
+      nowDate: data.nowDate,
+    };
+    setSkinData(newHomeData);
+    */
+  }
 
   
   return (
@@ -54,7 +60,7 @@ function SkinModal({closeModal, isOpen}: Props) {
           showStatus={false} 
           centerMode 
           centerSlidePercentage={33}>
-          {Tree.map((tree) => ( //TODO: 나무로 바꿔야함
+          {Tree.map((tree) => (
                 <S.SelectClickEvent 
                 onClick={() => setTreeType(tree.index)}
                 isSelected={treeType === tree.index}
@@ -62,7 +68,7 @@ function SkinModal({closeModal, isOpen}: Props) {
                   <S.ImageButton
                     src={tree.imgSrc} 
                     selected={treeType === tree.index} 
-                    style={{width: "60px", height: "90px"}}
+                    style={{width: "80px", height: "107px"}}
                   />
                 </S.SelectClickEvent>
               ))}
@@ -147,7 +153,7 @@ function SkinModal({closeModal, isOpen}: Props) {
         
 
         <LongButton margin="12px 0 0 0" >
-          <S.ButtonText>{'선택 완료하기'}</S.ButtonText>
+          <S.ButtonText onClick={handleSelectSkin}>{'선택 완료하기'}</S.ButtonText>
         </LongButton>
 
       </S.Wrapper>

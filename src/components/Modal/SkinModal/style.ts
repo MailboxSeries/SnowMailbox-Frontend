@@ -27,6 +27,9 @@ type ImageButtonProps = {
 
 export const SelectWrapper = styled.div`
   width: 250px;
+  height: 450px;
+  margin-top: 50px;
+  overflow-y: auto;
 `;
 
 export const ImageButton = styled.button<ImageButtonProps>`
