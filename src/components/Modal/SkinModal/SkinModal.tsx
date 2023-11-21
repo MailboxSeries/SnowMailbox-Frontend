@@ -55,6 +55,9 @@ function SkinModal({closeModal, isOpen}: Props) {
     >
       <S.Wrapper>
         <S.SelectWrapper>
+          <S.DiscriptionText>
+            잠금표시 된 스킨은 미션을 클리어해야<br/>획득할 수 있어요. 자물쇠를 클릭해봐요.
+          </S.DiscriptionText>
           <S.SelectTitle>
             크리스마스 트리
           </S.SelectTitle>

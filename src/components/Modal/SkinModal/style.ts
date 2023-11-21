@@ -34,6 +34,19 @@ export const SelectTitle = styled.span`
   margin-top: 10px;
 `;
 
+export const DiscriptionText = styled.span`
+  color: ${theme.colors.textNavy};
+  text-align: center;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 1.5;
+  letter-spacing: 1px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
 type ImageButtonProps = {
   src: string;
   selected: boolean;
