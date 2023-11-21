@@ -14,7 +14,7 @@ export default function SignIn() {
         closeModal: closeModal,
     } = useModal();
     const email = useInput<HTMLInputElement>(); 
-    const password = useInput<HTMLTextAreaElement>();
+    const password = useInput<HTMLInputElement>();
 
     const handleCheckBlank = () => {
         // 입력값을 검사합니다.
@@ -36,13 +36,13 @@ export default function SignIn() {
                         type="text"
                         placeholder="이메일"
                         value={email.value}
-                        onChange={(e: { target: { value: React.SetStateAction<string>; }; }) => setEmail(e.target.value)}
+                        onChange={email.handleChange}
                     />
                     <S.LoginInput
                         type="password"
                         placeholder="비밀번호"
                         value={password.value}
-                        onChange={(e: { target: { value: React.SetStateAction<string>; }; }) => setPassword(e.target.value)}
+                        onChange={password.handleChange}
                     />
                 <LongButton margin="64px 0 0 0" onClick={handleSignUp} type = "submit">
                     <S.ButtonText>{'로그인하기'}</S.ButtonText>
