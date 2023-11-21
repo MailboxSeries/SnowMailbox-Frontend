@@ -12,6 +12,7 @@
   "dependencies": {
     "@tanstack/react-query": "^5.8.4",
     "@vitejs/plugin-react-swc": "^3.5.0",
+    "copy-to-clipboard": "^3.3.3",
     "react": "^18.2.0",
     "react-device-detect": "^2.2.3",
     "react-dom": "^18.2.0",

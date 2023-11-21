@@ -45,7 +45,12 @@ export default function SignIn() {
                         value={password.value}
                         onChange={password.handleChange}
                     />
-                <LongButton margin="64px 0 0 0" onClick={handleSignIn} type = "submit">
+                <LongButton 
+                margin="64px 0 0 0" 
+                onClick={handleSignIn} 
+                type = "submit"
+                route="/home/${MyId}" //TODO: 개발용. 나중에 지워야함
+                >
                     <S.ButtonText>{'로그인하기'}</S.ButtonText>
                 </LongButton>
                 
