@@ -65,7 +65,7 @@ border: ${props => props.selected ? 'none' : 'none'};
 background-image: url(${props => props.src});
 background-size: cover;
 background-color: transparent;
-z-index: 5;
+z-index: 2;
 `;
 
 export const SelectClickEvent = styled.div<{ isSelected?: boolean }>`
@@ -83,10 +83,11 @@ export const SelectClickEvent = styled.div<{ isSelected?: boolean }>`
 
 export const LockIcon = styled.div`
   position: absolute;
-    width: 50px;
-    height: 50px;
+    width: 80px;
+    height: 100px;
     background-size: 50px 50px;
     background-image: url(${LockIconImg});
+    background-repeat: no-repeat;
     z-index: 3;
     top: 30px;
     left: 17px;
