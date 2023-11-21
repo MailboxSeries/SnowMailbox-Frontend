@@ -8,12 +8,15 @@ import OrnamentLayer from '@/components/OrnamentLayer/OrnamentLayer'; //TODO: �
 import LongButton from '@/components/Button/LongButton/LongButton';
 import ShareModal from '@/components/Modal/ShareModal/ShareModal';
 import SkinModal from '@/components/Modal/SkinModal/SkinModal';
+import LetterListModal from '@/components/Modal/Letter/LetterListModal/LetterListModal';
 export default function Home() {
     const homeData = useRecoilValue(HomeDataAtom);
     const [shareModalOpen, setShareModalOpen] = useState<boolean>(false);
     const handleShare = () => setShareModalOpen(true);
     const [skinModalOpen, setSkinModalOpen] = useState<boolean>(false);
     const handleSkin = () => setSkinModalOpen(true);
+    const [LetterListModalOpen, setLetterListModalOpen] = useState<boolean>(false);
+    const handleLetterList = () => setLetterListModalOpen(true);
 
     const closeShareModal = useCallback(
         () => setShareModalOpen(false),
@@ -23,7 +26,12 @@ export default function Home() {
     const closeSkinModal = useCallback(
         () => setSkinModalOpen(false),
         [setSkinModalOpen],
-      );
+    );
+
+    const closeLetterListModal = useCallback(
+        () => setLetterListModalOpen(false),
+        [setLetterListModalOpen],
+    );
     return (
         <>
             <PageLayout>
@@ -36,10 +44,10 @@ export default function Home() {
                     </S.RudolfButtonWrapper>
                     <S.SpeechBubble />
                 </S.ObjectWrapper>
-                <LongButton margin="52px 0 0 0" onClick={handleShare}>
+                <LongButton margin="52px 0 0 0" onClick={handleLetterList}>
                     <S.ButtonText>{'편지 확인하기'}</S.ButtonText>
                 </LongButton>
-                <LongButton margin="12px 0 0 0">
+                <LongButton margin="12px 0 0 0" onClick={handleShare}>
                     <S.ButtonText>{'링크 공유하기'}</S.ButtonText>
                 </LongButton>
             </PageLayout>
@@ -48,6 +56,8 @@ export default function Home() {
             <ShareModal closeModal={closeShareModal} isOpen={shareModalOpen} />
             {/* 스킨 선택 모달 */}
             <SkinModal closeModal={closeSkinModal} isOpen={skinModalOpen} />
+             {/* 편지 리스트 모달 */}
+            <LetterListModal closeModal={closeLetterListModal} isOpen={LetterListModalOpen} />
         </>
     ) 
 }
