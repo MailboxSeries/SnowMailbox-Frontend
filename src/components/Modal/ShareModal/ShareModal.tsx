@@ -1,6 +1,5 @@
 import * as S from './style';
 import React from 'react';
-import ModalCloseButton from '@/components/Modal/ModalCloseButton/ModalCloseButton';
 import Modal from '../Modal';
 import { useParams} from 'react-router-dom';
 import copy from 'copy-to-clipboard';
