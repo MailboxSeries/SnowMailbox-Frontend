@@ -1,7 +1,7 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import { useRecoilValue } from 'recoil';
-import { HomeDataAtom } from '@/atoms/HomeAtom'; // HomeDataAtom 가져오기
+import { HomeDataAtom } from '@/atoms/HomeAtom';
 import * as S from './style';
 import Menu from '@/components/Menu/Menu';
 import { useNavigate } from 'react-router-dom';

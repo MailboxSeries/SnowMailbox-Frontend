@@ -1,5 +1,5 @@
 import { styled } from "styled-components";
-import MainTreeImg from '@/assets/Tree/snowTree.png'
+import MainTreeImg from '@/assets/Tree/4.png'
 import theme from '../../theme';
 
 export const MainTree = styled.div`
