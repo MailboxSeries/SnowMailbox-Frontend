@@ -55,6 +55,9 @@ function SkinModal({closeModal, isOpen}: Props) {
     >
       <S.Wrapper>
         <S.SelectWrapper>
+          <S.SelectTitle>
+            크리스마스 트리
+          </S.SelectTitle>
           <Carousel 
           showThumbs={false} 
           showStatus={false} 
@@ -74,6 +77,9 @@ function SkinModal({closeModal, isOpen}: Props) {
               ))}
           </Carousel>
 
+          <S.SelectTitle>
+            오너먼트
+          </S.SelectTitle>
           <Carousel 
           showThumbs={false} 
           showStatus={false} 
@@ -93,6 +99,9 @@ function SkinModal({closeModal, isOpen}: Props) {
               ))}
           </Carousel>
 
+          <S.SelectTitle>
+            선물상자
+          </S.SelectTitle>
           <Carousel 
           showThumbs={false} 
           showStatus={false} 
@@ -112,6 +121,9 @@ function SkinModal({closeModal, isOpen}: Props) {
               ))}
           </Carousel>
 
+          <S.SelectTitle>
+            별 오너먼트
+          </S.SelectTitle>
           <Carousel 
           showThumbs={false} 
           showStatus={false} 
@@ -131,6 +143,9 @@ function SkinModal({closeModal, isOpen}: Props) {
               ))}
           </Carousel>
 
+          <S.SelectTitle>
+            캐릭터
+          </S.SelectTitle>
           <Carousel 
           showThumbs={false} 
           showStatus={false} 

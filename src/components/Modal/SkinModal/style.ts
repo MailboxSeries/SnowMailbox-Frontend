@@ -20,6 +20,20 @@ export const ButtonText = styled.span`
   letter-spacing: 1px;
 `;
 
+export const SelectTitle = styled.span`
+  color: ${theme.colors.textNavy};
+  text-align: center;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: 1px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 10px;
+`;
+
 type ImageButtonProps = {
   src: string;
   selected: boolean;
@@ -28,7 +42,7 @@ type ImageButtonProps = {
 export const SelectWrapper = styled.div`
   width: 250px;
   height: 450px;
-  margin-top: 50px;
+  margin-top: 55px;
   overflow-y: auto;
 `;
 
