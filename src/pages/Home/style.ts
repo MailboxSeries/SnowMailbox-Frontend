@@ -2,6 +2,7 @@ import { styled } from "styled-components";
 import SpeechBubbleGif from '@/assets/speechBubble/speechBubble.gif'
 import Tree from '@/assets/Tree';
 import { TreeTypeProps } from '@/interface/home';
+import theme from "@/theme";
 
 export const ObjectWrapper = styled.div`
 position: relative;
@@ -38,6 +39,16 @@ export const OrnamentLayerWrapper = styled.div`
   align-items: center;
 `;
 
+export const ButtonText = styled.span`
+  color: ${theme.colors.textNavy};
+  text-align: center;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: 1px;
+`;
+
 export const TreeImage = styled.img.attrs<TreeTypeProps>(props => ({
   src: Tree[props.treeType - 1] // 배열 인덱스에 맞춰 접근
 }))`
@@ -45,3 +56,4 @@ export const TreeImage = styled.img.attrs<TreeTypeProps>(props => ({
     height: 400px;
     
 `;
+

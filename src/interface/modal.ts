@@ -15,3 +15,7 @@ export interface ModalContentProps {
   export interface ModalWrapperProps {
     show: boolean;
   }
+
+  export interface ModalButtonProps {
+    onClick: React.MouseEventHandler<HTMLButtonElement>;
+  }
