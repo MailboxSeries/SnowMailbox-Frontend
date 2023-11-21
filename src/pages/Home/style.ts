@@ -26,3 +26,12 @@ export const SpeechBubble = styled.button`
   right: 63%;
   border: transparent;
 `;
+
+export const OrnamentLayerWrapper = styled.div`
+  width: 300px;
+  height: 400px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
