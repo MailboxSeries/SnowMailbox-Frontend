@@ -1,7 +1,7 @@
 import theme from '@/theme';
 import styled from 'styled-components';
-import CheckImage from '@/assets/Icon/Check.png';
-
+import CheckImg from '@/assets/Icon/Check.png';
+import LockIconImg from '@/assets/Icon/LockIcon.png'
 export const Wrapper = styled.div`
   width: 100%;
   height: 100%;
@@ -72,11 +72,22 @@ export const SelectClickEvent = styled.div<{ isSelected?: boolean }>`
     position: relative; 
     margin-bottom: 15px;
     &::after {
-        content: ${props => props.isSelected ? `url(${CheckImage})` : 'none'};
+        content: ${props => props.isSelected ? `url(${CheckImg})` : 'none'};
         position: absolute;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
         z-index: 20;  // 높은 z-index를 주어 상단에 나타나게 합니다.
     }
+`;
+
+export const LockIcon = styled.div`
+  position: absolute;
+    width: 50px;
+    height: 50px;
+    background-size: 50px 50px;
+    background-image: url(${LockIconImg});
+    z-index: 3;
+    top: 30px;
+    left: 17px;
 `;

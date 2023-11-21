@@ -23,7 +23,30 @@ function SkinModal({closeModal, isOpen}: Props) {
   const [boxType, setBoxType] = useState<number>(data.boxType);
   const [ornamentType, setOrnamentType] = useState<number>(data.ornamentType);
   
+  // TODO: 서버에서 미션 성공 여부 데이터 받아오기
+  // 예시로, 각 항목의 disabled 여부를 나타내는 상태
+  const [isMissionCompleted, setIsMissionCompleted] = useState({
+    trees: [true, false, false, false], // treeType 2, 3, 4는 미션을 완료해야 사용 가능
+    ornaments: [true, false, false, false],
+    boxes: [false, false, false, false],
+    stars: [false, false, false, false]
+  });
 
+  // 각 항목의 disabled 여부를 체크하는 함수
+  const isDisabled = (type, index) => {
+    switch (type) {
+      case 'tree':
+        return !isMissionCompleted.trees[index];
+      case 'ornament':
+        return !isMissionCompleted.ornaments[index];
+      case 'box':
+        return !isMissionCompleted.boxes[index];
+      case 'star':
+        return !isMissionCompleted.stars[index];
+      default:
+        return false;
+    }
+  };
 
   const handleSelectSkin = () => {
     //TODO: api 호출 후 성공하면 recoil로 저장하고 모달 닫기.
@@ -66,9 +89,9 @@ function SkinModal({closeModal, isOpen}: Props) {
           showStatus={false} 
           centerMode 
           centerSlidePercentage={33}>
-          {Tree.map((tree) => (
+          {Tree.map((tree, index) => (
                 <S.SelectClickEvent 
-                onClick={() => setTreeType(tree.index)}
+                onClick={() => !isDisabled('tree', index) && setTreeType(tree.index)}
                 isSelected={treeType === tree.index}
                 >
                   <S.ImageButton
@@ -76,6 +99,7 @@ function SkinModal({closeModal, isOpen}: Props) {
                     selected={treeType === tree.index} 
                     style={{width: "80px", height: "107px"}}
                   />
+                  {isDisabled('tree', index) && <S.LockIcon />}
                 </S.SelectClickEvent>
               ))}
           </Carousel>
@@ -88,9 +112,9 @@ function SkinModal({closeModal, isOpen}: Props) {
           showStatus={false} 
           centerMode 
           centerSlidePercentage={33}>
-          {Character.map((ornament) => ( //TODO: 오너먼트로 바꿔야함
+          {Character.map((ornament, index) => ( //TODO: 오너먼트로 바꿔야함
                 <S.SelectClickEvent 
-                onClick={() => setOrnamentType(ornament.index)}
+                onClick={() => !isDisabled('ornament', index) && setOrnamentType(ornament.index)}
                 isSelected={ornamentType === ornament.index}
                 >
                   <S.ImageButton
@@ -98,6 +122,8 @@ function SkinModal({closeModal, isOpen}: Props) {
                     selected={ornamentType === ornament.index} 
                     style={{width: "60px", height: "90px"}}
                   />
+                  {isDisabled('ornament', index) && <S.LockIcon />}
+
                 </S.SelectClickEvent>
               ))}
           </Carousel>
@@ -110,9 +136,9 @@ function SkinModal({closeModal, isOpen}: Props) {
           showStatus={false} 
           centerMode 
           centerSlidePercentage={33}>
-          {Character.map((box) => ( //TODO: 선물상자로 바꿔야함
+          {Character.map((box, index) => ( //TODO: 선물상자로 바꿔야함
                 <S.SelectClickEvent 
-                onClick={() => setBoxType(box.index)}
+                onClick={() => !isDisabled('box', index) && setBoxType(box.index)}
                 isSelected={boxType === box.index}
                 >
                   <S.ImageButton
@@ -120,6 +146,7 @@ function SkinModal({closeModal, isOpen}: Props) {
                     selected={boxType === box.index} 
                     style={{width: "60px", height: "90px"}}
                   />
+                  {isDisabled('box', index) && <S.LockIcon />}
                 </S.SelectClickEvent>
               ))}
           </Carousel>
@@ -132,9 +159,9 @@ function SkinModal({closeModal, isOpen}: Props) {
           showStatus={false} 
           centerMode 
           centerSlidePercentage={33}>
-          {Character.map((star) => ( //TODO: 별로 바꿔야함
+          {Character.map((star, index) => ( //TODO: 별로 바꿔야함
                 <S.SelectClickEvent 
-                onClick={() => setStarType(star.index)}
+                onClick={() => !isDisabled('star', index) && setStarType(star.index)}
                 isSelected={starType === star.index}
                 >
                   <S.ImageButton
@@ -142,6 +169,7 @@ function SkinModal({closeModal, isOpen}: Props) {
                     selected={starType === star.index} 
                     style={{width: "60px", height: "90px"}}
                   />
+                  {isDisabled('star', index) && <S.LockIcon />}
                 </S.SelectClickEvent>
               ))}
           </Carousel>
