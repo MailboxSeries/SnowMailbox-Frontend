@@ -3,13 +3,14 @@ import { Link } from 'react-router-dom';
 import LargeClockImg from '@/assets/Clock/LargeClock.png';
 
 const SunWrapper = styled.div`
+  position: absolute;
   font-family: 'BareunHipi';
-  position: fixed;
-  top: 5px;
-  right: 5px;
+  top: 40px;
+  right: 20px;
   z-index: 5;
-    @media (min-width: 821px) {
-      right: calc(50% - 410px + 10px);
+    @media (min-width: 689px) {
+      position: fixed;
+      left: calc(50% + 230px);
     }
 
 `;
