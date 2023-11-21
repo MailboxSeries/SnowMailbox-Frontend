@@ -25,11 +25,27 @@ export const Wrapper = styled.div`
         background-size: 820px 1180px; 
         overflow: auto;
 `;
-// TODO: 로고 추가 필요
-export const LogoImg = styled.img`
-  width: 110px;
-  height: 49.7px;
+
+export const LogoText = styled.div`
+    height: 30px;
+    font-size: 40px;
+    font-family: 'BareunHipi';
+    margin-bottom: 35px;
 `;
+
+export const SubLogoText = styled.div`
+    height: 40px;
+    font-size: 16px;
+    margin-bottom: -20px;
+`;
+
+export const TextWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 70px;
+  color: #F9FCFB;
+  `;
 
 export const Nav = styled.nav`
   width: 340px;

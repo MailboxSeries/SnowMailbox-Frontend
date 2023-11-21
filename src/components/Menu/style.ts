@@ -62,7 +62,7 @@ const SunRay = styled.div<SunRayProps>`
     position: absolute;
     height: 100%;
     width: 100%;
-    background: linear-gradient(to bottom, rgb(255, 251, 132) -100%, transparent 100%);
+    background: linear-gradient(to bottom, #F9FCFB -100%, transparent 100%);
   }
 `;
 
@@ -102,17 +102,17 @@ white-space: nowrap;
 `;
 
 
-interface StyledLinkContainerProps {
+interface LinkContainerProps {
   isActive: boolean;
 }
 
-const StyledLinkContainer = styled.div<StyledLinkContainerProps>`
+const LinkContainer = styled.div<LinkContainerProps>`
   z-index: 9;
   margin-bottom: 10px;
   animation: ${props => props.isActive ? fadeIn : fadeOut} 1s forwards;
 `;
 
-const StyledLink = styled(Link)`
+const LinkText = styled(Link)`
   font-family: 'BareunHipi';
   background: transparent;
   border: none;
@@ -130,7 +130,7 @@ export const s = {
   MenuWrapper,
   SunRay,
   MenuItem,
-  StyledLinkContainer,
-  StyledLink,
+  LinkContainer,
+  LinkText,
   Wrapper,
 }
