@@ -1,6 +1,9 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import Modal from '@/components/Modal/Modal'
 import useModal from '@/hooks/useModal';
+import { S } from './style'
+import { useNavigate } from 'react-router-dom';  // useNavigate import
+import PageLayout from '@/components/PageLayout/PageLayout';
 
 export default function OnBoarding() {
   // 모달 상태관리
@@ -10,12 +13,12 @@ export default function OnBoarding() {
     closeModal: closeModal,
   } = useModal();
 
-  useEffect(() => {
-    openMission();
-  });
+  const navigate = useNavigate(); // useNavigate hook 사용
+
 
   return (
     <>
+    <PageLayout/>
       <Modal
         isOpen={isOpen}
         onClose={closeModal}
