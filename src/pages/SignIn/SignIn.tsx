@@ -19,12 +19,13 @@ export default function SignIn() {
     const handleCheckBlank = () => {
         // 입력값을 검사합니다.
         if (!email.value.trim() || !password.value.trim()) {
-          alert('이메일 혹은 비밀번호를 입력해주세요!');
-          return;
+            alert('이메일 혹은 비밀번호를 입력해주세요!');
+            return false; // 검사에 실패하면 false 반환
         } 
-      };
+        return true; // 모든 입력값이 있으면 true 반환
+    };
 
-    const handleSignUp = () => {
+    const handleSignIn = () => { //TODO: 나중에 api구현해서 호출해야함
         handleCheckBlank();
     }
 
@@ -44,7 +45,7 @@ export default function SignIn() {
                         value={password.value}
                         onChange={password.handleChange}
                     />
-                <LongButton margin="64px 0 0 0" onClick={handleSignUp} type = "submit">
+                <LongButton margin="64px 0 0 0" onClick={handleSignIn} type = "submit">
                     <S.ButtonText>{'로그인하기'}</S.ButtonText>
                 </LongButton>
                 
