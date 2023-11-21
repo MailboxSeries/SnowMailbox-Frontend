@@ -13,7 +13,6 @@ export const MainTree = styled.div`
 `;
 
 export const Container = styled.div`
-    font-family: 'BareunHipi';
     position: relative;
     display: flex;
     flex-direction: column;
@@ -33,7 +32,6 @@ export const ButtonText = styled.span`
 
 
 export const LoginForm = styled.form`
-  font-family: 'NanumBarunpenB';
   display: flex;
   flex-direction: column;
   align-items: center;
