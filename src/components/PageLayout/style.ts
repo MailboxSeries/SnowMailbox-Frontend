@@ -9,7 +9,7 @@ export const Layout = styled.div`
 `;
 export const Wrapper = styled.div`
     position: absolute;
-        //bottom: 0;
+        z-index: 2;
         top: 0px;
         //top: 40px;
         height: 100%;

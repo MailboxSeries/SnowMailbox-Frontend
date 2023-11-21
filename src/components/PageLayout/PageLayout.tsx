@@ -3,7 +3,7 @@ import * as S from './style';
 import Menu from '@/components/Menu/Menu';
 import { useNavigate } from 'react-router-dom';
 import useModal from '@/hooks/useModal';
-
+import SnowFalling from '@/components/SnowFalling/SnowFalling';
 export default function PageLayout() {
     // 모달 상태관리
     const {
@@ -15,6 +15,7 @@ export default function PageLayout() {
 
     return (
         <S.Layout>
+            <SnowFalling />
             <S.Wrapper>
                 <Menu 
                 onSignIn={() => navigate('/signin')} 
