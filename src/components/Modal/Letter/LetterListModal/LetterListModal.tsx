@@ -36,7 +36,7 @@ function LetterListModal({closeModal, isOpen}: Props) {
                     isButtonActive = true;
                 } else if (homeData.nowDate !== null && date === homeData.nowDate) {
                     isButtonActive = true;
-                }
+                } 
 
                 return (
                     <S.OrnamentButton
@@ -44,10 +44,12 @@ function LetterListModal({closeModal, isOpen}: Props) {
                     onClick={() => {
                         if (isButtonActive) {
                             handleLetterReadModalOpen(date);
+                        } else {
+                            alert(`${date - homeData.nowDate}일 뒤에 열람 가능해요.`)
                         }
                     }}
                     OrnamentImage={
-                    (!isButtonActive ? "OrnamentDisabledButtonImg" : "OrnamentButtonImg" ) }
+                    (!isButtonActive ? "OrnamentButtonDisabledImg" : "OrnamentButtonImg" ) }
                     >
                     {date}
                     </S.OrnamentButton>
