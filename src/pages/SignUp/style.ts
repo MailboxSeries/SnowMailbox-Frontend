@@ -30,6 +30,3 @@ export const ButtonText = styled.span`
   line-height: normal;
   letter-spacing: 1px;
 `;
- 
-
-

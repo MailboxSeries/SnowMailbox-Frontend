@@ -5,7 +5,7 @@ import * as S from './style';
 import PageLayout from '@/components/PageLayout/PageLayout';
 import LongButton from '@/components/Button/LongButton/LongButton';
 
-export default function OnBoarding() {
+export default function SignUp() {
   // 모달 상태관리
   const {
     isOpen: isOpen,
@@ -16,12 +16,16 @@ export default function OnBoarding() {
   return (
     <>
       <PageLayout>
-        <S.MainTree />
-        <LongButton margin="52px 0 0 0" route="/signin">
-          <S.ButtonText>{'로그인'}</S.ButtonText>
+
+
+        <LongButton margin="64px 0 0 0" route="/signup">
+          <S.ButtonText>{'회원가입하기'}</S.ButtonText>
         </LongButton>
-        <LongButton margin="12px 0 0 0" route="/signup">
-          <S.ButtonText>{'회원가입'}</S.ButtonText>
+        <LongButton margin="8px 0 0 0" route=""> {/*TODO: 추가해야함*/}
+          <S.ButtonText>{'카카오로 가입하기'}</S.ButtonText>
+        </LongButton>
+        <LongButton margin="8px 0 0 0" route=""> {/*TODO: 추가해야함*/}
+          <S.ButtonText>{'네이버로 가입하기'}</S.ButtonText>
         </LongButton>
       </PageLayout>
     

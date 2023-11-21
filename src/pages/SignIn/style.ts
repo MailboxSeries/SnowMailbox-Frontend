@@ -30,6 +30,33 @@ export const ButtonText = styled.span`
   line-height: normal;
   letter-spacing: 1px;
 `;
- 
 
 
+export const LoginForm = styled.form`
+  font-family: 'NanumBarunpenB';
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  margin-top: 67px;
+`;
+
+export const LoginInput = styled.input`
+  font-family: 'NanumBarunpenB';
+  padding: 10px;
+  font-size: 16px;
+  width: 250px;
+  border: none; // 모든 테두리를 제거합니다.
+  border-bottom: 2px solid #F9FCFB; // 아래쪽 테두리만 추가합니다.
+  background-color: transparent;
+  color: ${theme.colors.textMain};
+  z-index: 5;
+  
+  &::placeholder {
+    color: #F9FCFB;
+  }
+
+  &:focus {
+    outline: none;
+  }
+`;
