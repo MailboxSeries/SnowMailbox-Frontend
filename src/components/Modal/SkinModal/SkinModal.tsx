@@ -50,7 +50,7 @@ function SkinModal({closeModal, isOpen}: Props) {
     <Modal
       isOpen={isOpen}
       onClose={closeModal}
-      modalTitle={'링크 공유하기'}
+      modalTitle={'트리 꾸미기'}
       imageType={'Modal'}
     >
       <S.Wrapper>
