@@ -1,9 +1,9 @@
 import {atom} from 'recoil';
 
 export type Data = {
-  myId: number | null;
-  refreshToken: string | null;
-  accessToken: string | null;
+  myId: number;
+  refreshToken: string;
+  accessToken: string;
 };
 
 export const DataAtom = atom<Data>({

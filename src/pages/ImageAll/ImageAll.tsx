@@ -44,9 +44,7 @@ export default function ImageAll() {
         imageType={'SmallModalGreen'}
         modalTitle={"예시"}
       >
-
       </Modal> 
-     
     </>
   )
 }
