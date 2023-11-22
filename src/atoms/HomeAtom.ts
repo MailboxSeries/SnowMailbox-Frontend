@@ -1,15 +1,15 @@
 import {atom} from 'recoil';
 
 export type Data = {
-  refreshToken: string | null;
-  accessToken: string | null;
-  nickname : string | null;
+  refreshToken: string ;
+  accessToken: string ;
+  nickname : string;
 	treeType : number;
-	characterType : number | null;
-	starType : number | null;
-	boxType : number | null;
-	ornamentType : number | null;
-	nowDate : number | null;
+	characterType : number;
+	starType : number;
+	boxType : number;
+	ornamentType : number;
+	nowDate : number;
 };
 
 export const HomeDataAtom = atom<Data>({

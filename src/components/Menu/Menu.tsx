@@ -1,16 +1,18 @@
 import React from 'react';
+import ServiceModal from '../Modal/ServiceModal/ServiceModal';
 import {s} from "./style";
 
-interface MenuBeforeLoginProps {
-  onSignIn: () => void;
-  onServiceDescription: () => void;
-}
 
-const Menu: React.FC<MenuBeforeLoginProps> = ({ onServiceDescription }) => {  
+export default function Menu() { 
   const [isOpen, setIsOpen] = React.useState(false);
+  const [isServiceModalOpen, setIsServiceModalOpen] = React.useState(false);
 
   const handleMenuToggle = () => {
     setIsOpen((prev) => !prev);
+  };
+
+  const handleServiceModalToggle = () => {
+    setIsServiceModalOpen((prev) => !prev);
   };
 
   return (
@@ -33,14 +35,18 @@ const Menu: React.FC<MenuBeforeLoginProps> = ({ onServiceDescription }) => {
       {isOpen && (
         <s.MenuWrapper>
           <s.LinkContainer isActive={isOpen}>
-            <s.LinkText to="/login">로그인</s.LinkText>
+            <s.LinkText to="/signin">로그인</s.LinkText>
           </s.LinkContainer>
-          <s.MenuItem onClick={onServiceDescription} isActive={isOpen}>이용안내</s.MenuItem>
+          <s.MenuItem onClick={handleServiceModalToggle} isActive={isOpen}>이용안내</s.MenuItem>
         </s.MenuWrapper>
       )}
     </s.SunWrapper>
+
+    <ServiceModal 
+        isOpen={isServiceModalOpen} 
+        closeModal={handleServiceModalToggle} 
+      />
     </s.Wrapper>
   );
-};
+}
 
-export default Menu;
