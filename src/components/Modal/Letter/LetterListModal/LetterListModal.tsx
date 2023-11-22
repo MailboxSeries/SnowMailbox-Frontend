@@ -1,8 +1,9 @@
 import * as S from './style';
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import Modal from '@/components/Modal/Modal';
 import { useRecoilValue } from 'recoil';
 import { HomeDataAtom } from '@/atoms/HomeAtom';
+import LetterReadModal from '../LetterReadModal/LetterReadModal';
 
 type Props = {
   closeModal: () => void;
@@ -12,14 +13,19 @@ type Props = {
 function LetterListModal({closeModal, isOpen}: Props) {
     const homeData = useRecoilValue(HomeDataAtom); // Recoil 상태 사용
     const [selectedDate, setSelectedDate] = useState<number>(1);
+    const [LetterReadModalOpen, setLetterReadModalOpen] = useState<boolean>(false);
+    const closeLetterReadModal = useCallback(
+        () => setLetterReadModalOpen(false),
+        [setLetterReadModalOpen],
+    );
 
     const handleLetterReadModalOpen = (selectedDate: number) => {
         setSelectedDate(selectedDate); // 버튼을 클릭하면 선택된 날짜를 설정합니다.
-        setModalContent(<LettersRead selectedDate={selectedDate} onClose={handleCloseModal} />); // 모달의 내용을 설정합니다.
-        setIsOpen(true); // 그리고 모달을 엽니다.
+        setLetterReadModalOpen(true);
     };
 
     return (
+        <>
         <Modal
         isOpen={isOpen}
         onClose={closeModal}
@@ -58,6 +64,10 @@ function LetterListModal({closeModal, isOpen}: Props) {
         </S.ButtonWrapper>
         </S.Wrapper>
         </Modal>
+
+         {/* 편지 리스트 모달 */}
+         <LetterReadModal closeModal={closeLetterReadModal} isOpen={LetterReadModalOpen} selectedDate={selectedDate}/>
+         </>
     );
 }
 export default React.memo(LetterListModal);
