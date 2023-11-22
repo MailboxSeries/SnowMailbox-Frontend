@@ -20,6 +20,7 @@ export default function Home() {
     const [LetterListModalOpen, setLetterListModalOpen] = useState<boolean>(false);
     const handleLetterList = () => setLetterListModalOpen(true);
     const myURL = `https://snowmailbox.com/home/${myId}`;
+    const imageAllURL = `https://snowmailbox.com/image-all/${myId}`;
 
     const closeShareModal = useCallback(
         () => setShareModalOpen(false),
@@ -50,7 +51,14 @@ export default function Home() {
                             <S.SpeechBubble />
                         </>
                     ) : (
-                            <></>
+                            <>
+                              <>
+                            <S.RudolfButtonWrapper>
+                                <RudolfButton onClick={handleSkin}/>
+                            </S.RudolfButtonWrapper>
+                            <S.SpeechBubble />
+                        </>
+                            </>
                     )}
                 </S.ObjectWrapper>
                 {isMyHome ? (
@@ -61,6 +69,9 @@ export default function Home() {
                         <LongButton margin="12px 0 0 0" onClick={handleShare}>
                             <S.ButtonText>{'링크 공유하기'}</S.ButtonText>
                         </LongButton>
+                        <LongButton margin="12px 0 0 0" route={imageAllURL}>
+                            <S.ButtonText>{'사진 모아보기'}</S.ButtonText>
+                        </LongButton>
                     </>
                 ) : (
                     <>
@@ -70,6 +81,7 @@ export default function Home() {
                         <LongButton margin="12px 0 0 0" route={myURL}>
                             <S.ButtonText>{'내 트리 보러가기'}</S.ButtonText>
                         </LongButton>
+
                     </>
                 )}
             </PageLayout>

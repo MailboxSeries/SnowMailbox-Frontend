@@ -11,7 +11,7 @@ type Props = {
 function ServiceModal({closeModal, isOpen}: Props) {
 
 
- 
+ //TODO: 내용 집어넣어야 함
   return (
     <Modal
       isOpen={isOpen}
