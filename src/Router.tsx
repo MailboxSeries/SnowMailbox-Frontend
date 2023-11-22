@@ -14,7 +14,7 @@ export default function Router() {
         <Route path="/signin" element={<SignIn />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/home/:ownerId" element={<Home />} />
-        <Route path="/image-alls/:ownerId" element={<ImageAll />} />
+        <Route path="/image-all/:ownerId" element={<ImageAll />} />
 
 
       </Routes>
