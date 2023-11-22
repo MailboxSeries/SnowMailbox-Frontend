@@ -3,6 +3,7 @@ import SmallModalRedImg from '@/assets/Modal/SmallModalRed.png';
 import SmallModalGreenImg from '@/assets/Modal/SmallModalGreen.png';
 import ModalImg from '@/assets/Modal/Modal.png';
 import {ModalContentProps, ModalWrapperProps} from '@/interface/modal';
+import theme from '@/theme';
 
 const fadeIn = keyframes`
   from { opacity: 0; }
@@ -75,7 +76,7 @@ const ModalContent = styled.div<ModalContentProps>`
   }}
   bottom: 50%;
   transform: translate(-50%, -50%);
-  color: #572E16;
+  color: ${theme.colors.textNavy};
   font-size: 20px;
   overflow-y: auto;
 `;
@@ -90,7 +91,7 @@ const ModalTitle = styled.div`
   position: absolute;
   left: 50%;
   transform: translate(-50%, 50%);
-  color: #572e16;
+  color: ${theme.colors.textNavy};
   font-size: 20px;
   overflow-y: auto;
   white-space: pre;
