@@ -41,13 +41,15 @@ interface PictureProps {
 export const Picture = styled.button<PictureProps>`
     position: relative;
     background-image: url(${props => props.imgSrc});
-    background-size: 40px 40px;
+    background-size: 45px 45px;
     position: relative;
-    width: 40px;
-    height: 40px;
+    width: 45px;
+    height: 45px;
     z-index: 2;
     background-color: transparent;
     margin-bottom: 10px;
+    color: ${theme.colors.textNavy};
+    font-family: 'BareunHipi';
 `;
 
 export const ButtonText = styled.span`
@@ -63,7 +65,7 @@ export const ButtonText = styled.span`
 export const GridWrapper = styled.div`
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  gap: 30px;
+  gap: 27px;
   margin-top: 100px;
   margin-bottom: 100px;
 `;

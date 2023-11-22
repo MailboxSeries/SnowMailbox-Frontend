@@ -28,7 +28,7 @@ export default function ImageAll() {
               <S.Picture
                 key={index}
                 imgSrc={images[index % images.length]} // 이미지 순환
-              />
+              >{index}</S.Picture>
             ))}
           </S.GridWrapper>
           <LongButton margin="52px 0 0 0" route={myURL}>
