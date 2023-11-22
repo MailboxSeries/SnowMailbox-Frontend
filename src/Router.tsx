@@ -4,6 +4,7 @@ import Onboarding from './pages/Onboarding/Onboarding';
 import SignIn from './pages/SignIn/SignIn';
 import SignUp from './pages/SignUp/SignUp';
 import Home from './pages/Home/Home';
+import ImageAll from './pages/ImageAll/ImageAll';
 export default function Router() {
   return (
     <BrowserRouter>
@@ -13,6 +14,7 @@ export default function Router() {
         <Route path="/signin" element={<SignIn />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/home/:ownerId" element={<Home />} />
+        <Route path="/image-alls/:ownerId" element={<ImageAll />} />
 
 
       </Routes>
