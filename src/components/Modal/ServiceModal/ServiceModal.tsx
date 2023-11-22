@@ -29,6 +29,12 @@ function ServiceModal({closeModal, isOpen}: Props) {
           <S.SubTitle>
             따뜻한 마음으로 크리스마스 트리를 꾸며봐요.
           </S.SubTitle>
+          <S.TextWrapper>
+            <S.DiscriptionText>
+              눈꽃우편함 이용방법<br/>
+              
+            </S.DiscriptionText>
+          </S.TextWrapper>
           
       </S.Wrapper>
     </Modal>
