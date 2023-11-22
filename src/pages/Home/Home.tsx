@@ -19,6 +19,7 @@ export default function Home() {
     const handleSkin = () => setSkinModalOpen(true);
     const [LetterListModalOpen, setLetterListModalOpen] = useState<boolean>(false);
     const handleLetterList = () => setLetterListModalOpen(true);
+    const myURL = `https://snowmailbox.com/home/${myId}`;
 
     const closeShareModal = useCallback(
         () => setShareModalOpen(false),
@@ -63,7 +64,12 @@ export default function Home() {
                     </>
                 ) : (
                     <>
-                    
+                        <LongButton margin="52px 0 0 0" onClick={handleLetterList}>
+                            <S.ButtonText>{'추억 달아주기'}</S.ButtonText>
+                        </LongButton>
+                        <LongButton margin="12px 0 0 0" route={myURL}>
+                            <S.ButtonText>{'내 트리 보러가기'}</S.ButtonText>
+                        </LongButton>
                     </>
                 )}
             </PageLayout>
