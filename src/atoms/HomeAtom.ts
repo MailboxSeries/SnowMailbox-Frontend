@@ -4,7 +4,7 @@ export type Data = {
   refreshToken: string | null;
   accessToken: string | null;
   nickname : string | null;
-	treeType : number | null;
+	treeType : number;
 	characterType : number | null;
 	starType : number | null;
 	boxType : number | null;
