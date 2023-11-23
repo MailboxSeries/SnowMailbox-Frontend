@@ -10,3 +10,11 @@ export const Tree = [
     { index: 4, imgSrc: Tree4 },
 
 ];  
+
+export default  [
+    Tree1,
+    Tree2,
+    Tree3,
+    Tree4
+
+];  

@@ -1,5 +1,5 @@
 import * as S from './style';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Modal from '../Modal';
 import LongButton from '@/components/Button/LongButton/LongButton';
 import { Carousel } from 'react-responsive-carousel';
@@ -8,7 +8,7 @@ import {Character} from '@/assets/Character'
 import {Tree} from '@/assets/Tree'
 import { useRecoilState, useRecoilValue } from 'recoil';
 import { Data, HomeDataAtom } from '@/atoms/HomeAtom';
-
+import { skinDataState } from '@/atoms/SkinAtom'
 type Props = {
   closeModal: () => void;
   isOpen: boolean;
@@ -16,36 +16,27 @@ type Props = {
 
 function SkinModal({closeModal, isOpen}: Props) {
   const data = useRecoilValue<Data>(HomeDataAtom);
-  const [skinData, setSkinData] = useRecoilState<Data>(HomeDataAtom);
   const [treeType, setTreeType] = useState<number>(data.treeType);
   const [characterType, setCharacterType] = useState<number>(data.characterType);
   const [starType, setStarType] = useState<number>(data.starType);
   const [boxType, setBoxType] = useState<number>(data.boxType);
   const [ornamentType, setOrnamentType] = useState<number>(data.ornamentType);
-  
-  // TODO: 서버에서 미션 성공 여부 데이터 받아오기
-  // 예시로, 각 항목의 disabled 여부를 나타내는 상태
-  const [isMissionCompleted, setIsMissionCompleted] = useState({
-    trees: [true, false, false, false], // treeType 2, 3, 4는 미션을 완료해야 사용 가능
-    ornaments: [true, false, false, false],
-    boxes: [false, false, false, false],
-    stars: [false, false, false, false]
-  });
+  const [missionModalOpen, setMissionModalOpen] = useState<boolean>(false);
+  const [isSkinData, setSkinData] = useRecoilState(skinDataState);
+  const skinData = useRecoilValue(skinDataState);
 
-  // 각 항목의 disabled 여부를 체크하는 함수
+  useEffect(() => {
+    // setSkinData로 상태를 업데이트한 후에 이 코드가 실행됩니다.
+    // 이 시점에서 업데이트된 상태를ㄴ 사용할 수 있습니다.
+    console.log('Updated skinData:', isSkinData);
+  }, [isSkinData]); // isSkinData가 변경될 때마다 useEffect가 실행됩니다.
+
   const isDisabled = (type, index) => {
-    switch (type) {
-      case 'tree':
-        return !isMissionCompleted.trees[index];
-      case 'ornament':
-        return !isMissionCompleted.ornaments[index];
-      case 'box':
-        return !isMissionCompleted.boxes[index];
-      case 'star':
-        return !isMissionCompleted.stars[index];
-      default:
-        return false;
+    if (!skinData[type + 'List'] || index < 0 || index >= skinData[type + 'List'].length) {
+      return true; // 유효하지 않은 type 또는 index
     }
+    
+    return !skinData[type + 'List'][index].missionStatus;
   };
 
   const handleSelectSkin = () => {
@@ -67,7 +58,9 @@ function SkinModal({closeModal, isOpen}: Props) {
     setSkinData(newHomeData);
     */
   }
-
+  const handleMissionModal = () => {
+    setMissionModalOpen(true)
+  }
   
   return (
     <Modal
@@ -169,7 +162,7 @@ function SkinModal({closeModal, isOpen}: Props) {
                     selected={starType === star.index} 
                     style={{width: "60px", height: "90px"}}
                   />
-                  {isDisabled('star', index) && <S.LockIcon />}
+                  {isDisabled('star', index) && <S.LockIcon onClick={handleMissionModal}/>}
                 </S.SelectClickEvent>
               ))}
           </Carousel>

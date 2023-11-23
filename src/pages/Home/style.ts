@@ -1,6 +1,6 @@
 import { styled } from "styled-components";
 import SpeechBubbleGif from '@/assets/speechBubble/speechBubble.gif'
-import {Tree} from '@/assets/Tree';
+import Tree  from '@/assets/Tree';
 import { TreeTypeProps } from '@/interface/home';
 import theme from "@/theme";
 
@@ -50,7 +50,7 @@ export const ButtonText = styled.span`
 `;
 
 export const TreeImage = styled.img.attrs<TreeTypeProps>(props => ({
-  src: Tree[props.treeType - 1].imgSrc // imgSrc 속성에 접근
+  src: Tree[props.treeType - 1], // 이미지 가져오기
 }))`
     width: 300px;
     height: 400px;
