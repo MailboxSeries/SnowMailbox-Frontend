@@ -22,6 +22,7 @@ function LogoutModal({closeModal, isOpen}: Props) {
     alert("로그아웃 되었어요.")
     navigate('/')
     logout();
+    closeModal();
   };
 
   return (
