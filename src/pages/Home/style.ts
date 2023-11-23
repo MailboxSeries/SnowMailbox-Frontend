@@ -50,7 +50,7 @@ export const ButtonText = styled.span`
 `;
 
 export const TreeImage = styled.img.attrs<TreeTypeProps>(props => ({
-  src: Tree[props.treeType - 1]// imgSrc 속성에 접근
+  src: Tree[props.treeType - 1].imgSrc // imgSrc 속성에 접근
 }))`
     width: 300px;
     height: 400px;
