@@ -58,7 +58,7 @@ export default function Home() {
         case 4: selectedOrnamentLayer = OrnamentLayer4; break;
         default: selectedOrnamentLayer = []; // 기본값 혹은 오류 처리
     }
-    const imgs = selectedOrnamentLayer.slice(0, homeData.nowDate);
+   
 
     return (
         <>
@@ -70,7 +70,8 @@ export default function Home() {
                             width={300}
                             height={400}
                             margin="0 0 0 0"
-                            imgs={imgs}
+                            imgs={selectedOrnamentLayer}
+                            nowDate = {homeData.nowDate}
                         />
                         <S.MainCharacter characterType = {homeData.characterType} />
                     </S.OrnamentLayerWrapper>
