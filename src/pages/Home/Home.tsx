@@ -10,6 +10,7 @@ import ShareModal from '@/components/Modal/ShareModal/ShareModal';
 import SkinModal from '@/components/Modal/SkinModal/SkinModal';
 import LetterListModal from '@/components/Modal/Letter/LetterListModal/LetterListModal';
 import useIsMyHome from '@/hooks/useIsMyHome';
+import SendLetterModal from '@/components/Modal/Letter/SendLetterModal/SendLetterModal';
 export default function Home() {
     const {ownerId, myId, isMyHome} = useIsMyHome();
     const homeData = useRecoilValue(HomeDataAtom);
@@ -19,6 +20,8 @@ export default function Home() {
     const handleSkin = () => setSkinModalOpen(true);
     const [LetterListModalOpen, setLetterListModalOpen] = useState<boolean>(false);
     const handleLetterList = () => setLetterListModalOpen(true);
+    const [sendLetterModalOpen, setSendLetterModalOpen] = useState<boolean>(false);
+    const handleSendLetter = () => setSendLetterModalOpen(true);
     const myURL = `https://snowmailbox.com/home/${myId}`;
     const imageAllURL = `https://snowmailbox.com/image-all/${myId}`;
 
@@ -35,6 +38,11 @@ export default function Home() {
     const closeLetterListModal = useCallback(
         () => setLetterListModalOpen(false),
         [setLetterListModalOpen],
+    );
+
+    const closeSendLetterModal = useCallback(
+        () => setSendLetterModalOpen(false),
+        [setSendLetterModalOpen],
     );
     return (
         <>
@@ -75,7 +83,7 @@ export default function Home() {
                     </>
                 ) : (
                     <>
-                        <LongButton margin="52px 0 0 0" onClick={handleLetterList}>
+                        <LongButton margin="52px 0 0 0" onClick={handleSendLetter}>
                             <S.ButtonText>{'추억 달아주기'}</S.ButtonText>
                         </LongButton>
                         <LongButton margin="12px 0 0 0" route={myURL}>
@@ -92,6 +100,8 @@ export default function Home() {
             <SkinModal closeModal={closeSkinModal} isOpen={skinModalOpen} />
              {/* 편지 리스트 모달 */}
             <LetterListModal closeModal={closeLetterListModal} isOpen={LetterListModalOpen} />
+             {/* 편지 쓰기 모달 */}
+            <SendLetterModal closeModal={closeSendLetterModal} isOpen={sendLetterModalOpen} />
         </>
     ) 
 }

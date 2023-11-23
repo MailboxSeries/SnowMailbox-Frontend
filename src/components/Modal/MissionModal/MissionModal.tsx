@@ -29,7 +29,7 @@ function MissionModal({closeModal, isOpen}: Props) {
   const handleMissionClear = () => {
     //TODO: api 호출 
     //TODO: skinAtom에서 missionId를 가져와서 호출하면 될듯.
-
+    closeModal();
   }
 
   return (
