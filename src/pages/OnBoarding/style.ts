@@ -1,7 +1,7 @@
 import { styled } from "styled-components";
-import MainTreeImg from '@/assets/Tree/4.png'
+import MainTreeImg from '@/assets/Tree/MainTree.png'
 import theme from '../../theme';
-
+import MainCharImg from '@/assets/Character/main.png'
 export const MainTree = styled.div`
     position: absolute;
     background-image: url(${MainTreeImg});
@@ -31,5 +31,12 @@ export const ButtonText = styled.span`
   letter-spacing: 1px;
 `;
  
+export const MainCharacter = styled.img.attrs({
+  src: MainCharImg
+})`
+  position: absolute;
+  z-index: 2;
 
-
+  top: 77%; // top offset from tree image
+  right: 22%; // right offset from tree image
+`;

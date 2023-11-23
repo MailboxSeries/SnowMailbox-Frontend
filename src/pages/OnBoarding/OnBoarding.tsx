@@ -16,7 +16,11 @@ export default function OnBoarding() {
   return (
     <>
       <PageLayout>
-        <S.MainTree />
+        <S.Container>
+          <S.MainTree />
+          <S.MainCharacter/>
+        </S.Container>
+
         <LongButton margin="52px 0 0 0" route="/signin">
           <S.ButtonText>{'로그인'}</S.ButtonText>
         </LongButton>
