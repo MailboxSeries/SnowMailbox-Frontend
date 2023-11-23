@@ -19,10 +19,20 @@ export const ButtonText = styled.span`
   letter-spacing: 1px;
 `;
 
-export const SignoutButton = styled.span`
-  position: absolute;
-  color: gray;
-  font-size: 12px;
-  top: 250px;
-  right: 30px;
+export const NameInput = styled.input`
+font-family: 'BareunHipi';
+margin-top: 120px;
+width: 210px;
+height: 10px;
+border-radius: 20px;
+padding: 15px;
+border-bottom: 2px solid ${theme.colors.textNavy};
+color: ${theme.colors.textMain};
+margin-bottom: 0px;
+background-color: ${theme.colors.textNavy};;
+font-size: 16px;
+&::placeholder {
+    color: ${theme.colors.textMain};
+    font-size: 16px;
+  }
 `;
