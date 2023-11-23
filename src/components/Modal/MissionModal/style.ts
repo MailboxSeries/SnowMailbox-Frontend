@@ -8,6 +8,7 @@ export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  
 `;
 
 export const ButtonText = styled.span`
@@ -23,7 +24,7 @@ export const ButtonText = styled.span`
 export const MissionDiscription = styled.span`
   color: ${theme.colors.textNavy};
   text-align: center;
-  font-size: 14px;
+  font-size: 24px;
   font-style: normal;
   font-weight: 700;
   line-height: normal;
@@ -31,7 +32,8 @@ export const MissionDiscription = styled.span`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 10px;
+  margin-top: 110px;
+  font-family: 'BareunHipi';
 `;
 
 export const DiscriptionText = styled.span`

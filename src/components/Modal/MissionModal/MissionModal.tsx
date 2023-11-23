@@ -18,7 +18,7 @@ function MissionModal({closeModal, isOpen}: Props) {
   const data = useRecoilValue<Data>(HomeDataAtom);
   const [isSkinData, setSkinData] = useRecoilState(skinDataState);
   const skinData = useRecoilValue(skinDataState);
-
+  const [missionContent, setMissionContent] = useState<string>("지인에게 따뜻한 마음이 담긴 편지 1장을 보내봐요. 추운 겨울을 이겨내는 데에 큰 도움이 될 거예요. 어쩌면 지인이 당신임을 알게 된다면, 답장 편지가 되돌아올지도..?");
   useEffect(() => {
     // setSkinData로 상태를 업데이트한 후에 이 코드가 실행됩니다.
     // 이 시점에서 업데이트된 상태를ㄴ 사용할 수 있습니다.
@@ -26,24 +26,10 @@ function MissionModal({closeModal, isOpen}: Props) {
   }, [isSkinData]); // isSkinData가 변경될 때마다 useEffect가 실행됩니다.
 
 
-  const handleSelectSkin = () => {
-    //TODO: api 호출 후 성공하면 recoil로 저장하고 모달 닫기.
+  const handleMissionClear = () => {
+    //TODO: api 호출 
+    //TODO: skinAtom에서 missionId를 가져와서 호출하면 될듯.
 
-      /*
-    //TODO: 요청에 성공했을 때 recoil로 저장
-    const newHomeData = {
-      refreshToken: data.refreshToken,
-      accessToken: data.accessToken,
-      nickname: data.nickname,
-      treeType: treeType,
-      characterType: characterType,
-      starType: starType,
-      boxType: boxType,
-      ornamentType: boxType,
-      nowDate: data.nowDate,
-    };
-    setSkinData(newHomeData);
-    */
   }
 
   return (
@@ -59,14 +45,14 @@ function MissionModal({closeModal, isOpen}: Props) {
             잠금표시 된 스킨은 미션을 클리어해야<br/>획득할 수 있어요. 미션을 클리어해봐요.
           </S.DiscriptionText>
           <S.MissionDiscription>
-            크리스마스 트리
+            {missionContent}
           </S.MissionDiscription>
           
         </S.SelectWrapper>
         
 
         <LongButton margin="12px 0 0 0" >
-          <S.ButtonText onClick={handleSelectSkin}>{'선택 완료하기'}</S.ButtonText>
+          <S.ButtonText onClick={handleMissionClear}>{'미션 완료하기'}</S.ButtonText>
         </LongButton>
 
       </S.Wrapper>
