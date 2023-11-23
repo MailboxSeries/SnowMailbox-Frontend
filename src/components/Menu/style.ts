@@ -12,7 +12,8 @@ const SunWrapper = styled.div`
       position: fixed;
       left: calc(50% + 230px);
     }
-
+    width: 90px;
+    height: 100px;
 `;
 
 
