@@ -1,5 +1,5 @@
 import * as S from './style';
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import Modal from '../Modal';
 import LongButton from '@/components/Button/LongButton/LongButton';
 import { Carousel } from 'react-responsive-carousel';
@@ -9,6 +9,8 @@ import {Tree} from '@/assets/Tree'
 import { useRecoilState, useRecoilValue } from 'recoil';
 import { Data, HomeDataAtom } from '@/atoms/HomeAtom';
 import { skinDataState } from '@/atoms/SkinAtom'
+import MissionModal from "@/components/Modal/MissionModal/MissionModal"
+
 type Props = {
   closeModal: () => void;
   isOpen: boolean;
@@ -24,6 +26,10 @@ function SkinModal({closeModal, isOpen}: Props) {
   const [missionModalOpen, setMissionModalOpen] = useState<boolean>(false);
   const [isSkinData, setSkinData] = useRecoilState(skinDataState);
   const skinData = useRecoilValue(skinDataState);
+  const closeMissionModal = useCallback(
+    () => setMissionModalOpen(false),
+    [setMissionModalOpen],
+  );
 
   useEffect(() => {
     // setSkinData로 상태를 업데이트한 후에 이 코드가 실행됩니다.
@@ -63,6 +69,9 @@ function SkinModal({closeModal, isOpen}: Props) {
   }
   
   return (
+    <> 
+
+   
     <Modal
       isOpen={isOpen}
       onClose={closeModal}
@@ -92,7 +101,7 @@ function SkinModal({closeModal, isOpen}: Props) {
                     selected={treeType === tree.index} 
                     style={{width: "80px", height: "107px"}}
                   />
-                  {isDisabled('tree', index) && <S.LockIcon />}
+                  {isDisabled('tree', index) && <S.LockIcon onClick={handleMissionModal}/>}
                 </S.SelectClickEvent>
               ))}
           </Carousel>
@@ -115,7 +124,7 @@ function SkinModal({closeModal, isOpen}: Props) {
                     selected={ornamentType === ornament.index} 
                     style={{width: "60px", height: "90px"}}
                   />
-                  {isDisabled('ornament', index) && <S.LockIcon />}
+                  {isDisabled('ornament', index) && <S.LockIcon onClick={handleMissionModal}/>}
 
                 </S.SelectClickEvent>
               ))}
@@ -139,7 +148,7 @@ function SkinModal({closeModal, isOpen}: Props) {
                     selected={boxType === box.index} 
                     style={{width: "60px", height: "90px"}}
                   />
-                  {isDisabled('box', index) && <S.LockIcon />}
+                  {isDisabled('box', index) && <S.LockIcon onClick={handleMissionModal}/>}
                 </S.SelectClickEvent>
               ))}
           </Carousel>
@@ -197,6 +206,9 @@ function SkinModal({closeModal, isOpen}: Props) {
 
       </S.Wrapper>
     </Modal>
+
+    <MissionModal closeModal={closeMissionModal} isOpen={missionModalOpen} />
+    </>
   );
 }
 export default React.memo(SkinModal);
