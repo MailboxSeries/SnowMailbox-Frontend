@@ -1,7 +1,8 @@
 import { styled } from "styled-components";
 import SpeechBubbleGif from '@/assets/speechBubble/speechBubble.gif'
 import Tree  from '@/assets/Tree';
-import { TreeTypeProps } from '@/interface/home';
+import Character  from '@/assets/Character';
+import { TreeTypeProps, CharacterTypeProps } from '@/interface/home';
 import theme from "@/theme";
 
 export const ObjectWrapper = styled.div`
@@ -47,6 +48,17 @@ export const ButtonText = styled.span`
   font-weight: 700;
   line-height: normal;
   letter-spacing: 1px;
+`;
+
+export const MainCharacter = styled.img.attrs<CharacterTypeProps>(props => ({
+  src: Character[props.characterType - 1], // 이미지 가져오기
+}))`
+  position: absolute;
+  z-index: 2;
+  width: 60px;
+  height: 90px;
+  top: 77%; // top offset from tree image
+  right: 22%; // right offset from tree image
 `;
 
 export const TreeImage = styled.img.attrs<TreeTypeProps>(props => ({

@@ -21,3 +21,17 @@ export const Character = [
     { index: 9, imgSrc: Character9 },
     { index: 10, imgSrc: Character10 }
 ];  
+
+export default  [
+    Character1,
+    Character2,
+    Character3,
+    Character4,
+    Character5,
+    Character6,
+    Character7,
+    Character8,
+    Character9,
+    Character10
+
+];  

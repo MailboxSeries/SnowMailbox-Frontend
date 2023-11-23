@@ -50,6 +50,7 @@ export default function Home() {
                 <S.ObjectWrapper>
                     <S.OrnamentLayerWrapper>
                         <S.TreeImage treeType={homeData.treeType} />
+                        <S.MainCharacter characterType = {homeData.characterType} />
                     </S.OrnamentLayerWrapper>
                     {isMyHome ? (
                         <>
