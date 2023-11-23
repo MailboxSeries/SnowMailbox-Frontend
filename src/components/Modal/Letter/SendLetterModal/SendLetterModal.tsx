@@ -9,7 +9,6 @@ import LongButton from '@/components/Button/LongButton/LongButton';
 type Props = {
   closeModal: () => void;
   isOpen: boolean;
-  selectedDate: number;
 };
 
 function SendLetterModal({closeModal, isOpen}: Props) {

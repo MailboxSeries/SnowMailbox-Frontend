@@ -101,7 +101,7 @@ export default function Home() {
              {/* 편지 리스트 모달 */}
             <LetterListModal closeModal={closeLetterListModal} isOpen={LetterListModalOpen} />
              {/* 편지 쓰기 모달 */}
-            <SendLetterModal closeModal={closeSendLetterModal} isOpen={sendLetterModalOpen} />
+            <SendLetterModal closeModal={closeSendLetterModal} isOpen={sendLetterModalOpen}/>
         </>
     ) 
 }
