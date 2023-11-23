@@ -40,6 +40,7 @@ export const OrnamentLayerWrapper = styled.div`
   align-items: center;
 `;
 
+
 export const ButtonText = styled.span`
   color: ${theme.colors.textNavy};
   text-align: center;
@@ -49,6 +50,15 @@ export const ButtonText = styled.span`
   line-height: normal;
   letter-spacing: 1px;
 `;
+
+export const TreeImage = styled.div<TreeTypeProps>`
+  position: absolute;
+    width: 300px;
+    height: 400px;
+    background: ${(props) => props.treeType && `url(${Tree[props.treeType - 1]})`};
+    background-size: 300px 400px;
+`;
+
 
 export const MainCharacter = styled.img.attrs<CharacterTypeProps>(props => ({
   src: Character[props.characterType - 1], // 이미지 가져오기
@@ -61,11 +71,5 @@ export const MainCharacter = styled.img.attrs<CharacterTypeProps>(props => ({
   right: 22%; // right offset from tree image
 `;
 
-export const TreeImage = styled.img.attrs<TreeTypeProps>(props => ({
-  src: Tree[props.treeType - 1], // 이미지 가져오기
-}))`
-    width: 300px;
-    height: 400px;
-    
-`;
+
 

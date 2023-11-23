@@ -1,16 +1,19 @@
-import React, { useCallback, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import * as S from './style';
 import PageLayout from '@/components/PageLayout/PageLayout';
 import RudolfButton from '@/components/Button/RudolfButton/RudolfButton';
 import { useRecoilValue } from 'recoil';
 import { HomeDataAtom } from '@/atoms/HomeAtom';
-//import OrnamentLayer from '@/components/OrnamentLayer/OrnamentLayer'; //TODO: 오너먼트레이어 이미지 다 나오면 구현해야함.
 import LongButton from '@/components/Button/LongButton/LongButton';
 import ShareModal from '@/components/Modal/ShareModal/ShareModal';
 import SkinModal from '@/components/Modal/SkinModal/SkinModal';
 import LetterListModal from '@/components/Modal/Letter/LetterListModal/LetterListModal';
 import useIsMyHome from '@/hooks/useIsMyHome';
 import SendLetterModal from '@/components/Modal/Letter/SendLetterModal/SendLetterModal';
+import OrnamentLayer from '@/components/OrnamentLayer/OrnamentLayer';
+import OrnamentLayer4 from '@/assets/OrnamentLayer/4'
+import Tree  from '@/assets/Tree';
+
 export default function Home() {
     const {ownerId, myId, isMyHome} = useIsMyHome();
     const homeData = useRecoilValue(HomeDataAtom);
@@ -44,12 +47,31 @@ export default function Home() {
         () => setSendLetterModalOpen(false),
         [setSendLetterModalOpen],
     );
+
+    // selectedOrnamentLayer를 배열로 만듭니다
+    let selectedOrnamentLayer = [];
+
+    switch(homeData.ornamentType) {
+        case 1: selectedOrnamentLayer = OrnamentLayer4; break;
+        case 2: selectedOrnamentLayer = OrnamentLayer4; break;
+        case 3: selectedOrnamentLayer = OrnamentLayer4; break;
+        case 4: selectedOrnamentLayer = OrnamentLayer4; break;
+        default: selectedOrnamentLayer = []; // 기본값 혹은 오류 처리
+    }
+    const imgs = selectedOrnamentLayer.slice(0, homeData.nowDate);
+
     return (
         <>
             <PageLayout>
                 <S.ObjectWrapper>
                     <S.OrnamentLayerWrapper>
-                        <S.TreeImage treeType={homeData.treeType} />
+                        <S.TreeImage treeType={homeData.treeType}/>
+                        <OrnamentLayer
+                            width={300}
+                            height={400}
+                            margin="0 0 0 0"
+                            imgs={imgs}
+                        />
                         <S.MainCharacter characterType = {homeData.characterType} />
                     </S.OrnamentLayerWrapper>
                     {isMyHome ? (
@@ -60,14 +82,14 @@ export default function Home() {
                             <S.SpeechBubble />
                         </>
                     ) : (
+                        <>
                             <>
-                              <>
-                            <S.RudolfButtonWrapper>
-                                <RudolfButton onClick={handleSkin}/>
-                            </S.RudolfButtonWrapper>
-                            <S.SpeechBubble />
-                        </>
+                                <S.RudolfButtonWrapper>
+                                    <RudolfButton onClick={handleSkin}/>
+                                </S.RudolfButtonWrapper>
+                                <S.SpeechBubble />
                             </>
+                        </>
                     )}
                 </S.ObjectWrapper>
                 {isMyHome ? (
