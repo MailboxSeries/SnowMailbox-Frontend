@@ -25,8 +25,9 @@ export default function PageLayout({ children }: Props) {
         <S.Layout>
             <SnowFalling />
             <Menu 
-                onSignIn={() => navigate('/signin')} 
-                onServiceDescription={openModal}/>
+                //onSignIn={() => navigate('/signin')} 
+                //onServiceDescription={openModal}
+                />
             <S.Wrapper>
                 <S.TextWrapper>
                     <S.SubLogoText>2024년을 기다리며,</S.SubLogoText>
