@@ -33,7 +33,7 @@ export default function ImageAll() {
             {Array.from({ length: 25 }, (_, index) => (
               <S.Picture
                 key={index}
-                imgSrc={images[index % images.length]} // 이미지 순환
+                imgSrc={images[index % images.length]} // 이미지 순환//
                 onClick={() => handleImageAll(index)}
               >{index+1}</S.Picture>
             ))}
