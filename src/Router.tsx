@@ -1,5 +1,5 @@
 import {BrowserRouter, Route, Routes} from 'react-router-dom';
-import Onboarding from './pages/Onboarding/Onboarding';
+import OnBoarding from './pages/OnBoarding/OnBoarding';
 //import ScrollToTop from './components/ScrollToTop/ScrollToTop';
 import SignIn from './pages/SignIn/SignIn';
 import SignUp from './pages/SignUp/SignUp';
@@ -10,7 +10,7 @@ export default function Router() {
     <BrowserRouter>
       <Routes>
         
-        <Route path="/" element={<Onboarding />} />
+        <Route path="/" element={<OnBoarding />} />
         <Route path="/signin" element={<SignIn />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/home/:ownerId" element={<Home />} />
