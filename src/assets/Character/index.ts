@@ -1,13 +1,13 @@
-import Character1 from './1.png';
-import Character2 from './2.png';
-import Character3 from './3.png';
-import Character4 from './4.png';
-import Character5 from './5.png';
-import Character6 from './6.png';
-import Character7 from './7.png';
-import Character8 from './8.png';
-import Character9 from './9.png';
-import Character10 from './10.png';
+import Character1 from '@/assets/Character/1.png';
+import Character2 from '@/assets/Character/2.png';
+import Character3 from '@/assets/Character/3.png';
+import Character4 from '@/assets/Character/4.png';
+import Character5 from '@/assets/Character/5.png';
+import Character6 from '@/assets/Character/6.png';
+import Character7 from '@/assets/Character/7.png';
+import Character8 from '@/assets/Character/8.png';
+import Character9 from '@/assets/Character/9.png';
+import Character10 from '@/assets/Character/10.png';
 
 export const Character = [
     { index: 1, imgSrc: Character1 },
