@@ -1,6 +1,6 @@
-import Picture1 from '@/assets/Picture/1.png';
-import Picture2 from '@/assets/Picture/2.png';
-import Picture3 from '@/assets/Picture/3.png';
+import Picture1 from './1.png';
+import Picture2 from './2.png';
+import Picture3 from './3.png';
 
 export const Picture = [
     { index: 1, imgSrc: Picture1 },
