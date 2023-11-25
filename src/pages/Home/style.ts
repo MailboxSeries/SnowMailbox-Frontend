@@ -1,5 +1,5 @@
 import { styled } from "styled-components";
-import SpeechBubbleGif from '@/assets/speechBubble/speechBubble.gif'
+import SpeechBubbleGif from '@/assets/SpeechBubble/SpeechBubble.gif'
 import Tree  from '@/assets/Tree';
 import Character  from '@/assets/Character';
 import { TreeTypeProps, CharacterTypeProps } from '@/interface/home';
