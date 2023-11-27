@@ -22,7 +22,7 @@ export const ButtonText = styled.span`
 export const NameInput = styled.input`
 font-family: 'BareunHipi';
 margin-top: 120px;
-width: 210px;
+width: 180px;
 height: 10px;
 border-radius: 20px;
 padding: 15px;
@@ -35,4 +35,18 @@ font-size: 16px;
     color: ${theme.colors.textMain};
     font-size: 16px;
   }
+`;
+
+
+export const Text = styled.span`
+  color: ${theme.colors.textNavy};
+  text-align: center;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: 1px;
+  top: 70px;
+  position: absolute;
+  white-space: pre-line;
 `;
