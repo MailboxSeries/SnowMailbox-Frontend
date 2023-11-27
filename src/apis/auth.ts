@@ -58,3 +58,15 @@ import {instance} from './axios';
       return null;
     }
   };
+
+  // 로그아웃
+  export const deleteLeave = async (
+    myId: string
+  ) => {
+    try {
+      await instance.delete(
+        `/api/v1/user/${myId}/leave`, {});
+    } catch (error) {
+      return null;
+    }
+  };
