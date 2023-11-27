@@ -46,9 +46,9 @@ const getModalSize = (
     case 'SmallModal':
       return {width: '300px', height: '300px', backgroundSize: '300px 300px'};
     case 'Modal':
-      return {width: '300px', height: '600px', backgroundSize: '600px 300px'};
+      return {width: '300px', height: '600px', backgroundSize: '300px 600px'};
     default:
-      return {width: '300px', height: '600px', backgroundSize: '600px 300px'}; // 기본값
+      return {width: '300px', height: '600px', backgroundSize: '300px 600px'}; // 기본값
   }
 };
 
