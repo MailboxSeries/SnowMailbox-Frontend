@@ -1,21 +1,18 @@
 import * as S from './style';
 import React, { useEffect, useState } from 'react';
 import Modal from '../Modal';
-import LongButton from '@/components/Button/LongButton/LongButton';
-import { Carousel } from 'react-responsive-carousel';
-import "react-responsive-carousel/lib/styles/carousel.min.css";
-import {Character} from '@/assets/Character'
-import {Tree} from '@/assets/Tree'
 import { useRecoilState, useRecoilValue } from 'recoil';
-import { Data, HomeDataAtom } from '@/atoms/HomeAtom';
+import { HomeDataAtom } from '@/atoms/HomeAtom';
 import { skinDataState } from '@/atoms/SkinAtom'
+import ModalButton from '@/components/Button/ModalButton/ModalButton';
+import { HomeData } from '@/interface/home';
 type Props = {
   closeModal: () => void;
   isOpen: boolean;
 };
 
 function MissionModal({closeModal, isOpen}: Props) {
-  const data = useRecoilValue<Data>(HomeDataAtom);
+  const data = useRecoilValue<HomeData>(HomeDataAtom);
   const [isSkinData, setSkinData] = useRecoilState(skinDataState);
   const skinData = useRecoilValue(skinDataState);
   const [missionContent, setMissionContent] = useState<string>("지인에게 따뜻한 마음이 담긴 편지 1장을 보내봐요. 추운 겨울을 이겨내는 데에 큰 도움이 될 거예요. 어쩌면 지인이 당신임을 알게 된다면, 답장 편지가 되돌아올지도..?");
@@ -51,9 +48,9 @@ function MissionModal({closeModal, isOpen}: Props) {
         </S.SelectWrapper>
         
 
-        <LongButton margin="12px 0 0 0" >
+        <ModalButton margin="12px 0 0 0" >
           <S.ButtonText onClick={handleMissionClear}>{'미션 완료하기'}</S.ButtonText>
-        </LongButton>
+        </ModalButton>
 
       </S.Wrapper>
     </Modal>
