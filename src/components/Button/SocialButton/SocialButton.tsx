@@ -11,13 +11,13 @@ type SocialButtonProps = Partial<ButtonProps>;
 export default function SocialButton(props: SocialButtonProps) {
 
   const getImageForSocialType = () => {
-    if(props.socialType = "NaverSignIn") {
+    if(props.socialType == "NaverSignIn") {
       return NaverSignInButtonImg;
-    } else if (props.socialType = "NaverSignUp") {
+    } else if (props.socialType == "NaverSignUp") {
       return NaverSignUpButtonImg;
-    } else if (props.socialType = "KakaoSignIn") {
+    } else if (props.socialType == "KakaoSignIn") {
       return KakaoSignInButtonImg;
-    } else if (props.socialType = "KakaoSignUp") {
+    } else if (props.socialType == "KakaoSignUp") {
       return KakaoSignUpButtonImg;
     }
   };
@@ -26,7 +26,7 @@ export default function SocialButton(props: SocialButtonProps) {
 
 
   return (
-    <Button width={240} height={40} background={socialImg} {...props}>
+    <Button width={250} height={40} background={socialImg} {...props}>
       {props.children}
     </Button>
   );

@@ -6,6 +6,7 @@ import PageLayout from '@/components/PageLayout/PageLayout';
 import LongButton from '@/components/Button/LongButton/LongButton';
 import useInput from '@/hooks/useInput';
 import { Button } from '@/components/Button/style';
+import SocialButton from '@/components/Button/SocialButton/SocialButton';
 
 export default function SignUp() {
     // 모달 상태관리
@@ -66,12 +67,16 @@ export default function SignUp() {
         </S.SignUpForm>
 
             
-            <LongButton margin="8px 0 0 0" route="https://snowmailbox.com/oauth2/authorization/kakao">
-            <S.ButtonText>{'카카오로 가입하기'}</S.ButtonText>
-            </LongButton>
-            <LongButton margin="8px 0 0 0" route="https://snowmailbox.com/oauth2/authorization/naver">
-            <S.ButtonText>{'네이버로 가입하기'}</S.ButtonText>
-            </LongButton>
+            <SocialButton 
+            margin="8px 0 0 0" 
+            route="https://snowmailbox.com/oauth2/authorization/kakao"
+            socialType="KakaoSignUp"
+            />
+            <SocialButton 
+            margin="8px 0 0 0" 
+            route="https://snowmailbox.com/oauth2/authorization/naver"
+            socialType="NaverSignUp"
+            />
         </PageLayout>
         
         <Modal
