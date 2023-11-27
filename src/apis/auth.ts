@@ -46,3 +46,15 @@ import {instance} from './axios';
         return null;
       }
     };
+
+  // 로그아웃
+  export const postSignOut = async (
+    myId: string
+  ) => {
+    try {
+      await instance.post(
+        `/api/v1/user/${myId}/sign-out`, {});
+    } catch (error) {
+      return null;
+    }
+  };
