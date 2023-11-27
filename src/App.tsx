@@ -6,13 +6,13 @@ import {Suspense} from 'react';
 const App = () => {
   return (
     <>
-      <Suspense>
+      {/* <Suspense>
         <AuthProvider>
-          <BrowserRouter>
+          <BrowserRouter> TODO: 개발 시에만 주석 처리*/}
             <Router />
-          </BrowserRouter>
-        </AuthProvider>
-      </Suspense>
+          {/*  </BrowserRouter>
+       </AuthProvider>
+      </Suspense> TODO: 개발 시에만 주석 처리*/}
     </>
   );
 };
