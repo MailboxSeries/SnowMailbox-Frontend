@@ -14,19 +14,20 @@ export const ShareLinkContainer = styled.div`
   width: 237.5px;
   height: 50px;
   position: relative;
-  margin-top: 82px;
+  margin-top: 90px;
   padding: 0;
+  
 `;
 
 export const ShareLinkWrapper = styled.div`
-  background: #F9FCFB;
+  background: #e1e2ff;
   border-radius: 30px;
-  background-size: cover;
-  width: 237.5px;
+  width: 215px;
   height: 50px;
   position: relative;
   //margin-top: 82px;
   padding: 0;
+  margin-left: 11px;
 `;
 
 export const Link = styled.p`

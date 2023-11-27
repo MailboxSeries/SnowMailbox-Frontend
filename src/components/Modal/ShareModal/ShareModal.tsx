@@ -24,7 +24,7 @@ function ShareModal({closeModal, isOpen}: Props) {
     <Modal
       isOpen={isOpen}
       onClose={closeModal}
-      modalTitle={'링크 공유하기'}
+      modalTitle={'\n링크 공유하기'}
       imageType={'SmallModal'}
     >
       <S.Wrapper>
@@ -32,7 +32,7 @@ function ShareModal({closeModal, isOpen}: Props) {
           <S.ShareLinkWrapper>
             <S.Link className="box">{link}</S.Link>
           </S.ShareLinkWrapper>
-            <ModalButton margin="12px 0 0 0" onClick={handleCopy}>
+            <ModalButton margin="30px 0 0 38px" onClick={handleCopy}>
               <S.ButtonText>{'링크 복사하기'}</S.ButtonText>
             </ModalButton>
         </S.ShareLinkContainer>
