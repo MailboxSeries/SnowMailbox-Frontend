@@ -16,6 +16,7 @@ export default function SignUp() {
     const userName = useInput<HTMLInputElement>(); 
     const email = useInput<HTMLInputElement>(); 
     const password = useInput<HTMLInputElement>();
+    const BASE_URL = "https://snowmailbox.com"
 
     const handleCheckBlank = () => {
         // 모든 입력값을 검사합니다.
@@ -65,10 +66,10 @@ export default function SignUp() {
 
             
         
-            <LongButton margin="8px 0 0 0" route=""> {/*TODO: 추가해야함*/}
+            <LongButton margin="8px 0 0 0" route="https://snowmailbox.com/oauth2/authorization/kakao">
             <S.ButtonText>{'카카오로 가입하기'}</S.ButtonText>
             </LongButton>
-            <LongButton margin="8px 0 0 0" route=""> {/*TODO: 추가해야함*/}
+            <LongButton margin="8px 0 0 0" route="https://snowmailbox.com/oauth2/authorization/naver">
             <S.ButtonText>{'네이버로 가입하기'}</S.ButtonText>
             </LongButton>
         </PageLayout>
