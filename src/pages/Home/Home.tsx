@@ -38,7 +38,7 @@ export default function Home() {
 
     const {data} = useQuery<HomeData>({
         queryKey: [ownerId],
-        queryFn: () => home.getHomeData(+ownerId),
+        queryFn: () => home.getHomeData(ownerId),
         staleTime: 1000 * 60 * STALE_MIN,
         gcTime: 1000 * 60 * STALE_MIN,
     });
