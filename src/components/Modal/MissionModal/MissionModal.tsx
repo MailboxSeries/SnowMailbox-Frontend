@@ -6,22 +6,33 @@ import { HomeDataAtom } from '@/atoms/HomeAtom';
 import { skinDataState } from '@/atoms/SkinAtom'
 import ModalButton from '@/components/Button/ModalButton/ModalButton';
 import { HomeData } from '@/interface/home';
+import useIsMyHome from '@/hooks/useIsMyHome';
+import { useSuspenseQuery } from '@tanstack/react-query';
+import { getUnCompletedMissionContent } from '@/apis/skin';
 type Props = {
   closeModal: () => void;
   isOpen: boolean;
+  missionId: string;
 };
 
-function MissionModal({closeModal, isOpen}: Props) {
-  const data = useRecoilValue<HomeData>(HomeDataAtom);
-  const [isSkinData, setSkinData] = useRecoilState(skinDataState);
+function MissionModal({closeModal, isOpen, missionId}: Props) {
+  const {ownerId, myId, isMyHome} = useIsMyHome();
+  const homeData = useRecoilValue<HomeData>(HomeDataAtom);
   const skinData = useRecoilValue(skinDataState);
   const [missionContent, setMissionContent] = useState<string>("지인에게 따뜻한 마음이 담긴 편지 1장을 보내봐요. 추운 겨울을 이겨내는 데에 큰 도움이 될 거예요. 어쩌면 지인이 당신임을 알게 된다면, 답장 편지가 되돌아올지도..?");
-  useEffect(() => {
-    // setSkinData로 상태를 업데이트한 후에 이 코드가 실행됩니다.
-    // 이 시점에서 업데이트된 상태를ㄴ 사용할 수 있습니다.
-    console.log('Updated skinData:', isSkinData);
-  }, [isSkinData]); // isSkinData가 변경될 때마다 useEffect가 실행됩니다.
+  
+  
+  const {data} = useSuspenseQuery({
+    queryKey: ['disabledSkin', myId],
+    queryFn: () => getUnCompletedMissionContent(myId, missionId),
+  });
 
+  if (data !== null) {
+    setMissionContent(data.missionContent);
+  } else {
+    alert("데이터를 가져오는 데에 실패했어요. 다시 로그인 해주세요.")
+    //TODO: 로그인 페이지로 
+  }
 
   const handleMissionClear = () => {
     //TODO: api 호출 

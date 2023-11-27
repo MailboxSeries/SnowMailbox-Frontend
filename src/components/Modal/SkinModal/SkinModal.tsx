@@ -82,8 +82,11 @@ function SkinModal({closeModal, isOpen}: Props) {
     setSkinData(newHomeData);
     */
   }
-  const handleMissionModal = () => {
+  const handleMissionModal = (missionId : string) => {
     setMissionModalOpen(true)
+    return(
+      <MissionModal closeModal={closeMissionModal} isOpen={missionModalOpen} missionId={missionId}/>
+    )
   }
   
   return (
@@ -119,7 +122,7 @@ function SkinModal({closeModal, isOpen}: Props) {
                     selected={treeType === tree.index} 
                     style={{width: "80px", height: "107px"}}
                   />
-                  {isDisabled('tree', index) && <S.LockIcon onClick={handleMissionModal}/>}
+                  {isDisabled('tree', index) && <S.LockIcon onClick={() => handleMissionModal(skinData.treeList[tree.index].missionId)}/>}
                 </S.SelectClickEvent>
               ))}
           </Carousel>
@@ -142,7 +145,7 @@ function SkinModal({closeModal, isOpen}: Props) {
                     selected={ornamentType === ornament.index} 
                     style={{width: "60px", height: "90px"}}
                   />
-                  {isDisabled('ornament', index) && <S.LockIcon onClick={handleMissionModal}/>}
+                  {isDisabled('ornament', index) && <S.LockIcon onClick={() => handleMissionModal(skinData.ornamentList[ornament.index].missionId)}/>}
 
                 </S.SelectClickEvent>
               ))}
@@ -166,7 +169,7 @@ function SkinModal({closeModal, isOpen}: Props) {
                     selected={boxType === box.index} 
                     style={{width: "60px", height: "90px"}}
                   />
-                  {isDisabled('box', index) && <S.LockIcon onClick={handleMissionModal}/>}
+                  {isDisabled('box', index) && <S.LockIcon onClick={() => handleMissionModal(skinData.boxList[box.index].missionId)}/>}
                 </S.SelectClickEvent>
               ))}
           </Carousel>
@@ -189,7 +192,7 @@ function SkinModal({closeModal, isOpen}: Props) {
                     selected={starType === star.index} 
                     style={{width: "60px", height: "90px"}}
                   />
-                  {isDisabled('star', index) && <S.LockIcon onClick={handleMissionModal}/>}
+                  {isDisabled('star', index) && <S.LockIcon onClick={() => handleMissionModal(skinData.starList[star.index].missionId)}/>}
                 </S.SelectClickEvent>
               ))}
           </Carousel>
@@ -225,7 +228,7 @@ function SkinModal({closeModal, isOpen}: Props) {
       </S.Wrapper>
     </Modal>
 
-    <MissionModal closeModal={closeMissionModal} isOpen={missionModalOpen} />
+   
     </>
   );
 }
