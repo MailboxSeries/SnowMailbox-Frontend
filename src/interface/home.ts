@@ -15,8 +15,16 @@ export interface TreeTypeProps {
     boxType: number;
   }
 
-
-
   export interface ImagePreviewProps {
     src: string; // 여기서는 string 타입만 받도록 설정
   }
+
+  export interface HomeData {
+    nickname : string;
+    treeType : number;
+    characterType : number;
+    starType : number;
+    boxType : number;
+    ornamentType : number;
+    nowDate : number;
+  };

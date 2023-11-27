@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useState } from 'react'
 import * as S from './style';
 import PageLayout from '@/components/PageLayout/PageLayout';
 import RudolfButton from '@/components/Button/RudolfButton/RudolfButton';
-import { useRecoilValue } from 'recoil';
+import { useRecoilValue, useSetRecoilState } from 'recoil';
 import { HomeDataAtom } from '@/atoms/HomeAtom';
 import LongButton from '@/components/Button/LongButton/LongButton';
 import ShareModal from '@/components/Modal/ShareModal/ShareModal';
@@ -15,10 +15,16 @@ import OrnamentLayer1 from '@/assets/OrnamentLayer/1'
 import OrnamentLayer2 from '@/assets/OrnamentLayer/2'
 import OrnamentLayer3 from '@/assets/OrnamentLayer/3'
 import OrnamentLayer4 from '@/assets/OrnamentLayer/4'
+import home from '@/apis/home';
+import { useQuery } from '@tanstack/react-query';
+import { HomeData } from '@/interface/home';
+
+const STALE_MIN = 5;
 
 export default function Home() {
     const {ownerId, myId, isMyHome} = useIsMyHome();
     const homeData = useRecoilValue(HomeDataAtom);
+    const setHomeData = useSetRecoilState(HomeDataAtom);
     const [shareModalOpen, setShareModalOpen] = useState<boolean>(false);
     const handleShare = () => setShareModalOpen(true);
     const [skinModalOpen, setSkinModalOpen] = useState<boolean>(false);
@@ -29,6 +35,20 @@ export default function Home() {
     const handleSendLetter = () => setSendLetterModalOpen(true);
     const myURL = `https://snowmailbox.com/home/${myId}`;
     const imageAllURL = `https://snowmailbox.com/image-all/${myId}`;
+
+    const {data} = useQuery<HomeData>({
+        queryKey: [ownerId],
+        queryFn: () => home.getHomeData(+ownerId),
+        staleTime: 1000 * 60 * STALE_MIN,
+        gcTime: 1000 * 60 * STALE_MIN,
+    });
+
+    // 서버에서 가져온 데이터를 Recoil Atom에 저장
+    useEffect(() => {
+        if (data) {
+        setHomeData(data);
+        }
+    }, [data, setHomeData]);
 
     const closeShareModal = useCallback(
         () => setShareModalOpen(false),
@@ -60,7 +80,7 @@ export default function Home() {
         case 4: selectedOrnamentLayer = OrnamentLayer4; break;
         default: selectedOrnamentLayer = []; // 기본값 혹은 오류 처리
     }
-   
+
 
     return (
         <>

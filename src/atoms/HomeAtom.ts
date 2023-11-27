@@ -1,22 +1,9 @@
+import { HomeData } from '@/interface/home';
 import {atom} from 'recoil';
 
-export type Data = {
-  refreshToken: string ;
-  accessToken: string ;
-  nickname : string;
-	treeType : number;
-	characterType : number;
-	starType : number;
-	boxType : number;
-	ornamentType : number;
-	nowDate : number;
-};
-
-export const HomeDataAtom = atom<Data>({
+export const HomeDataAtom = atom<HomeData>({
   key: 'Data',
   default: {
-    refreshToken: '',
-    accessToken: '',
     nickname : "겨울이",
 	treeType : 4, // 디폴트는 1
 	characterType : 1, // 디폴트는 1
