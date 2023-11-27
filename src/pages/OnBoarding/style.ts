@@ -40,6 +40,6 @@ export const MainCharacter = styled.img.attrs({
   position: absolute;
   z-index: 2;
 
-  top: 77%; // top offset from tree image
-  right: 22%; // right offset from tree image
+  top: 83%; // top offset from tree image
+  right: 15%; // right offset from tree image
 `;

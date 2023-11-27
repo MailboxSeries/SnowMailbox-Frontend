@@ -77,6 +77,7 @@ export default function Home() {
                             nowDate = {homeData.nowDate}
                         />
                         <S.MainCharacter characterType = {homeData.characterType} />
+                        <S.BoxImage boxType={homeData.boxType} />
                     </S.OrnamentLayerWrapper>
                     {isMyHome ? (
                         <>

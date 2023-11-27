@@ -5,6 +5,7 @@ import Character  from '@/assets/Character';
 import { TreeTypeProps, CharacterTypeProps, StarTypeProps, BoxTypeProps } from '@/interface/home';
 import theme from "@/theme";
 import Star from "@/assets/Star";
+import Box from "@/assets/Box";
 export const ObjectWrapper = styled.div`
 position: relative;
 width: 300px;
@@ -71,6 +72,16 @@ export const StarImage = styled.div<StarTypeProps>`
 `;
 
 
+export const BoxImage = styled.div<BoxTypeProps>`
+  position: absolute;
+    width: 300px;
+    height: 400px;
+    background: ${(props) => props.boxType && `url(${Box[props.boxType - 1]})`};
+    background-size: 300px 400px;
+    z-index: 1;
+`;
+
+
 export const MainCharacter = styled.img.attrs<CharacterTypeProps>(props => ({
   src: Character[props.characterType - 1], // 이미지 가져오기
 }))`
@@ -78,8 +89,8 @@ export const MainCharacter = styled.img.attrs<CharacterTypeProps>(props => ({
   z-index: 2;
   width: 60px;
   height: 90px;
-  top: 77%; // top offset from tree image
-  right: 22%; // right offset from tree image
+  top: 83%; // top offset from tree image
+  right: 15%; // right offset from tree image
   z-index: 3;
 `;
 
