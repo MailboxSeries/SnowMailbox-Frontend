@@ -76,7 +76,7 @@ export default function SignUp() {
         <Modal
             isOpen={isOpen}
             onClose={closeModal}
-            imageType={'SmallModalGreen'}
+            imageType={'SmallModal'}
             modalTitle={"예시"}
         >
 

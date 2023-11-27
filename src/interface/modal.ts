@@ -3,12 +3,12 @@ export interface ModalProps {
     onClose: (event?: React.MouseEvent) => void;
     children: React.ReactNode;
     modalTitle: string;
-    imageType?: 'SmallModalGreen' | 'SmallModalRed' | 'Modal' ;
+    imageType?: 'SmallModal' | 'Modal' ;
   }
 
   // imageType을 위한 인터페이스 정의
 export interface ModalContentProps {
-    imageType?: 'SmallModalGreen' | 'SmallModalRed' | 'Modal' ;
+    imageType?: 'SmallModal' | 'Modal' ;
   }
   
   // show 프로퍼티를 갖는 ModalWrapperProps 인터페이스를 정의

@@ -33,7 +33,7 @@ function SignOutModal({ closeModal, isOpen }: Props) {
       isOpen={isOpen}
       onClose={closeModal}
       modalTitle={'탈퇴하시면 지금까지 모인 추억들이 \n모두 사라져요. 그래도 하시겠어요? '}
-      imageType={'SmallModalGreen'}
+      imageType={'SmallModal'}
     >
       <S.Wrapper>
         <S.NameInput

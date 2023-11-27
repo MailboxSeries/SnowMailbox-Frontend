@@ -40,7 +40,7 @@ function LogoutModal({closeModal, isOpen}: Props) {
         isOpen={isOpen}
         onClose={closeModal}
         modalTitle={'로그아웃 하시겠어요?'}
-        imageType={'SmallModalGreen'}
+        imageType={'SmallModal'}
       >
         <S.Wrapper>
           

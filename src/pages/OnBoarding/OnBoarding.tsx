@@ -32,7 +32,7 @@ export default function OnBoarding() {
       <Modal
         isOpen={isOpen}
         onClose={closeModal}
-        imageType={'SmallModalGreen'}
+        imageType={'SmallModal'}
         modalTitle={"예시"}
       >
 

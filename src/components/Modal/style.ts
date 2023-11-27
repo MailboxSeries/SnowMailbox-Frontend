@@ -1,6 +1,5 @@
 import styled, { keyframes } from 'styled-components';
-import SmallModalRedImg from '@/assets/Modal/SmallModalRed.png';
-import SmallModalGreenImg from '@/assets/Modal/SmallModalGreen.png';
+import SmallModalImg from '@/assets/Modal/SmallModal.png';
 import ModalImg from '@/assets/Modal/Modal.png';
 import {ModalContentProps, ModalWrapperProps} from '@/interface/modal';
 import theme from '@/theme';
@@ -28,13 +27,11 @@ const ModalWrapper = styled.div<ModalWrapperProps>`
 `;
 
 const getModalBackgroundImage = (
-  imageType?: 'SmallModalGreen' | 'SmallModalRed' | 'Modal' ,
+  imageType?: 'SmallModal' | 'Modal' ,
 ) => {
   switch (imageType) {
-    case 'SmallModalRed':
-      return SmallModalRedImg;
-    case 'SmallModalGreen':
-      return SmallModalGreenImg;
+    case 'SmallModal':
+      return SmallModalImg;
     case 'Modal':
       return ModalImg;
     default:
@@ -43,12 +40,10 @@ const getModalBackgroundImage = (
 };
 
 const getModalSize = (
-  imageType?: 'SmallModalGreen' | 'SmallModalRed' | 'Modal' ,
+  imageType?: 'SmallModal' | 'Modal' ,
 ) => {
   switch (imageType) {
-    case 'SmallModalRed':
-      return {width: '300px', height: '300px'};
-    case 'SmallModalGreen':
+    case 'SmallModal':
       return {width: '300px', height: '300px'};
     case 'Modal':
       return {width: '300px', height: '600px'};

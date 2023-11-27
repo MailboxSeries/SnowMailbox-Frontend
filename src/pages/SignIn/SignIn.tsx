@@ -69,7 +69,7 @@ export default function SignIn() {
         <Modal
             isOpen={isOpen}
             onClose={closeModal}
-            imageType={'SmallModalGreen'}
+            imageType={'SmallModal'}
             modalTitle={"예시"}
         >
 
