@@ -5,7 +5,7 @@ import useSetTokens from '../hooks/useSetTokens';
 export const instance = axios.create({
   baseURL: 'https://snowmailbox.com',
   headers: {
-    Authorization: `Bearer ${Cookies.get('accessCookie')}`,
+    Authorization: `Bearer ${Cookies.get('accessToken')}`,
   },
 });
 
@@ -18,7 +18,7 @@ instance.interceptors.response.use(
 
         if (error.response.code === 401 && !originalRequest._retry) {
         originalRequest._retry = true;
-        const refreshToken = Cookies.get('refreshCookie');
+        const refreshToken = Cookies.get('refreshToken');
         if (!refreshToken) {
             throw new Error('토큰 없음');
         }
