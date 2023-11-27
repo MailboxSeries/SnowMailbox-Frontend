@@ -67,6 +67,7 @@ export default function Home() {
             <PageLayout>
                 <S.ObjectWrapper>
                     <S.OrnamentLayerWrapper>
+                        <S.StarImage starType={homeData.starType}/>
                         <S.TreeImage treeType={homeData.treeType}/>
                         <OrnamentLayer
                             width={300}
