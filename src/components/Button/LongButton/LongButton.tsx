@@ -1,5 +1,5 @@
 import {ButtonProps} from '../type';
-import LongButtonImg from '@/assets/Button/LongButton.svg';
+import LongButtonImg from '@/assets/Button/LongButton.png';
 import Button from '../Button';
 
 type LongButtonProps = Partial<ButtonProps>;
