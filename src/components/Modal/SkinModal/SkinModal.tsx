@@ -1,7 +1,6 @@
 import * as S from './style';
 import React, { useCallback, useEffect, useState } from 'react';
 import Modal from '../Modal';
-import LongButton from '@/components/Button/LongButton/LongButton';
 import { Carousel } from 'react-responsive-carousel';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import {Character} from '@/assets/Character'
@@ -11,6 +10,7 @@ import { HomeDataAtom } from '@/atoms/HomeAtom';
 import { skinDataState } from '@/atoms/SkinAtom'
 import MissionModal from "@/components/Modal/MissionModal/MissionModal"
 import { HomeData } from '@/interface/home';
+import ModalButton from '@/components/Button/ModalButton/ModalButton';
 
 type Props = {
   closeModal: () => void;
@@ -201,9 +201,9 @@ function SkinModal({closeModal, isOpen}: Props) {
         </S.SelectWrapper>
         
 
-        <LongButton margin="12px 0 0 0" >
+        <ModalButton margin="12px 0 0 0" >
           <S.ButtonText onClick={handleSelectSkin}>{'선택 완료하기'}</S.ButtonText>
-        </LongButton>
+        </ModalButton>
 
       </S.Wrapper>
     </Modal>
