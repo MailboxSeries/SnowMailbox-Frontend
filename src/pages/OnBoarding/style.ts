@@ -25,7 +25,7 @@ export const Container = styled.div`
 `;
 
 export const ButtonText = styled.span`
-  color: ${theme.colors.textNavy};
+  color: ${theme.colors.textMain};
   text-align: center;
   font-size: 20px;
   font-style: normal;

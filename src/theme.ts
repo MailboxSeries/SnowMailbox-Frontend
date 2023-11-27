@@ -12,8 +12,8 @@ declare module 'styled-components' {
 }
 
 const colors = {
-  white: '#ffffff',
-  textMain: '#F9FCFB',
+  white: '#F9FCFB',
+  textMain: '#e2e9ff',
   textNavy: '#2B2A4C',
 };
 const theme: DefaultTheme = {

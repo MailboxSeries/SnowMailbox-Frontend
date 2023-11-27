@@ -51,7 +51,7 @@ export const TextWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  color: ${theme.colors.textMain};
+  color: ${theme.colors.white};
   margin-top: 100px;
   position: absolute;
   `;

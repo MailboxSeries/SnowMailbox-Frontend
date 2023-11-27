@@ -26,7 +26,7 @@ export const Button = styled.button<ButtonStyleProps>`
   border: none;
   z-index: 2;
   box-shadow: none;
-  color: ${theme.colors.textNavy};
+  color: ${theme.colors.textMain};
   cursor: ${(props) => (props.disabled || props.dark ? 'cursor' : 'pointer')};
   filter: ${(props) => (props.disabled || props.dark) && 'brightness(0.7)'};
 `;
