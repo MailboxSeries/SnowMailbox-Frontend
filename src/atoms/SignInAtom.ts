@@ -2,17 +2,15 @@ import {atom} from 'recoil';
 
 export type Data = {
   myId: string;
-  refreshToken: string;
-  accessToken: string;
 };
 
-export const DataAtom = atom<Data>({
-  key: 'Data',
-  default: {
+export const initialUserInfoState : Data = {
     myId: '1',
-    refreshToken: '',
-    accessToken: '',
-  },
+};
+
+export const userInfoAtom = atom<Data>({
+  key: 'userInfo',
+  default: initialUserInfoState,
 });
 
 export const loginMethodAtom = atom<string>({
