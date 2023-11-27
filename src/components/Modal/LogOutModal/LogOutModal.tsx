@@ -39,12 +39,12 @@ function LogoutModal({closeModal, isOpen}: Props) {
       <Modal
         isOpen={isOpen}
         onClose={closeModal}
-        modalTitle={'로그아웃 하시겠어요?'}
+        modalTitle={'\n로그아웃 하시겠어요?'}
         imageType={'SmallModal'}
       >
         <S.Wrapper>
           
-              <LongButton margin="150px 0 0 0" onClick={handleLogout}>
+              <LongButton margin="180px 0 0 0" onClick={handleLogout}>
                 <S.ButtonText>{'로그아웃'}</S.ButtonText>
               </LongButton>
               <S.SignoutButton onClick={handleSignoutModal}> 탈퇴하기 </S.SignoutButton>
