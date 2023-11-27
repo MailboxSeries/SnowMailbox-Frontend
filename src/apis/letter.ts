@@ -6,7 +6,7 @@ export const getDayLetter = async (day: number, myId: string) => {
       const response = await instance.get(
         `/api/v1/letter/${day}/${myId}`,
       );
-      return response.data; //treeList, ornamentList, starList, boxList
+      return response.data; //letterList
     } catch (error) {
       return null;
     }
