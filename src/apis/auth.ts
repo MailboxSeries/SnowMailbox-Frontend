@@ -18,4 +18,18 @@ import {instance} from './axios';
     }
   };
 
-  
+    // 로그인(기본)
+    export const postSignIn = async (
+        email: string, 
+        password: string
+    ) => {
+        try {
+          await instance.post(
+            `/api/v1/user/sign-in`, {
+                "email" : email,
+                "password" : password
+            });
+        } catch (error) {
+          return null;
+        }
+      };
