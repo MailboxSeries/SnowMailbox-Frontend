@@ -27,8 +27,8 @@ font-size: 25px;
 border:2px; 
 border-style:hidden;
 border-radius: 5%;
-background-color: #FFE5CC;
-padding: 10px;
+background-color:#e1e2ff;
+padding: 4px;
 margin-top:5px;
 margin-bottom:10px;
 
@@ -55,7 +55,7 @@ export const LetterImage = styled.div<{src: string}>`
   width: 236px;
   height: 236px;
   background-image: ${(props) => `url(${props.src})`};
-  border: 3px solid ${theme.colors.textNavy};
+  border: 3px solid #7c7e9a;
   border-radius: 10px;
   background-size: 236.538px 236.538px;
 `;

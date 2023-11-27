@@ -9,7 +9,7 @@ export type Data = {
 export const DataAtom = atom<Data>({
   key: 'Data',
   default: {
-    myId: '',
+    myId: '1',
     refreshToken: '',
     accessToken: '',
   },
