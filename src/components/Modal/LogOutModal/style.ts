@@ -24,5 +24,5 @@ export const SignoutButton = styled.span`
   color: gray;
   font-size: 12px;
   top: 250px;
-  right: 30px;
+  right: 50px;
 `;
