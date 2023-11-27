@@ -6,6 +6,9 @@ import PageLayout from '@/components/PageLayout/PageLayout';
 import LongButton from '@/components/Button/LongButton/LongButton';
 import useInput from '@/hooks/useInput';
 import SocialButton from '@/components/Button/SocialButton/SocialButton';
+import { postSignIn } from '@/apis/auth';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { useNavigate } from 'react-router';
 
 export default function SignIn() {
     // 모달 상태관리
@@ -17,6 +20,18 @@ export default function SignIn() {
     const email = useInput<HTMLInputElement>(); 
     const password = useInput<HTMLInputElement>();
 
+    const navigate = useNavigate();
+    const queryClient = useQueryClient();
+
+    const {mutate} = useMutation({
+        mutationFn: () =>
+        postSignIn(email.value, password.value),
+        onSuccess: async () => {
+            await queryClient.invalidateQueries({queryKey: ['userInfo']});
+            navigate('/redirect');
+        },
+    });
+
     const handleCheckBlank = () => {
         // 입력값을 검사합니다.
         if (!email.value.trim() || !password.value.trim()) {
@@ -26,8 +41,10 @@ export default function SignIn() {
         return true; // 모든 입력값이 있으면 true 반환
     };
 
-    const handleSignIn = () => { //TODO: 나중에 api구현해서 호출해야함
-        handleCheckBlank();
+    const handleSignIn = () => {
+        if(handleCheckBlank()) {
+            mutate();
+        }
     }
 
     return (
