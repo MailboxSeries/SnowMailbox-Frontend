@@ -40,7 +40,7 @@ export const SubTitle = styled.span`
 export const DiscriptionText = styled.span`
   color: ${theme.colors.textNavy};
   text-align: center;
-  line-height: ;
+  line-height: 1;
   font-size: 14px;
     font-style: normal;
   font-weight: 700;
