@@ -49,7 +49,6 @@ export default function SignIn() {
                 margin="64px 0 0 0" 
                 onClick={handleSignIn} 
                 type = "submit"
-                route="/home/${MyId}" //TODO: 개발용. 나중에 지워야함
                 >
                     <S.ButtonText>{'로그인하기'}</S.ButtonText>
                 </LongButton>
@@ -58,10 +57,10 @@ export default function SignIn() {
             </S.LoginForm>
 
         
-            <LongButton margin="8px 0 0 0" route=""> {/*TODO: 추가해야함*/}
+            <LongButton margin="8px 0 0 0" route="https://snowmailbox.com/oauth2/authorization/kakao">
             <S.ButtonText>{'카카오로 로그인하기'}</S.ButtonText>
             </LongButton>
-            <LongButton margin="8px 0 0 0" route=""> {/*TODO: 추가해야함*/}
+            <LongButton margin="8px 0 0 0" route="https://snowmailbox.com/oauth2/authorization/kakao">
             <S.ButtonText>{'네이버로 로그인하기'}</S.ButtonText>
             </LongButton>
         </PageLayout>
