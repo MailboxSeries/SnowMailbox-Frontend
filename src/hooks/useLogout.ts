@@ -1,11 +1,11 @@
 import { skinDataState } from '@/atoms/SkinAtom';
-import { DataAtom } from './../atoms/SignInAtom';
+import { userInfoAtom } from './../atoms/SignInAtom';
 import { HomeDataAtom } from '@/atoms/HomeAtom';
 import { useResetRecoilState } from 'recoil';
 
 export default function useLogout() {
   const resetHomeData = useResetRecoilState(HomeDataAtom);
-  const resetData = useResetRecoilState(DataAtom);
+  const resetData = useResetRecoilState(userInfoAtom);
   const resetSkinData = useResetRecoilState(skinDataState);
 
   const logout = () => {
