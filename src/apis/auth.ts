@@ -33,3 +33,16 @@ import {instance} from './axios';
           return null;
         }
       };
+
+    // 리다이렉트 페이지에서 myId 받기
+    export const getMyIdAtRedirectPage = async (
+  ) => {
+      try {
+        const response = await instance.get(
+          `/api/v1/user/user-id`);
+
+          return response.data; //myId
+      } catch (error) {
+        return null;
+      }
+    };
