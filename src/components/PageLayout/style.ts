@@ -7,24 +7,26 @@ export const Layout = styled.div`
   display: flex;
   justify-content: center;
   align-items: center; // 수직 중앙 정렬 추가
-
+  height: 100vh;
+  min-height: 1080px;
+  max-height: 1080px;
 `;
 export const Wrapper = styled.div`
     position: absolute;
     z-index: 2;
-    top: 0px;
-    //top: 40px;
+    top: -80px;
+    bottom: 80px;
+    max-height: 1080px;
     height: 100%;
-    min-height: 820px;
+    min-height: 1080px;
     max-width: 820px; // 최대 너비 설정
     width: 100%;
     margin: 0;
     padding: 0;
     background: url(${Background});
-    background-position: center;
+    background-position: top;
     background-repeat: no-repeat;
     background-size: contain; // 배경 이미지 사이즈 조정
-    -ms-interpolation-mode: nearest-neighbor;
     image-rendering: pixelated;
     background-size: 820px 1180px; 
     background-attachment: scroll;
