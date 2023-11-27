@@ -13,7 +13,7 @@ export const getMissionStatus = async (myId: string) => {
 };
 
 // 아직 깨지 않은 미션 선택시
-export const getUnCompletedById = async (myId: string, missionId: string) => {
+export const getUnCompletedMissionContent = async (myId: string, missionId: string) => {
     try {
       const response = await instance.get(
         `/api/v1/mission/${missionId}/${myId}`,
