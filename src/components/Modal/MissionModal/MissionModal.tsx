@@ -7,8 +7,8 @@ import { skinDataState } from '@/atoms/SkinAtom'
 import ModalButton from '@/components/Button/ModalButton/ModalButton';
 import { HomeData } from '@/interface/home';
 import useIsMyHome from '@/hooks/useIsMyHome';
-import { useSuspenseQuery } from '@tanstack/react-query';
-import { getUnCompletedMissionContent } from '@/apis/skin';
+import { useMutation, useQueryClient, useSuspenseQuery } from '@tanstack/react-query';
+import { getUnCompletedMissionContent, postCompletedMissionChecked } from '@/apis/skin';
 type Props = {
   closeModal: () => void;
   isOpen: boolean;
@@ -20,7 +20,7 @@ function MissionModal({closeModal, isOpen, missionId}: Props) {
   const homeData = useRecoilValue<HomeData>(HomeDataAtom);
   const skinData = useRecoilValue(skinDataState);
   const [missionContent, setMissionContent] = useState<string>("지인에게 따뜻한 마음이 담긴 편지 1장을 보내봐요. 추운 겨울을 이겨내는 데에 큰 도움이 될 거예요. 어쩌면 지인이 당신임을 알게 된다면, 답장 편지가 되돌아올지도..?");
-  
+  const queryClient = useQueryClient();
   
   const {data} = useSuspenseQuery({
     queryKey: ['disabledSkin', myId],
@@ -34,9 +34,19 @@ function MissionModal({closeModal, isOpen, missionId}: Props) {
     //TODO: 로그인 페이지로 
   }
 
+
+  const {mutate} = useMutation({
+      mutationFn: () =>
+      postCompletedMissionChecked(myId, missionId, true),
+      onSuccess: async () => {
+          await queryClient.invalidateQueries({queryKey: ['completedmissionChecked']});
+          alert("미션에 성공했어요! 새로운 스킨을 적용해보아요!")
+          closeModal();
+      },
+  });
+
   const handleMissionClear = () => {
-    //TODO: api 호출 
-    //TODO: skinAtom에서 missionId를 가져와서 호출하면 될듯.
+    mutate();
     closeModal();
   }
 
