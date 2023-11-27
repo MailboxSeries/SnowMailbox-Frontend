@@ -1,6 +1,6 @@
 import styled, { keyframes } from 'styled-components';
 import { Link } from 'react-router-dom';
-import LargeClockImg from '@/assets/Clock/LargeClock.png';
+import LargeClockImg from '@/assets/Santa/Santa.png';
 
 const SunWrapper = styled.div`
   position: absolute;
@@ -29,8 +29,9 @@ const SunButton = styled.button`
   background: url(${LargeClockImg}) no-repeat center;
   border: none;
   cursor: pointer;
-  width: 85px;
-  height: 85px;
+  width: 90px;
+  height: 90px;
+  background-size: 90px 90px;
   z-index: 5;
 `;
 

@@ -11,8 +11,10 @@ import LetterListModal from '@/components/Modal/Letter/LetterListModal/LetterLis
 import useIsMyHome from '@/hooks/useIsMyHome';
 import SendLetterModal from '@/components/Modal/Letter/SendLetterModal/SendLetterModal';
 import OrnamentLayer from '@/components/OrnamentLayer/OrnamentLayer';
+import OrnamentLayer1 from '@/assets/OrnamentLayer/1'
+import OrnamentLayer2 from '@/assets/OrnamentLayer/2'
+import OrnamentLayer3 from '@/assets/OrnamentLayer/3'
 import OrnamentLayer4 from '@/assets/OrnamentLayer/4'
-import Tree  from '@/assets/Tree';
 
 export default function Home() {
     const {ownerId, myId, isMyHome} = useIsMyHome();
@@ -52,9 +54,9 @@ export default function Home() {
     let selectedOrnamentLayer = [];
 
     switch(homeData.ornamentType) {
-        case 1: selectedOrnamentLayer = OrnamentLayer4; break;
-        case 2: selectedOrnamentLayer = OrnamentLayer4; break;
-        case 3: selectedOrnamentLayer = OrnamentLayer4; break;
+        case 1: selectedOrnamentLayer = OrnamentLayer1; break;
+        case 2: selectedOrnamentLayer = OrnamentLayer2; break;
+        case 3: selectedOrnamentLayer = OrnamentLayer3; break;
         case 4: selectedOrnamentLayer = OrnamentLayer4; break;
         default: selectedOrnamentLayer = []; // 기본값 혹은 오류 처리
     }
