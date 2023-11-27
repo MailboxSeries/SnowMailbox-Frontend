@@ -28,8 +28,6 @@ function LogoutModal({closeModal, isOpen}: Props) {
 
   //TODO: api 호출하기
   const handleLogout = () => {
-    alert("로그아웃 되었어요.")
-    navigate('/')
     logout();
     closeModal();
   };

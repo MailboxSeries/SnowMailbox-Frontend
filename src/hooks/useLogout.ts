@@ -29,7 +29,8 @@ const useLogout = () => {
         resetHomeData();
         resetData();
         resetSkinData();
-        navigate('/');
+        alert("로그아웃 되었어요.")
+        navigate('/')
       },
     });
   
