@@ -12,3 +12,25 @@ export const getDayLetter = async (day: number, myId: string) => {
     }
   };
   
+  // 메인화면에서 편지 보내기 (게스트일 경우)
+export const postLetter = async (
+    nowDate: number, 
+    ownerId: string, 
+    myId: string,
+    image: File,
+    sender: string,
+    content: string,
+) => {
+
+    const formData = new FormData();
+    formData.append('image', image);
+    formData.append('content', content);
+    formData.append('sender', sender);
+    try {
+      instance.post(
+        `/api/v1/letter/${nowDate}/${ownerId}/${myId}`, formData
+      );
+    } catch (error) {
+      return null;
+    }
+  };
