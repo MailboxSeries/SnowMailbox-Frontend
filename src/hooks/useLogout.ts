@@ -7,13 +7,12 @@ import { useResetRecoilState } from 'recoil';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import useIsMyHome from './useIsMyHome';
 
-export default function useLogout() {
-  const resetHomeData = useResetRecoilState(HomeDataAtom);
-  const resetData = useResetRecoilState(userInfoAtom);
-  const resetSkinData = useResetRecoilState(skinDataState);
-  const {ownerId, myId, isMyHome} = useIsMyHome();
+const useLogout = () => {
 
-  const logout = () => {
+    const resetHomeData = useResetRecoilState(HomeDataAtom);
+    const resetData = useResetRecoilState(userInfoAtom);
+    const resetSkinData = useResetRecoilState(skinDataState);
+    const {ownerId, myId, isMyHome} = useIsMyHome();
     const navigate = useNavigate();
 
     const queryClient = useQueryClient();
@@ -34,10 +33,10 @@ export default function useLogout() {
       },
     });
   
-    const GoOut = () => {
+    const SignOut = () => {
       mutation.mutate();
     };
-  };
 
-  return logout;
+    return SignOut;
 }
+export default useLogout;
