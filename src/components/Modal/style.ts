@@ -44,11 +44,11 @@ const getModalSize = (
 ) => {
   switch (imageType) {
     case 'SmallModal':
-      return {width: '300px', height: '300px'};
+      return {width: '300px', height: '300px', backgroundSize: '300px 300px'};
     case 'Modal':
-      return {width: '300px', height: '600px'};
+      return {width: '300px', height: '600px', backgroundSize: '600px 300px'};
     default:
-      return {width: '300px', height: '600px'}; // 기본값
+      return {width: '300px', height: '600px', backgroundSize: '600px 300px'}; // 기본값
   }
 };
 
@@ -63,10 +63,11 @@ const ModalContent = styled.div<ModalContentProps>`
   box-sizing: border-box;
   padding: 15px;
   ${({imageType}) => {
-    const {width, height} = getModalSize(imageType);
+    const {width, height, backgroundSize} = getModalSize(imageType);
     return `
       width: ${width};
       height: ${height};
+      background-size: ${backgroundSize};
     `;
   }}
   bottom: 50%;

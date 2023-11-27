@@ -25,7 +25,7 @@ function ShareModal({closeModal, isOpen}: Props) {
       isOpen={isOpen}
       onClose={closeModal}
       modalTitle={'링크 공유하기'}
-      imageType={'SmallModalGreen'}
+      imageType={'SmallModal'}
     >
       <S.Wrapper>
         <S.ShareLinkContainer>
