@@ -2,11 +2,11 @@ import * as S from './style';
 import React, { useCallback, useState } from 'react';
 import Modal from '../Modal';
 import { useNavigate} from 'react-router-dom';
-import LongButton from '@/components/Button/LongButton/LongButton';
 import { HomeDataAtom } from '@/atoms/HomeAtom';
 import useLogout from '@/hooks/useLogout';
 import { useRecoilValue } from 'recoil';
 import SignOutModal from '../SignOutModal/SignOutModal';
+import ModalButton from '@/components/Button/ModalButton/ModalButton';
 
 type Props = {
   closeModal: () => void;
@@ -44,9 +44,9 @@ function LogoutModal({closeModal, isOpen}: Props) {
       >
         <S.Wrapper>
           
-              <LongButton margin="180px 0 0 0" onClick={handleLogout}>
+              <ModalButton margin="180px 0 0 0" onClick={handleLogout}>
                 <S.ButtonText>{'로그아웃'}</S.ButtonText>
-              </LongButton>
+              </ModalButton>
               <S.SignoutButton onClick={handleSignoutModal}> 탈퇴하기 </S.SignoutButton>
         </S.Wrapper>
       </Modal>
