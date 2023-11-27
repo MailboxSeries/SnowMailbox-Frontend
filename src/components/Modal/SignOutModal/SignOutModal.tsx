@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import useLogout from '@/hooks/useLogout';
 import useInput from '@/hooks/useInput';
 import ModalButton from '@/components/Button/ModalButton/ModalButton';
+import useLeave from '@/hooks/useLeave';
 
 type Props = {
   closeModal: () => void;
@@ -13,15 +14,12 @@ type Props = {
 
 function SignOutModal({ closeModal, isOpen }: Props) {
   const navigate = useNavigate();
-  const logout = useLogout();
+  const leave = useLeave();
   const signoutText = useInput<HTMLInputElement>(); // 보내는 사람 이름을 관리하는 상태
 
   const handleSignout = () => {
     if (signoutText.value === 'SnOwMaIlBoX') {
-      //TODO: 
-      logout();
-      navigate('/');
-      alert("탈퇴 되었어요. 또 다시 만나요!");
+      leave();
       closeModal();
     } else {
       alert("입력한 값이 올바르지 않습니다.");
