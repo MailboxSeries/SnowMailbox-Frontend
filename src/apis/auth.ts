@@ -1,7 +1,7 @@
 import {instance} from './axios';
 
   // 회원가입(기본)
-  export const postCompletedMissionChecked = async (
+  export const postSignUp = async (
     email: string, 
     nickname: string, 
     password: string
@@ -17,3 +17,5 @@ import {instance} from './axios';
       return null;
     }
   };
+
+  
