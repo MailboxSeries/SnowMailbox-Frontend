@@ -11,6 +11,10 @@ import { skinDataState } from '@/atoms/SkinAtom'
 import MissionModal from "@/components/Modal/MissionModal/MissionModal"
 import { HomeData } from '@/interface/home';
 import ModalButton from '@/components/Button/ModalButton/ModalButton';
+import { useSuspenseQuery } from '@tanstack/react-query';
+import { useNavigate } from 'react-router';
+import { getMissionStatus } from '@/apis/skin';
+import useIsMyHome from '@/hooks/useIsMyHome';
 
 type Props = {
   closeModal: () => void;
@@ -18,12 +22,13 @@ type Props = {
 };
 
 function SkinModal({closeModal, isOpen}: Props) {
-  const data = useRecoilValue<HomeData>(HomeDataAtom);
-  const [treeType, setTreeType] = useState<number>(data.treeType);
-  const [characterType, setCharacterType] = useState<number>(data.characterType);
-  const [starType, setStarType] = useState<number>(data.starType);
-  const [boxType, setBoxType] = useState<number>(data.boxType);
-  const [ornamentType, setOrnamentType] = useState<number>(data.ornamentType);
+  const {ownerId, myId, isMyHome} = useIsMyHome();
+  const homeData = useRecoilValue<HomeData>(HomeDataAtom);
+  const [treeType, setTreeType] = useState<number>(homeData.treeType);
+  const [characterType, setCharacterType] = useState<number>(homeData.characterType);
+  const [starType, setStarType] = useState<number>(homeData.starType);
+  const [boxType, setBoxType] = useState<number>(homeData.boxType);
+  const [ornamentType, setOrnamentType] = useState<number>(homeData.ornamentType);
   const [missionModalOpen, setMissionModalOpen] = useState<boolean>(false);
   const [isSkinData, setSkinData] = useRecoilState(skinDataState);
   const skinData = useRecoilValue(skinDataState);
@@ -32,6 +37,18 @@ function SkinModal({closeModal, isOpen}: Props) {
     [setMissionModalOpen],
   );
 
+  const {data} = useSuspenseQuery({
+      queryKey: ['abledSkin', myId],
+      queryFn: () => getMissionStatus(myId),
+    });
+
+    if (data !== null) {
+      setSkinData(data);
+    } else {
+      alert("데이터를 가져오는 데에 실패했어요. 다시 로그인 해주세요.")
+      //TODO: 로그인 페이지로 
+    }
+    
   useEffect(() => {
     // setSkinData로 상태를 업데이트한 후에 이 코드가 실행됩니다.
     // 이 시점에서 업데이트된 상태를ㄴ 사용할 수 있습니다.
