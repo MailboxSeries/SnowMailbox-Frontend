@@ -19,7 +19,7 @@ export default function PageLayout({ children }: Props) {
     const { isOpen, openModal, closeModal } = useModal();
 
     // ownerId가 있을 경우 nickname을 사용, 없으면 기본 텍스트
-    const titleText = ownerId ? `${homeData.nickname} 크리스마스 트리` : "눈꽃 우편함";
+    const titleText = ownerId ? `${homeData.nickname}의 크리스마스 트리` : "눈꽃 우편함";
 
     return (
         <S.Layout>
