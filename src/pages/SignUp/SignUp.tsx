@@ -7,6 +7,9 @@ import LongButton from '@/components/Button/LongButton/LongButton';
 import useInput from '@/hooks/useInput';
 import { Button } from '@/components/Button/style';
 import SocialButton from '@/components/Button/SocialButton/SocialButton';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { postSignUp } from '@/apis/auth';
+import { useNavigate } from 'react-router';
 
 export default function SignUp() {
     // 모달 상태관리
@@ -19,6 +22,17 @@ export default function SignUp() {
     const email = useInput<HTMLInputElement>(); 
     const password = useInput<HTMLInputElement>();
     const BASE_URL = "https://snowmailbox.com"
+    const navigate = useNavigate();
+    const queryClient = useQueryClient();
+
+    const {mutate} = useMutation({
+        mutationFn: () =>
+        postSignUp(email.value, userName.value, password.value),
+        onSuccess: async () => {
+            await queryClient.invalidateQueries({queryKey: ['userInfo']});
+            navigate('/redirect');
+        },
+    });
 
     const handleCheckBlank = () => {
         // 모든 입력값을 검사합니다.
@@ -30,11 +44,12 @@ export default function SignUp() {
     };
     
 
-    const handleSignUp = () => { //TODO: 나중에 api구현해서 호출해야함
+    const handleSignUp = () => {
         if (handleCheckBlank()) {
-            // TODO: 회원가입 API 호출
+            mutate();
         }
     }
+    
 
   return (
     <>
