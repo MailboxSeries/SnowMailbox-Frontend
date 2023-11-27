@@ -3,7 +3,7 @@ import React from 'react';
 import Modal from '../Modal';
 import { useParams} from 'react-router-dom';
 import copy from 'copy-to-clipboard';
-import LongButton from '@/components/Button/LongButton/LongButton';
+import ModalButton from '@/components/Button/ModalButton/ModalButton';
 type Props = {
   closeModal: () => void;
   isOpen: boolean;
@@ -32,9 +32,9 @@ function ShareModal({closeModal, isOpen}: Props) {
           <S.ShareLinkWrapper>
             <S.Link className="box">{link}</S.Link>
           </S.ShareLinkWrapper>
-            <LongButton margin="12px 0 0 0" onClick={handleCopy}>
+            <ModalButton margin="12px 0 0 0" onClick={handleCopy}>
               <S.ButtonText>{'링크 복사하기'}</S.ButtonText>
-            </LongButton>
+            </ModalButton>
         </S.ShareLinkContainer>
       </S.Wrapper>
     </Modal>
