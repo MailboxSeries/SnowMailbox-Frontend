@@ -5,6 +5,7 @@ import * as S from './style';
 import PageLayout from '@/components/PageLayout/PageLayout';
 import LongButton from '@/components/Button/LongButton/LongButton';
 import useInput from '@/hooks/useInput';
+import { Button } from '@/components/Button/style';
 
 export default function SignUp() {
     // 모달 상태관리
@@ -65,7 +66,6 @@ export default function SignUp() {
         </S.SignUpForm>
 
             
-        
             <LongButton margin="8px 0 0 0" route="https://snowmailbox.com/oauth2/authorization/kakao">
             <S.ButtonText>{'카카오로 가입하기'}</S.ButtonText>
             </LongButton>
