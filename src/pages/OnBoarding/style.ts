@@ -20,6 +20,8 @@ export const Container = styled.div`
     align-items: center;
     justify-content: center;
     transform: translateY(10%);
+    margin-top: 180px;
+    margin-bottom: 50px;
 `;
 
 export const ButtonText = styled.span`

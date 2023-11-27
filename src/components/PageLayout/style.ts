@@ -8,27 +8,26 @@ export const Layout = styled.div`
   justify-content: center;
   align-items: center; // 수직 중앙 정렬 추가
   height: 100vh;
-  min-height: 1080px;
-  max-height: 1080px;
+  min-height: 1020px;
+  max-height: 1180px;
 `;
 export const Wrapper = styled.div`
     position: absolute;
     z-index: 2;
-    top: -80px;
-    bottom: 80px;
-    max-height: 1080px;
-    height: 100%;
-    min-height: 1080px;
+    //top: -80px;
+    //bottom: 80px;
+    max-height: 1180px;
+    //height: 100%;
+    min-height: 1020px;
     max-width: 820px; // 최대 너비 설정
     width: 100%;
     margin: 0;
     padding: 0;
     background: url(${Background});
-    background-position: top;
+    background-position: bottom;
     background-repeat: no-repeat;
-    background-size: contain; // 배경 이미지 사이즈 조정
+    background-size: auto; // 배경 이미지 사이즈 조정
     image-rendering: pixelated;
-    background-size: 820px 1180px; 
     background-attachment: scroll;
     display: flex;
   flex-direction: column;
@@ -39,7 +38,7 @@ export const LogoText = styled.div`
     height: 30px;
     font-size: 40px;
     font-family: 'BareunHipi';
-    margin-bottom: 35px;
+    margin-bottom: 30px;
 `;
 
 export const SubLogoText = styled.div`
@@ -54,4 +53,5 @@ export const TextWrapper = styled.div`
   align-items: center;
   color: ${theme.colors.textMain};
   margin-top: 100px;
+  position: absolute;
   `;

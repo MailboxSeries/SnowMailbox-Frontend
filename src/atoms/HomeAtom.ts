@@ -17,7 +17,7 @@ export const HomeDataAtom = atom<Data>({
   default: {
     refreshToken: '',
     accessToken: '',
-    nickname : "겨울이의",
+    nickname : "겨울이",
 	treeType : 4, // 디폴트는 1
 	characterType : 1, // 디폴트는 1
 	starType : 0, //없을 경우 0

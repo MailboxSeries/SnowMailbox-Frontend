@@ -10,6 +10,8 @@ position: relative;
 width: 300px;
 height: 400px;
   z-index: 2;
+  margin-top: 220px;
+    margin-bottom: 10px;
 `;
 
 export const RudolfButtonWrapper = styled.div`
