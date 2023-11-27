@@ -7,9 +7,10 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 import {Character} from '@/assets/Character'
 import {Tree} from '@/assets/Tree'
 import { useRecoilState, useRecoilValue } from 'recoil';
-import { Data, HomeDataAtom } from '@/atoms/HomeAtom';
+import { HomeDataAtom } from '@/atoms/HomeAtom';
 import { skinDataState } from '@/atoms/SkinAtom'
 import MissionModal from "@/components/Modal/MissionModal/MissionModal"
+import { HomeData } from '@/interface/home';
 
 type Props = {
   closeModal: () => void;
@@ -17,7 +18,7 @@ type Props = {
 };
 
 function SkinModal({closeModal, isOpen}: Props) {
-  const data = useRecoilValue<Data>(HomeDataAtom);
+  const data = useRecoilValue<HomeData>(HomeDataAtom);
   const [treeType, setTreeType] = useState<number>(data.treeType);
   const [characterType, setCharacterType] = useState<number>(data.characterType);
   const [starType, setStarType] = useState<number>(data.starType);
