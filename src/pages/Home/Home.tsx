@@ -80,36 +80,32 @@ function Home() {
         }
     }, [data]);
 
-    const closeShareModal = useCallback(
-        () => setShareModalOpen(false),
-        [setShareModalOpen],
-    );
+    const closeShareModal = useCallback(() => {
+        setShareModalOpen(false)
+    }, []);
 
-    const closeSkinModal = useCallback(
-        () => setSkinModalOpen(false),
-        [setSkinModalOpen],
-    );
+    const closeSkinModal = useCallback(() => {
+        setSkinModalOpen(false)
+    }, []);
 
-    const closeLetterListModal = useCallback(
-        () => setLetterListModalOpen(false),
-        [setLetterListModalOpen],
-    );
+    const closeLetterListModal = useCallback(() => {
+        setLetterListModalOpen(false)
 
-    const closeSendLetterModal = useCallback(
-        () => setSendLetterModalOpen(false),
-        [setSendLetterModalOpen],
-    );
+    }, []);
+
+    const closeSendLetterModal = useCallback(() => {
+        setSendLetterModalOpen(false)
+    }, []);
 
     const selectedOrnamentLayer = useMemo(() => {
         switch(homeData.ornamentType) {
-          case 1: return OrnamentLayer1;
-          case 2: return OrnamentLayer2;
-          case 3: return OrnamentLayer3;
-          case 4: return OrnamentLayer4;
-          default: return [];
+            case 1: return OrnamentLayer1;
+            case 2: return OrnamentLayer2;
+            case 3: return OrnamentLayer3;
+            case 4: return OrnamentLayer4;
+            default: return [];
         }
-      }, [homeData.ornamentType]);
-
+    }, [homeData.ornamentType]);
 
     return (
         <>
@@ -137,12 +133,6 @@ function Home() {
                         </>
                     ) : (
                         <>
-                            <>
-                                <S.RudolfButtonWrapper>
-                                    <RudolfButton onClick={() => {handleSkin()}}/>
-                                </S.RudolfButtonWrapper>
-                                <S.SpeechBubble />
-                            </>
                         </>
                     )}
                 </S.ObjectWrapper>
