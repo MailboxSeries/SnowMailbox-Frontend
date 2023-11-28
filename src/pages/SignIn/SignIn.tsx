@@ -8,7 +8,7 @@ import useInput from '@/hooks/useInput';
 import SocialButton from '@/components/Button/SocialButton/SocialButton';
 import { postSignIn } from '@/apis/auth';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { useNavigate } from 'react-router';
+import { useNavigate } from 'react-router-dom';
 
 export default function SignIn() {
     // 모달 상태관리

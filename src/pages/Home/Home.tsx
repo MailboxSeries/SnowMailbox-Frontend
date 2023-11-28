@@ -21,7 +21,7 @@ import { HomeData } from '@/interface/home';
 import ArrowButton from '@/components/Button/ArrowButton/ArrowButton';
 import RightArrowButtonImg from '@/assets/Button/RightArrow.png'
 import { userInfoAtom } from '@/atoms/SignInAtom';
-import { Navigate, useNavigate } from 'react-router';
+import { useNavigate } from 'react-router-dom';
 
 const STALE_MIN = 5;
 

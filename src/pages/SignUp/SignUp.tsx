@@ -9,7 +9,7 @@ import { Button } from '@/components/Button/style';
 import SocialButton from '@/components/Button/SocialButton/SocialButton';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { postSignUp } from '@/apis/auth';
-import { useNavigate } from 'react-router';
+import { useNavigate } from 'react-router-dom';
 
 export default function SignUp() {
     // 모달 상태관리

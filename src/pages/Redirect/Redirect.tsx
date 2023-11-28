@@ -3,7 +3,7 @@ import { Data, initialUserInfoState, userInfoAtom } from '@/atoms/SignInAtom';
 import PageLayout from '@/components/PageLayout/PageLayout'
 import { useSuspenseQuery } from '@tanstack/react-query';
 import React, { useEffect } from 'react'
-import { Navigate, useNavigate } from 'react-router';
+import {useNavigate } from 'react-router-dom';
 import { useSetRecoilState } from 'recoil';
 
 export default function Redirect() {
