@@ -53,6 +53,7 @@ function SkinModal({closeModal, isOpen}: Props) {
       queryKey: ['abledSkin', myId],
       queryFn: () => getMissionStatus(myId),
       staleTime: 10000,
+      gcTime: 10000
     });
 
     if (data !== null) {
