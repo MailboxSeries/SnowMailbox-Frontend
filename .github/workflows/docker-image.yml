@@ -1,0 +1,51 @@
+name: client-actions
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  ci:
+    runs-on: ubuntu-20.04
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Use Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '20'
+
+      - name: Install Yarn
+        run: npm install -g yarn
+
+      - name: Install dependencies
+        run: yarn install
+
+      - name: Build
+        run: yarn build
+
+      - name: Docker build & push to hub
+        run: |
+            docker login -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{ secrets.DOCKERHUB_PASSWORD }}
+            docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/${{ secrets.DOCKERHUB_REPONAME }}:latest .
+            docker push ${{ secrets.DOCKERHUB_USERNAME }}/${{ secrets.DOCKERHUB_REPONAME }}:latest
+  cd:
+    needs: [ci]
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Docker Image Pull and Compose UP
+        uses: appleboy/ssh-action@v1.0.0
+        with:
+          host: ${{ secrets.HOST }}
+          username : ${{ secrets.USERNAME }}
+          key : ${{ secrets.PRIVATE_KEY }}
+          port : 22
+          script: |
+              sudo docker compose down
+              sudo docker pull ${{ secrets.DOCKERHUB_USERNAME }}/${{ secrets.DOCKERHUB_REPONAME }}:latest
+              docker compose up -d 
+              docker image prune -f
+              
