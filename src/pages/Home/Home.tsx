@@ -126,7 +126,7 @@ function Home() {
                     {isMyHome ? (
                         <>
                             <S.RudolfButtonWrapper>
-                                <RudolfButton onClick={handleSkin}/>
+                                <RudolfButton onClick={() => handleSkin()}/>
                             </S.RudolfButtonWrapper>
                             <S.SpeechBubble />
                         </>
@@ -134,7 +134,7 @@ function Home() {
                         <>
                             <>
                                 <S.RudolfButtonWrapper>
-                                    <RudolfButton onClick={handleSkin}/>
+                                    <RudolfButton onClick={() => handleSkin()}/>
                                 </S.RudolfButtonWrapper>
                                 <S.SpeechBubble />
                             </>
@@ -143,20 +143,20 @@ function Home() {
                 </S.ObjectWrapper>
                 {isMyHome ? (
                     <>
-                        <LongButton margin="52px 0 0 0" onClick={handleLetterList}>
+                        <LongButton margin="52px 0 0 0" onClick={() => handleLetterList()}>
                             <S.ButtonText>{'편지 확인하기'}</S.ButtonText>
                         </LongButton>
-                        <LongButton margin="12px 0 0 0" onClick={handleShare}>
+                        <LongButton margin="12px 0 0 0" onClick={() => handleShare()}>
                             <S.ButtonText>{'링크 공유하기'}</S.ButtonText>
                         </LongButton>
                         <ArrowButton currentImg={RightArrowButtonImg} route={imageAllURL} />
                     </>
                 ) : (
                     <>
-                        <LongButton margin="52px 0 0 0" onClick={handleSendLetter}>
+                        <LongButton margin="52px 0 0 0" onClick={() => handleSendLetter()}>
                             <S.ButtonText>{'추억 달아주기'}</S.ButtonText>
                         </LongButton>
-                        <LongButton margin="12px 0 0 0" onClick={handleGoMyHome}>
+                        <LongButton margin="12px 0 0 0" onClick={() => handleGoMyHome()}>
                             <S.ButtonText>{'내 트리 보러가기'}</S.ButtonText>
                         </LongButton>
 
