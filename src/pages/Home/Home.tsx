@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useState, useMemo } from 'react'
 import * as S from './style';
 import PageLayout from '@/components/PageLayout/PageLayout';
 import RudolfButton from '@/components/Button/RudolfButton/RudolfButton';
@@ -101,16 +101,15 @@ function Home() {
         [setSendLetterModalOpen],
     );
 
-    // selectedOrnamentLayer를 배열로 만듭니다
-    let selectedOrnamentLayer = [];
-
-    switch(homeData.ornamentType) {
-        case 1: selectedOrnamentLayer = OrnamentLayer1; break;
-        case 2: selectedOrnamentLayer = OrnamentLayer2; break;
-        case 3: selectedOrnamentLayer = OrnamentLayer3; break;
-        case 4: selectedOrnamentLayer = OrnamentLayer4; break;
-        default: selectedOrnamentLayer = []; // 기본값 혹은 오류 처리
-    }
+    const selectedOrnamentLayer = useMemo(() => {
+        switch(homeData.ornamentType) {
+          case 1: return OrnamentLayer1;
+          case 2: return OrnamentLayer2;
+          case 3: return OrnamentLayer3;
+          case 4: return OrnamentLayer4;
+          default: return [];
+        }
+      }, [homeData.ornamentType]);
 
 
     return (
