@@ -10,20 +10,22 @@ export default function Redirect() {
     const setUserInfoState = useSetRecoilState(userInfoAtom);
     const navigate = useNavigate();
     useEffect(() => {
-      const GoToHome = async () => {
-        const {data} = useSuspenseQuery<Data>({
-            queryKey: ['userInfo'],
-            queryFn: () => getMyIdAtRedirectPage(),
-          });
-
+      const fetchData = async () => {
+        try {
+          const data = await getMyIdAtRedirectPage();
           if (data !== null) {
             setUserInfoState(data);
-            navigate(`/home/${data.myId}`)
+            navigate(`/home/${data.myId}`);
           } else {
             setUserInfoState(initialUserInfoState);
           }
-      }
-      GoToHome();
+        } catch (error) {
+          // 에러 처리
+          console.error(error);
+        }
+      };
+  
+      fetchData();
     }, []);
 
   return (
