@@ -1,27 +1,26 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useSetRecoilState } from 'recoil';
-import { userInfoAtom } from '@/atoms/SignInAtom';
+import { useSetRecoilState, useRecoilValue } from 'recoil';
+import { userInfoAtom, Data, initialUserInfoState } from '@/atoms/SignInAtom';
 import { getMyIdAtRedirectPage } from '@/apis/auth';
 import PageLayout from '@/components/PageLayout/PageLayout';
 
 export default function Redirect() {
   const setUserInfoState = useSetRecoilState(userInfoAtom);
+  const userInfo = useRecoilValue(userInfoAtom); // Recoil 상태를 구독
   const navigate = useNavigate();
-  const [isReadyToNavigate, setIsReadyToNavigate] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const data = await getMyIdAtRedirectPage();
         if (data !== null) {
-          setUserInfoState((prevState) => ({
-            ...prevState,
-            myId: data.myId,
-          }));
-          setIsReadyToNavigate(true);
+          setUserInfoState({
+            ...initialUserInfoState,
+            myId: data.myId
+          });
         } else {
-          setUserInfoState((prevState) => ({ ...prevState }));
+          setUserInfoState(initialUserInfoState);
         }
       } catch (error) {
         console.error(error);
@@ -32,19 +31,16 @@ export default function Redirect() {
   }, [setUserInfoState]);
 
   useEffect(() => {
-    if (isReadyToNavigate) {
+    if (userInfo.myId !== initialUserInfoState.myId) {
       const redirectOwnerId = localStorage.getItem("redirectOwnerId");
       if (redirectOwnerId) {
         navigate(`/home/${redirectOwnerId}`);
         localStorage.removeItem("redirectOwnerId");
       } else {
-        setUserInfoState((prevState) => {
-          navigate(`/home/${prevState.myId}`);
-          return prevState;
-        });
+        navigate(`/home/${userInfo.myId}`);
       }
     }
-  }, [isReadyToNavigate, setUserInfoState, navigate]);
+  }, [userInfo, navigate]);
 
   return <PageLayout>로그인 중...</PageLayout>;
 }
