@@ -1,10 +1,11 @@
 import * as S from './style';
 import React, { useState } from 'react';
 import Modal from '@/components/Modal/Modal';
-import { useRecoilValue } from 'recoil';
-import { HomeDataAtom } from '@/atoms/HomeAtom';
 import useInput from '@/hooks/useInput';
 import LongButton from '@/components/Button/LongButton/LongButton';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { postLetter } from '@/apis/letter';
+import useIsMyHome from '@/hooks/useIsMyHome';
 
 type Props = {
   closeModal: () => void;
@@ -12,16 +13,27 @@ type Props = {
 };
 
 function SendLetterModal({closeModal, isOpen}: Props) {
-    const homeData = useRecoilValue(HomeDataAtom); // Recoil 상태 사용
+    const {ownerId, myId, isMyHome} = useIsMyHome();
     const sender = useInput<HTMLInputElement>(); // 보내는 사람 이름을 관리하는 상태
     const content = useInput<HTMLTextAreaElement>(); // 편지 내용을 관리하는 상태
     const [imageFile, setImageFile] = useState(null); // 업로드할 이미지 파일을 관리하는 상태
     const [uploadedImage, setUploadedImage] = useState<string | ArrayBuffer>(''); // 업로드 된 이미지 url 관리하는 상태
+    const queryClient = useQueryClient();
+    const nowDate = new Date().getDate();
+
+    const {mutate} = useMutation({
+        mutationFn: () =>
+        postLetter(nowDate, ownerId, myId, imageFile, sender.value, content.value),
+        onSuccess: async () => {
+            await queryClient.invalidateQueries({queryKey: ['sendLetter']});
+            alert("따뜻한 마음이 담긴 편지가 보내졌어요.")
+            closeModal();
+        },
+    });
 
       // 편지를 보내는 함수입니다.
     const handleSendLetter = async () => {
-        //TODO: api 호출
-        closeModal();
+        mutate();
     };
 
     // 이미지 업로드 핸들링 
