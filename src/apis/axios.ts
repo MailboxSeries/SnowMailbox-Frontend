@@ -2,8 +2,8 @@ import axios from 'axios';
 import Cookies from 'js-cookie';
 import useSetTokens from '../hooks/useSetTokens';
 
-const getAccessTokenFromCookies = () => Cookies.get('accessToken');
-const getRefreshTokenFromCookies = () => Cookies.get('refreshToken');
+const getAccessTokenFromCookies = () => Cookies.get('accessCookie');
+const getRefreshTokenFromCookies = () => Cookies.get('refreshCookie');
 
 export const instance = axios.create({
   baseURL: 'https://snowmailbox.com',
