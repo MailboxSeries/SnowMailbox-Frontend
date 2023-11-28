@@ -7,11 +7,9 @@ const App = () => {
   return (
     <>
        <Suspense>
-        <AuthProvider>
           <BrowserRouter> 
             <Router />
             </BrowserRouter>
-       </AuthProvider>
       </Suspense> 
     </>
   );
