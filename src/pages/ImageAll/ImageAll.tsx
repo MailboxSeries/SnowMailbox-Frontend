@@ -1,5 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react'
-import Modal from '@/components/Modal/Modal'
+import { useCallback, useState } from 'react'
 import * as S from './style';
 import LongButton from '@/components/Button/LongButton/LongButton';
 import useIsMyHome from '@/hooks/useIsMyHome';

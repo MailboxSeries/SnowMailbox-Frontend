@@ -1,8 +1,9 @@
 import * as S from './style';
 import React, { useState } from 'react';
 import Modal from '@/components/Modal/Modal';
-import { useRecoilValue } from 'recoil';
-import { HomeDataAtom } from '@/atoms/HomeAtom';
+import { getDayImages } from '@/apis/imageAll';
+import { useQuery } from '@tanstack/react-query';
+import useIsMyHome from '@/hooks/useIsMyHome';
 
 type Props = {
   closeModal: () => void;
@@ -11,14 +12,25 @@ type Props = {
 };
 
 function ImageAllModal({closeModal, isOpen, selectedDate}: Props) {
-    const homeData = useRecoilValue(HomeDataAtom); // Recoil 상태 사용
+    const {ownerId, myId, isMyHome} = useIsMyHome();
     const [imageList, setImageList] = useState([
         "https://example.com/image1.jpg",
         "https://example.com/image2.jpg",
         "https://example.com/image3.jpg"
     ]); // 이미지 리스트를 위한 상태
 
-    //TODO: api호출
+    const {data} = useQuery({
+        queryKey: ['images', myId],
+        queryFn: () => getDayImages(selectedDate, myId),
+        staleTime: 10000,
+    });
+
+    if (data !== null) {
+        setImageList(data.imageList);
+    } else {
+        alert("데이터를 가져오는 데에 실패했어요. 다시 로그인 해주세요.")
+        //TODO: 로그인 페이지로 
+    }
 
     return (
         <Modal
