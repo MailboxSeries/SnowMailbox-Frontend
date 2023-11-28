@@ -9,6 +9,6 @@ RUN sed -i '/<head>/a <meta http-equiv="Content-Security-Policy" content="upgrad
 
 FROM nginx:stable-alpine AS production
 COPY --from=builder /app/dist /usr/share/nginx/html
-COPY nginx.conf /etc/nginx/conf.d/default.conf
+# COPY nginx.conf /etc/nginx/conf.d/default.conf
 
 CMD ["nginx", "-g", "daemon off;"]
