@@ -5,7 +5,7 @@ export type Data = {
 };
 
 export const initialUserInfoState : Data = {
-    myId: '1',
+    myId: null,
 };
 
 export const userInfoAtom = atom<Data>({

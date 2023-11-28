@@ -43,7 +43,7 @@ export default function Home() {
         } else {
             alert('로그인을 하면 이용 가능해요!')
             navigate("/sign-in");
-            localStorage.setItem("redirectUrl", `https://snowmailbox.com/home/${ownerId}`) //다시 이동하기 위함.
+            localStorage.setItem("redirectOwnerId", `${ownerId}`) //다시 이동하기 위함.
         }
     };
     const myURL = `https://snowmailbox.com/home/${myId}`;
@@ -64,6 +64,7 @@ export default function Home() {
         queryFn: () => home.getHomeData(ownerId),
         staleTime: 1000 * 60 * STALE_MIN,
         gcTime: 1000 * 60 * STALE_MIN,
+        enabled: !!ownerId, // ownerId가 정의되었을 때만 쿼리를 활성화
     });
 
     // 서버에서 가져온 데이터를 Recoil Atom에 저장
@@ -71,7 +72,7 @@ export default function Home() {
         if (data) {
         setHomeData(data);
         }
-    }, [data, setHomeData]);
+    }, [data]);
 
     const closeShareModal = useCallback(
         () => setShareModalOpen(false),

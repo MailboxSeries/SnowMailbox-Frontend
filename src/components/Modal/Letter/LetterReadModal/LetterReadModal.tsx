@@ -33,7 +33,6 @@ function LetterReadModal({closeModal, isOpen, selectedDate}: Props) {
     const {data} = useSuspenseQuery({
         queryKey: ['dayLetter', myId],
         queryFn: () => getDayLetter(selectedDate, myId),
-        staleTime: 10000,
     });
   
       if (data !== null) {
