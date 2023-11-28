@@ -7,11 +7,11 @@ const App = () => {
   return (
     <>
       {/* <Suspense>
-        <AuthProvider> TODO: 개발 시에만 주석 처리*/}
-          <BrowserRouter> 
+        <AuthProvider> 
+          <BrowserRouter>  TODO: 개발 시에만 주석 처리*/}
             <Router />
-            </BrowserRouter>
-      {/* </AuthProvider>
+       {/*       </BrowserRouter>
+     </AuthProvider>
       </Suspense> TODO: 개발 시에만 주석 처리*/}
     </>
   );
