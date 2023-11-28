@@ -47,6 +47,14 @@ export default function SignIn() {
         }
     }
 
+    const handleButtonKakao = () => {
+        window.location.href = `https://snowmailbox.com/oauth2/authorization/kakao`;
+    };
+
+    const handleButtonNaver = () => {
+        window.location.href = `https://snowmailbox.com/oauth2/authorization/naver`;
+    };
+
     return (
         <>
         <PageLayout>
@@ -71,19 +79,18 @@ export default function SignIn() {
                     <S.ButtonText>{'로그인하기'}</S.ButtonText>
                 </LongButton>
                 
-                {/*<GoogleLoginButton buttonImage={GoogleLoginImage} />*/}
             </S.LoginForm>
 
         
             <SocialButton 
             margin="8px 0 0 0" 
-            route="/oauth2/authorization/kakao"
             socialType="KakaoSignIn"
+            onClick={handleButtonKakao}
             />
             <SocialButton 
             margin="8px 0 0 0" 
-            route="/oauth2/authorization/naver"
             socialType="NaverSignIn"
+            onClick={handleButtonNaver}
             />
         </PageLayout>
         
