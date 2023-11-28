@@ -1,4 +1,4 @@
-import { getMyIdAtRedirectPage } from '@/apis/auth';
+import { getHealthCheck, getMyIdAtRedirectPage } from '@/apis/auth';
 import { Data, initialUserInfoState, userInfoAtom } from '@/atoms/SignInAtom';
 import PageLayout from '@/components/PageLayout/PageLayout'
 import { useSuspenseQuery } from '@tanstack/react-query';
@@ -12,14 +12,20 @@ export default function Redirect() {
     useEffect(() => {
       const fetchData = async () => {
         try {
-          const data = await getMyIdAtRedirectPage();
-          if (data !== null) {
-            setUserInfoState(data);
-            navigate(`/home/${data.myId}`);
-          } else {
-            setUserInfoState(initialUserInfoState);
+          await getHealthCheck();
+          try {
+            const data = await getMyIdAtRedirectPage();
+            if (data !== null) {
+              setUserInfoState(data);
+              navigate(`/home/${data.myId}`);
+            } else {
+              setUserInfoState(initialUserInfoState);
+            }
+          } catch (error) {
+            // 에러 처리
+            console.error(error);
           }
-        } catch (error) {
+        }catch (error) {
           // 에러 처리
           console.error(error);
         }
