@@ -25,7 +25,7 @@ import { useNavigate } from 'react-router-dom';
 
 const STALE_MIN = 5;
 
-export default function Home() {
+function Home() {
     const {ownerId, myId, isMyHome} = useIsMyHome();
     const homeData = useRecoilValue(HomeDataAtom);
     const setHomeData = useSetRecoilState(HomeDataAtom);
@@ -175,3 +175,4 @@ export default function Home() {
         </>
     ) 
 }
+export default React.memo(Home);
