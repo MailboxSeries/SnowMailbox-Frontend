@@ -3,6 +3,7 @@ import Cookies from 'js-cookie';
 import useSetTokens from '../hooks/useSetTokens';
 
 const getAccessTokenFromCookies = () => Cookies.get('accessToken');
+const getRefreshTokenFromCookies = () => Cookies.get('refreshToken');
 
 export const instance = axios.create({
   baseURL: 'https://snowmailbox.com',
@@ -26,13 +27,13 @@ instance.interceptors.response.use(
 
     if (error.response.status === 401 && !originalRequest._retry) {
       originalRequest._retry = true;
-      const refreshToken = localStorage.getItem('refreshToken');
+      const refreshToken = getRefreshTokenFromCookies();
       if (!refreshToken) {
         throw new Error('토큰 없음');
       }
       try {
         const response = await sendRefreshToken(refreshToken);
-        originalRequest.headers['Authorization'] = `Bearer ${response.data.accessToken}`;
+        originalRequest.headers['Authorization'] = `Bearer ${getAccessTokenFromCookies()}`;
         return instance(originalRequest);
       } catch (error) {
         throw error;
