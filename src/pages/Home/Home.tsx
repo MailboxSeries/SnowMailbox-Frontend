@@ -30,14 +30,21 @@ function Home() {
     const homeData = useRecoilValue(HomeDataAtom);
     const setHomeData = useSetRecoilState(HomeDataAtom);
     const navigate = useNavigate();
+    const OrnamentLayerMemo = React.memo(OrnamentLayer);
     const [shareModalOpen, setShareModalOpen] = useState<boolean>(false);
-    const handleShare = () => setShareModalOpen(true);
+    const handleShare = useCallback(() => { 
+        setShareModalOpen(true);
+    }, []);
     const [skinModalOpen, setSkinModalOpen] = useState<boolean>(false);
-    const handleSkin = () => setSkinModalOpen(true);
+    const handleSkin = useCallback(() => {
+        setSkinModalOpen(true);
+    }, []);
     const [LetterListModalOpen, setLetterListModalOpen] = useState<boolean>(false);
-    const handleLetterList = () => setLetterListModalOpen(true);
+    const handleLetterList = useCallback(() => { 
+        setLetterListModalOpen(true);
+    }, []);
     const [sendLetterModalOpen, setSendLetterModalOpen] = useState<boolean>(false);
-    const handleSendLetter = () => {
+    const handleSendLetter = useCallback(() => { 
         if(loggedIn) {
             setSendLetterModalOpen(true);
         } else {
@@ -45,9 +52,9 @@ function Home() {
             navigate("/sign-in");
             localStorage.setItem("redirectOwnerId", `${ownerId}`) //다시 이동하기 위함.
         }
-    };
+    }, []);
     const myURL = `https://snowmailbox.com/home/${myId}`;
-    const handleGoMyHome = () => {
+    const handleGoMyHome = useCallback(() => {
         if(loggedIn) {
             window.location.href = myURL
         } else {
@@ -55,7 +62,7 @@ function Home() {
             navigate("/sign-in");
             localStorage.setItem("redirectOwnerId", `${ownerId}`) //다시 이동하기 위함.
         }
-    }
+    }, []);
     const imageAllURL = `/image-all/${myId}`;
     const loggedIn = useRecoilValue(userInfoAtom); //로그인 상태인지 확인하기 위함.
 
