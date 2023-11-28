@@ -77,12 +77,12 @@ export default function SignIn() {
         
             <SocialButton 
             margin="8px 0 0 0" 
-            route="https://snowmailbox.com/oauth2/authorization/kakao"
+            route="/oauth2/authorization/kakao"
             socialType="KakaoSignIn"
             />
             <SocialButton 
             margin="8px 0 0 0" 
-            route="https://snowmailbox.com/oauth2/authorization/naver"
+            route="/oauth2/authorization/naver"
             socialType="NaverSignIn"
             />
         </PageLayout>

@@ -84,12 +84,12 @@ export default function SignUp() {
             
             <SocialButton 
             margin="8px 0 0 0" 
-            route="https://snowmailbox.com/oauth2/authorization/kakao"
+            route="/oauth2/authorization/kakao"
             socialType="KakaoSignUp"
             />
             <SocialButton 
             margin="8px 0 0 0" 
-            route="https://snowmailbox.com/oauth2/authorization/naver"
+            route="/oauth2/authorization/naver"
             socialType="NaverSignUp"
             />
         </PageLayout>
