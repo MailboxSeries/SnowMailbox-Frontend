@@ -14,8 +14,6 @@ export default function Redirect() {
         const {data} = useSuspenseQuery<Data>({
             queryKey: ['userInfo'],
             queryFn: () => getMyIdAtRedirectPage(),
-            staleTime: 10000,
-            gcTime: 15000
           });
 
           if (data !== null) {
