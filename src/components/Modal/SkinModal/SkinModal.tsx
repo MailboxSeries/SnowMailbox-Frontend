@@ -42,6 +42,12 @@ function SkinModal({closeModal, isOpen}: Props) {
     [setMissionModalOpen],
   );
 
+  const [selectedMission, setSelectedMission] = useState({
+    missionId: '',
+    missionNumber: 0,
+    objectType: ''
+  });
+
   const {data} = useSuspenseQuery({
       queryKey: ['abledSkin', myId],
       queryFn: () => getMissionStatus(myId),
@@ -105,7 +111,7 @@ function SkinModal({closeModal, isOpen}: Props) {
 
       // HomeDataAtom의 상태를 업데이트합니다.
       setHomeData(newHomeData);
-      await queryClient.invalidateQueries({queryKey:  ["homeData", ownerId]});
+      //await queryClient.invalidateQueries({queryKey:  ["homeData", ownerId]}); //TODO: 
       alert("새로운 스킨이 적용되었어요!")
       closeModal();
         
@@ -115,12 +121,11 @@ function SkinModal({closeModal, isOpen}: Props) {
   const handleSelectSkin = () => {
     mutate();
   }
-  const handleMissionModal = (missionId : string, missionNumber: number, objectType: string) => {
-    setMissionModalOpen(true)
-    return(
-      <MissionModal closeModal={closeMissionModal} isOpen={true} missionId={missionId} missionNumber={missionNumber} objectType={objectType}/>
-    )
-  }
+
+  const handleMissionModal = (missionId: string, missionNumber: number, objectType: string) => {
+    setSelectedMission({ missionId, missionNumber, objectType });
+    setMissionModalOpen(true);
+  };
   
   return (
     <> 
@@ -259,6 +264,17 @@ function SkinModal({closeModal, isOpen}: Props) {
         </ModalButton>
 
       </S.Wrapper>
+
+      {missionModalOpen && (
+        <MissionModal 
+          closeModal={closeMissionModal} 
+          isOpen={missionModalOpen} 
+          missionId={selectedMission.missionId} 
+          missionNumber={selectedMission.missionNumber} 
+          objectType={selectedMission.objectType}
+        />
+      )}
+
     </Modal>
     </>
   );

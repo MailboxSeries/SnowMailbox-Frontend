@@ -37,7 +37,7 @@ function MissionModal({closeModal, isOpen, missionId, missionNumber, objectType}
       mutationFn: () =>
       postCompletedMissionChecked(myId, missionId, true),
       onSuccess: async () => {
-          await queryClient.invalidateQueries({queryKey: ['completedmissionChecked']});
+          await queryClient.invalidateQueries({queryKey: ['abledSkin', myId]});
           alert("미션에 성공했어요! 새로운 스킨을 적용해보아요!")
           closeModal();
       },
@@ -47,7 +47,7 @@ function MissionModal({closeModal, isOpen, missionId, missionNumber, objectType}
     mutationFn: () =>
     postCompletedChristmas(myId, missionId, missionAnswer.value),
     onSuccess: async () => {
-        await queryClient.invalidateQueries({queryKey: ['completedmissionChecked']});
+        await queryClient.invalidateQueries({queryKey: ['abledSkin', myId]});
         alert("메리 크리스마스! 축하드려요!")
         closeModal();
     },
