@@ -49,7 +49,7 @@ export default function Home() {
     const myURL = `https://snowmailbox.com/home/${myId}`;
     const handleGoMyHome = () => {
         if(loggedIn) {
-            navigate(`${myURL}`)
+            window.location.href = myURL
         } else {
             alert('로그인을 하면 이용 가능해요!')
             navigate("/sign-in");
