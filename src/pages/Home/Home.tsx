@@ -18,6 +18,7 @@ import OrnamentLayer4 from '@/assets/OrnamentLayer/4'
 import home from '@/apis/home';
 import { useQuery } from '@tanstack/react-query';
 import { HomeData } from '@/interface/home';
+import ArrowButton from '@/components/Button/ArrowButton/ArrowButton';
 
 const STALE_MIN = 5;
 
@@ -128,6 +129,7 @@ export default function Home() {
                         <LongButton margin="12px 0 0 0" route={imageAllURL}>
                             <S.ButtonText>{'사진 모아보기'}</S.ButtonText>
                         </LongButton>
+                        <ArrowButton currentImg={"LeftArrowButtonImg"} />
                     </>
                 ) : (
                     <>
