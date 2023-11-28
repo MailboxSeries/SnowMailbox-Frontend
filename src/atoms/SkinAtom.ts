@@ -6,7 +6,7 @@ export const skinDataState = atom({
     treeList: [
       { missionId: "1", missionStatus: true, missionChecked: true },
       { missionId: "2", missionStatus: true, missionChecked: true },
-      { missionId: "3", missionStatus: false, missionChecked: false },
+      { missionId: "3", missionStatus: true, missionChecked: false },
       { missionId: "4", missionStatus: true, missionChecked: false }
     ],
     ornamentList: [

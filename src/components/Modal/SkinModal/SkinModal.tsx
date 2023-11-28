@@ -28,11 +28,11 @@ function SkinModal({closeModal, isOpen}: Props) {
   const {ownerId, myId, isMyHome} = useIsMyHome();
   const homeData = useRecoilValue<HomeData>(HomeDataAtom);
   const setHomeData = useSetRecoilState(HomeDataAtom);
-  const [treeType, setTreeType] = useState<number>(homeData.treeType);
-  const [characterType, setCharacterType] = useState<number>(homeData.characterType);
-  const [starType, setStarType] = useState<number>(homeData.starType);
-  const [boxType, setBoxType] = useState<number>(homeData.boxType);
-  const [ornamentType, setOrnamentType] = useState<number>(homeData.ornamentType);
+  const [treeType, setTreeType] = useState<number>(homeData.treeType-1);
+  const [characterType, setCharacterType] = useState<number>(homeData.characterType-1);
+  const [starType, setStarType] = useState<number>(homeData.starType-1);
+  const [boxType, setBoxType] = useState<number>(homeData.boxType-1);
+  const [ornamentType, setOrnamentType] = useState<number>(homeData.ornamentType-1);
   const [missionModalOpen, setMissionModalOpen] = useState<boolean>(false);
   const [isSkinData, setSkinData] = useRecoilState(skinDataState);
   const skinData = useRecoilValue(skinDataState);
@@ -44,8 +44,9 @@ function SkinModal({closeModal, isOpen}: Props) {
 
   const [selectedMission, setSelectedMission] = useState({
     missionId: '',
-    missionNumber: 0,
-    objectType: ''
+    typeNumber: 0,
+    objectType: '',
+    missionStatus: ''
   });
 
   const {data} = useSuspenseQuery({
@@ -123,7 +124,9 @@ function SkinModal({closeModal, isOpen}: Props) {
   }
 
   const handleMissionModal = (missionId: string, missionNumber: number, objectType: string) => {
-    setSelectedMission({ missionId, missionNumber, objectType });
+    const missionStatus = getSkinStatus(objectType, missionNumber);
+    const typeNumber = missionNumber;
+    setSelectedMission({ missionId, typeNumber, objectType, missionStatus});
     setMissionModalOpen(true);
   };
   
@@ -270,8 +273,9 @@ function SkinModal({closeModal, isOpen}: Props) {
           closeModal={closeMissionModal} 
           isOpen={missionModalOpen} 
           missionId={selectedMission.missionId} 
-          missionNumber={selectedMission.missionNumber} 
+          typeNumber={selectedMission.typeNumber} 
           objectType={selectedMission.objectType}
+          missionStatus={selectedMission.missionStatus}
         />
       )}
 
@@ -280,3 +284,4 @@ function SkinModal({closeModal, isOpen}: Props) {
   );
 }
 export default React.memo(SkinModal);
+

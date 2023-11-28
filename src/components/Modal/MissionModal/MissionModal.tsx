@@ -6,15 +6,19 @@ import useIsMyHome from '@/hooks/useIsMyHome';
 import { useMutation, useQueryClient, useSuspenseQuery } from '@tanstack/react-query';
 import { getUnCompletedMissionContent, postCompletedChristmas, postCompletedMissionChecked } from '@/apis/skin';
 import useInput from '@/hooks/useInput';
+import MediumButtonImg from '@/assets/Button/MediumButton.png';
+import MediumButtonDisabledImg from '@/assets/Button/MediumButtonDisabled.png';
+
 type Props = {
   closeModal: () => void;
   isOpen: boolean;
   missionId: string;
-  missionNumber: number;
+  typeNumber: number;
   objectType: string;
+  missionStatus: string;
 };
 
-function MissionModal({closeModal, isOpen, missionId, missionNumber, objectType}: Props) {
+function MissionModal({closeModal, isOpen, missionId, typeNumber, objectType, missionStatus}: Props) {
   const {ownerId, myId, isMyHome} = useIsMyHome();
   const [missionContent, setMissionContent] = useState<string>("지인에게 따뜻한 마음이 담긴 편지 1장을 보내봐요. 추운 겨울을 이겨내는 데에 큰 도움이 될 거예요. 어쩌면 지인이 당신임을 알게 된다면, 답장 편지가 되돌아올지도..?");
   const queryClient = useQueryClient();
@@ -54,12 +58,15 @@ function MissionModal({closeModal, isOpen, missionId, missionNumber, objectType}
 });
 
   const handleMissionClear = () => {
-    if(missionNumber == 4 && objectType == "star") {
+    if(typeNumber == 3 && objectType == "star") {
       mutation2.mutate();
     } else {
       mutation.mutate();
     }
   }
+
+  const modalButtonBackground = missionStatus === 'unlocked' ? MediumButtonImg : MediumButtonDisabledImg;
+
 
   return (
     <Modal
@@ -78,7 +85,7 @@ function MissionModal({closeModal, isOpen, missionId, missionNumber, objectType}
           </S.MissionDiscription>
           
         </S.SelectWrapper>
-        { missionNumber == 4 && objectType == "star" &&(
+        { typeNumber == 3 && objectType == "star" &&(
           <S.NameInput
               maxLength={15}
               type="text"
@@ -89,7 +96,7 @@ function MissionModal({closeModal, isOpen, missionId, missionNumber, objectType}
           />
           )
         }
-        <ModalButton margin="12px 0 0 0" >
+        <ModalButton margin="12px 0 0 0" background={modalButtonBackground}>
           <S.ButtonText onClick={handleMissionClear}>{'미션 완료하기'}</S.ButtonText>
         </ModalButton>
 
