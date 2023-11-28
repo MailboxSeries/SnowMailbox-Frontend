@@ -39,7 +39,7 @@ export default function Home() {
     const imageAllURL = `/image-all/${myId}`;
 
     const {data} = useQuery<HomeData>({
-        queryKey: [ownerId],
+        queryKey: ["homeData", ownerId],
         queryFn: () => home.getHomeData(ownerId),
         staleTime: 1000 * 60 * STALE_MIN,
         gcTime: 1000 * 60 * STALE_MIN,

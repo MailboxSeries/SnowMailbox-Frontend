@@ -82,7 +82,7 @@ function SkinModal({closeModal, isOpen}: Props) {
 
       // HomeDataAtom의 상태를 업데이트합니다.
       setHomeData(newHomeData);
-      await queryClient.invalidateQueries({queryKey: ['checkSkin']});
+      await queryClient.invalidateQueries({queryKey:  ["homeData", ownerId]});
       alert("새로운 스킨이 적용되었어요!")
       closeModal();
         

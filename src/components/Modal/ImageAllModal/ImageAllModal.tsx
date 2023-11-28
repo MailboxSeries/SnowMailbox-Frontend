@@ -18,6 +18,7 @@ function ImageAllModal({closeModal, isOpen, selectedDate}: Props) {
         queryKey: ['images', myId],
         queryFn: () => getDayImages(selectedDate, myId),
         staleTime: 10000,
+        gcTime: 15000
     });
 
       // data가 아직 로드되지 않은 경우, null을 반환
