@@ -3,6 +3,9 @@ import React, { useState } from 'react';
 import Modal from '@/components/Modal/Modal';
 import { useRecoilValue } from 'recoil';
 import { HomeDataAtom } from '@/atoms/HomeAtom';
+import { useSuspenseQuery } from '@tanstack/react-query';
+import { getDayLetter } from '@/apis/letter';
+import useIsMyHome from '@/hooks/useIsMyHome';
 
 type Props = {
   closeModal: () => void;
@@ -18,7 +21,7 @@ type Letter = {
   };
 
 function LetterReadModal({closeModal, isOpen, selectedDate}: Props) {
-    const homeData = useRecoilValue(HomeDataAtom); // Recoil 상태 사용
+    const {ownerId, myId, isMyHome} = useIsMyHome();
     const [letters, setLetters] = useState<Letter[]>([ //TODO: 더미데이터. 배포시 삭제
         {
             sender:"ㅇㅇ",
@@ -26,8 +29,18 @@ function LetterReadModal({closeModal, isOpen, selectedDate}: Props) {
             content:"ㅇㅇ"
         }
     ]); // 선택된 날짜의 편지들을 저장할 상태입니다.
-    //TODO: api호출해서 받은 값을 setLetters 해야함.
 
+    const {data} = useSuspenseQuery({
+        queryKey: ['dayLetter', myId],
+        queryFn: () => getDayLetter(selectedDate, myId),
+    });
+  
+      if (data !== null) {
+        setLetters(data.letterList);
+      } else {
+        alert("데이터를 가져오는 데에 실패했어요. 다시 로그인 해주세요.")
+        //TODO: 로그인 페이지로 
+      }
     return (
         <Modal
         isOpen={isOpen}
