@@ -64,6 +64,32 @@ function SkinModal({closeModal, isOpen}: Props) {
     return 'none'; // 모든 조건을 만족하지 않을 경우
   };
 
+  const handleSelectSkinType = (type, index) => {
+    const status = getSkinStatus(type, index);
+    if (status === 'clear') {
+      switch (type) {
+        case 'tree':
+          setTreeType(index);
+          break;
+        case 'ornament':
+          setOrnamentType(index);
+          break;
+        case 'box':
+          setBoxType(index);
+          break;
+        case 'star':
+          setStarType(index);
+          break;
+        // 캐릭터는 모든 상태에서 선택 가능
+        case 'character':
+          setCharacterType(index);
+          break;
+        default:
+          break;
+      }
+    }
+  };
+
   const {mutate} = useMutation({
     mutationFn: () =>
     postSelectedSkin(myId, treeType, characterType, starType, boxType, ornamentType),
@@ -119,7 +145,7 @@ function SkinModal({closeModal, isOpen}: Props) {
           centerSlidePercentage={33}>
           {Tree.map((tree, index) => (
                 <S.SelectClickEvent 
-                onClick={() => getSkinStatus('tree', index) !== 'disabled' && setTreeType(tree.index)}
+                onClick={() => handleSelectSkinType('tree', tree.index)}
                 isSelected={treeType === tree.index && getSkinStatus('tree', index) == 'clear'}
                 >
                   <S.ImageButton
@@ -143,7 +169,7 @@ function SkinModal({closeModal, isOpen}: Props) {
           centerSlidePercentage={33}>
           {OrnamentThumnail.map((ornament, index) => ( 
                 <S.SelectClickEvent 
-                onClick={() => getSkinStatus('ornament', index) !== 'disabled' && setOrnamentType(ornament.index)}
+                onClick={() => handleSelectSkinType('ornament', ornament.index)}
                 isSelected={ornamentType === ornament.index && getSkinStatus('ornament', index) == 'clear'}
                 >
                   <S.ImageButton
@@ -167,7 +193,7 @@ function SkinModal({closeModal, isOpen}: Props) {
           centerSlidePercentage={33}>
           {BoxThumnail.map((box, index) => (
                 <S.SelectClickEvent 
-                onClick={() => getSkinStatus('box', index) !== 'disabled' && setBoxType(box.index)}
+                onClick={() => handleSelectSkinType('box', box.index)}
                 isSelected={boxType === box.index && getSkinStatus('box', index) == 'clear'}
                 >
                   <S.ImageButton
@@ -191,7 +217,7 @@ function SkinModal({closeModal, isOpen}: Props) {
           centerSlidePercentage={33}>
           {StarThumbnail.map((star, index) => (
                 <S.SelectClickEvent 
-                onClick={() => getSkinStatus('star', index) !== 'disabled' && setStarType(star.index)}
+                onClick={() => handleSelectSkinType('star', star.index)}
                 isSelected={starType === star.index && getSkinStatus('star', index) == 'clear'}
                 >
                   <S.ImageButton
