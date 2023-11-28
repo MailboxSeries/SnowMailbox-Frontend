@@ -3,7 +3,7 @@ WORKDIR /app
 COPY package.json yarn.lock ./
 RUN yarn install --fronzen-lockfile
 COPY . .
-RUN yarn build:dev
+RUN yarn build
 
 RUN sed -i '/<head>/a <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />' /app/dist/index.html
 
