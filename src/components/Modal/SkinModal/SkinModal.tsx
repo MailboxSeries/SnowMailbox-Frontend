@@ -82,17 +82,15 @@ function SkinModal({closeModal, isOpen}: Props) {
     setSkinData(newHomeData);
     */
   }
-  const handleMissionModal = (missionId : string) => {
+  const handleMissionModal = (missionId : string, missionNumber: number, objectType: string) => {
     setMissionModalOpen(true)
     return(
-      <MissionModal closeModal={closeMissionModal} isOpen={missionModalOpen} missionId={missionId}/>
+      <MissionModal closeModal={closeMissionModal} isOpen={missionModalOpen} missionId={missionId} missionNumber={missionNumber} objectType={objectType}/>
     )
   }
   
   return (
     <> 
-
-   
     <Modal
       isOpen={isOpen}
       onClose={closeModal}
@@ -122,7 +120,7 @@ function SkinModal({closeModal, isOpen}: Props) {
                     selected={treeType === tree.index} 
                     style={{width: "80px", height: "107px"}}
                   />
-                  {isDisabled('tree', index) && <S.LockIcon onClick={() => handleMissionModal(skinData.treeList[tree.index].missionId)}/>}
+                  {isDisabled('tree', index) && <S.LockIcon onClick={() => handleMissionModal(skinData.treeList[tree.index].missionId, tree.index, "tree")}/>}
                 </S.SelectClickEvent>
               ))}
           </Carousel>
@@ -145,7 +143,7 @@ function SkinModal({closeModal, isOpen}: Props) {
                     selected={ornamentType === ornament.index} 
                     style={{width: "60px", height: "90px"}}
                   />
-                  {isDisabled('ornament', index) && <S.LockIcon onClick={() => handleMissionModal(skinData.ornamentList[ornament.index].missionId)}/>}
+                  {isDisabled('ornament', index) && <S.LockIcon onClick={() => handleMissionModal(skinData.ornamentList[ornament.index].missionId, ornament.index, "ornament")}/>}
 
                 </S.SelectClickEvent>
               ))}
@@ -169,7 +167,7 @@ function SkinModal({closeModal, isOpen}: Props) {
                     selected={boxType === box.index} 
                     style={{width: "60px", height: "90px"}}
                   />
-                  {isDisabled('box', index) && <S.LockIcon onClick={() => handleMissionModal(skinData.boxList[box.index].missionId)}/>}
+                  {isDisabled('box', index) && <S.LockIcon onClick={() => handleMissionModal(skinData.boxList[box.index].missionId, box.index, "box")}/>}
                 </S.SelectClickEvent>
               ))}
           </Carousel>
@@ -192,7 +190,7 @@ function SkinModal({closeModal, isOpen}: Props) {
                     selected={starType === star.index} 
                     style={{width: "60px", height: "90px"}}
                   />
-                  {isDisabled('star', index) && <S.LockIcon onClick={() => handleMissionModal(skinData.starList[star.index].missionId)}/>}
+                  {isDisabled('star', index) && <S.LockIcon onClick={() => handleMissionModal(skinData.starList[star.index].missionId, star.index, "star")}/>}
                 </S.SelectClickEvent>
               ))}
           </Carousel>
@@ -219,16 +217,13 @@ function SkinModal({closeModal, isOpen}: Props) {
               ))}
           </Carousel>
         </S.SelectWrapper>
-        
-
+  
         <ModalButton margin="12px 0 0 0" >
           <S.ButtonText onClick={handleSelectSkin}>{'선택 완료하기'}</S.ButtonText>
         </ModalButton>
 
       </S.Wrapper>
     </Modal>
-
-   
     </>
   );
 }

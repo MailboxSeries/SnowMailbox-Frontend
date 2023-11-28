@@ -13,9 +13,11 @@ type Props = {
   closeModal: () => void;
   isOpen: boolean;
   missionId: string;
+  missionNumber: number;
+  objectType: string;
 };
 
-function MissionModal({closeModal, isOpen, missionId}: Props) {
+function MissionModal({closeModal, isOpen, missionId, missionNumber, objectType}: Props) {
   const {ownerId, myId, isMyHome} = useIsMyHome();
   const homeData = useRecoilValue<HomeData>(HomeDataAtom);
   const skinData = useRecoilValue(skinDataState);
@@ -35,7 +37,7 @@ function MissionModal({closeModal, isOpen, missionId}: Props) {
   }
 
 
-  const {mutate} = useMutation({
+  const mutation = useMutation({
       mutationFn: () =>
       postCompletedMissionChecked(myId, missionId, true),
       onSuccess: async () => {
@@ -45,9 +47,22 @@ function MissionModal({closeModal, isOpen, missionId}: Props) {
       },
   });
 
+  const mutation2 = useMutation({
+    mutationFn: () =>
+    postCompletedMissionChecked(myId, missionId, true),
+    onSuccess: async () => {
+        await queryClient.invalidateQueries({queryKey: ['completedmissionChecked']});
+        alert("메리 크리스마스! 축하드려요!")
+        closeModal();
+    },
+});
+
   const handleMissionClear = () => {
-    mutate();
-    closeModal();
+    if(missionNumber == 4 && objectType == "star") {
+      mutation2.mutate();
+    } else {
+      mutation.mutate();
+    }
   }
 
   return (
