@@ -20,6 +20,8 @@ import { useQuery } from '@tanstack/react-query';
 import { HomeData } from '@/interface/home';
 import ArrowButton from '@/components/Button/ArrowButton/ArrowButton';
 import RightArrowButtonImg from '@/assets/Button/RightArrow.png'
+import { userInfoAtom } from '@/atoms/SignInAtom';
+import { Navigate, useNavigate } from 'react-router';
 
 const STALE_MIN = 5;
 
@@ -27,6 +29,7 @@ export default function Home() {
     const {ownerId, myId, isMyHome} = useIsMyHome();
     const homeData = useRecoilValue(HomeDataAtom);
     const setHomeData = useSetRecoilState(HomeDataAtom);
+    const navigate = useNavigate();
     const [shareModalOpen, setShareModalOpen] = useState<boolean>(false);
     const handleShare = () => setShareModalOpen(true);
     const [skinModalOpen, setSkinModalOpen] = useState<boolean>(false);
@@ -34,9 +37,27 @@ export default function Home() {
     const [LetterListModalOpen, setLetterListModalOpen] = useState<boolean>(false);
     const handleLetterList = () => setLetterListModalOpen(true);
     const [sendLetterModalOpen, setSendLetterModalOpen] = useState<boolean>(false);
-    const handleSendLetter = () => setSendLetterModalOpen(true);
+    const handleSendLetter = () => {
+        if(loggedIn) {
+            setSendLetterModalOpen(true);
+        } else {
+            alert('로그인을 하면 이용 가능해요!')
+            navigate("/");
+            localStorage.setItem("redirectUrl", `https://snowmailbox.com/home/${ownerId}`) //다시 이동하기 위함.
+        }
+    };
     const myURL = `https://snowmailbox.com/home/${myId}`;
+    const handleGoMyHome = () => {
+        if(loggedIn) {
+            navigate(`${myURL}`)
+        } else {
+            alert('로그인을 하면 이용 가능해요!')
+            navigate("/");
+            localStorage.setItem("redirectUrl", `https://snowmailbox.com/home/${ownerId}`) //다시 이동하기 위함.
+        }
+    }
     const imageAllURL = `/image-all/${myId}`;
+    const loggedIn = useRecoilValue(userInfoAtom); //로그인 상태인지 확인하기 위함.
 
     const {data} = useQuery<HomeData>({
         queryKey: ["homeData", ownerId],
@@ -134,7 +155,7 @@ export default function Home() {
                         <LongButton margin="52px 0 0 0" onClick={handleSendLetter}>
                             <S.ButtonText>{'추억 달아주기'}</S.ButtonText>
                         </LongButton>
-                        <LongButton margin="12px 0 0 0" route={myURL}>
+                        <LongButton margin="12px 0 0 0" onClick={handleGoMyHome}>
                             <S.ButtonText>{'내 트리 보러가기'}</S.ButtonText>
                         </LongButton>
 
