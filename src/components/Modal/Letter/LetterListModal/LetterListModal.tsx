@@ -4,6 +4,8 @@ import Modal from '@/components/Modal/Modal';
 import { useRecoilValue } from 'recoil';
 import { HomeDataAtom } from '@/atoms/HomeAtom';
 import LetterReadModal from '../LetterReadModal/LetterReadModal';
+import DisabledOrnamentIconImg from '@/assets/Icon/DisabledOrnamentIcon.png';
+import OrnamentIconImg from '@/assets/Icon/OrnamentIcon.png';
 
 type Props = {
   closeModal: () => void;
@@ -55,7 +57,7 @@ function LetterListModal({closeModal, isOpen}: Props) {
                         }
                     }}
                     OrnamentImage={
-                    (!isButtonActive ? "OrnamentButtonDisabledImg" : "OrnamentButtonImg" ) }
+                    (!isButtonActive ? DisabledOrnamentIconImg : OrnamentIconImg ) }
                     >
                     {date}
                     </S.OrnamentButton>

@@ -5,6 +5,9 @@ import { Carousel } from 'react-responsive-carousel';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import {Character} from '@/assets/Character'
 import {Tree} from '@/assets/Tree'
+import { OrnamentThumnail } from '@/assets/OrnamentThumbnail';
+import { BoxThumnail } from '@/assets/BoxThumbnail';
+import { StarThumbnail } from '@/assets/StarThumbnail';
 import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil';
 import { HomeDataAtom } from '@/atoms/HomeAtom';
 import { skinDataState } from '@/atoms/SkinAtom'
@@ -144,7 +147,7 @@ function SkinModal({closeModal, isOpen}: Props) {
           showStatus={false} 
           centerMode 
           centerSlidePercentage={33}>
-          {Character.map((ornament, index) => ( //TODO: 오너먼트로 바꿔야함
+          {OrnamentThumnail.map((ornament, index) => ( 
                 <S.SelectClickEvent 
                 onClick={() => getSkinStatus('ornament', index) !== 'disabled' && setOrnamentType(ornament.index)}
                 isSelected={ornamentType === ornament.index}
@@ -168,7 +171,7 @@ function SkinModal({closeModal, isOpen}: Props) {
           showStatus={false} 
           centerMode 
           centerSlidePercentage={33}>
-          {Character.map((box, index) => ( //TODO: 선물상자로 바꿔야함
+          {BoxThumnail.map((box, index) => (
                 <S.SelectClickEvent 
                 onClick={() => getSkinStatus('box', index) !== 'disabled' && setBoxType(box.index)}
                 isSelected={boxType === box.index}
@@ -192,7 +195,7 @@ function SkinModal({closeModal, isOpen}: Props) {
           showStatus={false} 
           centerMode 
           centerSlidePercentage={33}>
-          {Character.map((star, index) => ( //TODO: 별로 바꿔야함
+          {StarThumbnail.map((star, index) => (
                 <S.SelectClickEvent 
                 onClick={() => getSkinStatus('star', index) !== 'disabled' && setStarType(star.index)}
                 isSelected={starType === star.index}

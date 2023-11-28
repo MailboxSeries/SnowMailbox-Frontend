@@ -10,7 +10,7 @@ export const HomeDataAtom = atom<HomeData>({
 	starType : 4, //없을 경우 0
 	boxType : 4,  //없을 경우 0
 	ornamentType : 3, //디폴트는 1
-	nowDate : 25, // 가입한 날부터 1일
+	nowDate : 23, // 가입한 날부터 1일
   },
 });
 
