@@ -42,7 +42,7 @@ export default function Home() {
             setSendLetterModalOpen(true);
         } else {
             alert('로그인을 하면 이용 가능해요!')
-            navigate("/");
+            navigate("/sign-in");
             localStorage.setItem("redirectUrl", `https://snowmailbox.com/home/${ownerId}`) //다시 이동하기 위함.
         }
     };
@@ -52,8 +52,8 @@ export default function Home() {
             navigate(`${myURL}`)
         } else {
             alert('로그인을 하면 이용 가능해요!')
-            navigate("/");
-            localStorage.setItem("redirectUrl", `https://snowmailbox.com/home/${ownerId}`) //다시 이동하기 위함.
+            navigate("/sign-in");
+            localStorage.setItem("redirectOwnerId", `${ownerId}`) //다시 이동하기 위함.
         }
     }
     const imageAllURL = `/image-all/${myId}`;

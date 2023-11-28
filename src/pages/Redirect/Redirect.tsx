@@ -17,7 +17,12 @@ export default function Redirect() {
             const data = await getMyIdAtRedirectPage();
             if (data !== null) {
               setUserInfoState(data);
-              navigate(`/home/${data.myId}`);
+              const redirectOwnerId = localStorage.getItem("redirectOwnerId");
+              if(redirectOwnerId) {
+                navigate(`/home/${redirectOwnerId}`)
+              } else {
+                navigate(`/home/${data.myId}`);
+              }
             } else {
               setUserInfoState(initialUserInfoState);
             }
