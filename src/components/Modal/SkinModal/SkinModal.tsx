@@ -5,15 +5,15 @@ import { Carousel } from 'react-responsive-carousel';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import {Character} from '@/assets/Character'
 import {Tree} from '@/assets/Tree'
-import { useRecoilState, useRecoilValue } from 'recoil';
+import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil';
 import { HomeDataAtom } from '@/atoms/HomeAtom';
 import { skinDataState } from '@/atoms/SkinAtom'
 import MissionModal from "@/components/Modal/MissionModal/MissionModal"
 import { HomeData } from '@/interface/home';
 import ModalButton from '@/components/Button/ModalButton/ModalButton';
-import { useSuspenseQuery } from '@tanstack/react-query';
+import { useMutation, useQueryClient, useSuspenseQuery } from '@tanstack/react-query';
 import { useNavigate } from 'react-router';
-import { getMissionStatus } from '@/apis/skin';
+import { getMissionStatus, postSelectedSkin } from '@/apis/skin';
 import useIsMyHome from '@/hooks/useIsMyHome';
 
 type Props = {
@@ -24,6 +24,7 @@ type Props = {
 function SkinModal({closeModal, isOpen}: Props) {
   const {ownerId, myId, isMyHome} = useIsMyHome();
   const homeData = useRecoilValue<HomeData>(HomeDataAtom);
+  const setHomeData = useSetRecoilState(HomeDataAtom);
   const [treeType, setTreeType] = useState<number>(homeData.treeType);
   const [characterType, setCharacterType] = useState<number>(homeData.characterType);
   const [starType, setStarType] = useState<number>(homeData.starType);
@@ -32,6 +33,7 @@ function SkinModal({closeModal, isOpen}: Props) {
   const [missionModalOpen, setMissionModalOpen] = useState<boolean>(false);
   const [isSkinData, setSkinData] = useRecoilState(skinDataState);
   const skinData = useRecoilValue(skinDataState);
+  const queryClient = useQueryClient();
   const closeMissionModal = useCallback(
     () => setMissionModalOpen(false),
     [setMissionModalOpen],
@@ -63,24 +65,30 @@ function SkinModal({closeModal, isOpen}: Props) {
     return !skinData[type + 'List'][index].missionStatus;
   };
 
-  const handleSelectSkin = () => {
-    //TODO: api 호출 후 성공하면 recoil로 저장하고 모달 닫기.
+  const {mutate} = useMutation({
+    mutationFn: () =>
+    postSelectedSkin(myId, treeType, characterType, starType, boxType, ornamentType),
+    onSuccess: async () => {
+      const newHomeData = {
+        ...homeData, // 기존의 homeData를 유지하면서
+        treeType: treeType,
+        characterType: characterType,
+        starType: starType,
+        boxType: boxType,
+        ornamentType: ornamentType,
+      };
 
-      /*
-    //TODO: 요청에 성공했을 때 recoil로 저장
-    const newHomeData = {
-      refreshToken: data.refreshToken,
-      accessToken: data.accessToken,
-      nickname: data.nickname,
-      treeType: treeType,
-      characterType: characterType,
-      starType: starType,
-      boxType: boxType,
-      ornamentType: boxType,
-      nowDate: data.nowDate,
-    };
-    setSkinData(newHomeData);
-    */
+      // HomeDataAtom의 상태를 업데이트합니다.
+      setHomeData(newHomeData);
+      await queryClient.invalidateQueries({queryKey: ['checkSkin']});
+      alert("새로운 스킨이 적용되었어요!")
+      closeModal();
+        
+    },
+});
+
+  const handleSelectSkin = () => {
+    mutate();
   }
   const handleMissionModal = (missionId : string, missionNumber: number, objectType: string) => {
     setMissionModalOpen(true)
