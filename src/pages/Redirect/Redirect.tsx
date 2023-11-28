@@ -28,7 +28,7 @@ export default function Redirect() {
     };
 
     fetchData();
-  }, [setUserInfoState]);
+  }, []);
 
   useEffect(() => {
     if (userInfo.myId !== initialUserInfoState.myId) {
@@ -40,7 +40,7 @@ export default function Redirect() {
         navigate(`/home/${userInfo.myId}`);
       }
     }
-  }, [userInfo, navigate]);
+  }, [userInfo]);
 
   return <PageLayout>로그인 중...</PageLayout>;
 }
