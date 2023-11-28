@@ -2,28 +2,37 @@ import axios from 'axios';
 import Cookies from 'js-cookie';
 import useSetTokens from '../hooks/useSetTokens';
 
+const getAccessTokenFromCookies = () => Cookies.get('accessToken');
+
 export const instance = axios.create({
   baseURL: 'https://snowmailbox.com',
   headers: {
-    Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
-  },/* ¸ */
+    Authorization: `Bearer ${getAccessTokenFromCookies()}`,
+  },
 });
 
-instance.interceptors.response.use(
-  (response) => {
-    return response;
+instance.interceptors.request.use(
+  config => {
+    config.headers.Authorization = `Bearer ${getAccessTokenFromCookies()}`;
+    return config;
   },
-  async (error) => {
+  error => Promise.reject(error)
+);
+
+instance.interceptors.response.use(
+  response => response,
+  async error => {
     const originalRequest = error.config;
 
-    if (error.response.code === 401 && !originalRequest._retry) {
+    if (error.response.status === 401 && !originalRequest._retry) {
       originalRequest._retry = true;
       const refreshToken = localStorage.getItem('refreshToken');
       if (!refreshToken) {
         throw new Error('토큰 없음');
       }
       try {
-        await sendRefreshToken(refreshToken);
+        const response = await sendRefreshToken(refreshToken);
+        originalRequest.headers['Authorization'] = `Bearer ${response.data.accessToken}`;
         return instance(originalRequest);
       } catch (error) {
         throw error;
@@ -34,14 +43,17 @@ instance.interceptors.response.use(
   },
 );
 
-const sendRefreshToken = async (refreshToken) => {
+const sendRefreshToken = async refreshToken => {
   try {
     const response = await instance.get('/auth/token', {
       headers: {
-        refreshToken: `${refreshToken}`,
+        refreshToken,
       },
     });
 
     useSetTokens(response.data.accessToken, response.data.refreshToken);
-  } catch (error) {}
+    return response;
+  } catch (error) {
+    throw error;
+  }
 };
