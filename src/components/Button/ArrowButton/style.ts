@@ -14,32 +14,43 @@ export const ButtonWrapper = styled.div<ButtonWrapperProps>`
     right: 5px;
     z-index: 5;
     background-color: transparent;
+    background-size: cover;
+    background-repeat: no-repeat;
     @media (min-width: 820px) {
         position: fixed;
         left: calc(50% + 350px);
         }
-    width: 40px;
-    height: 40px;
+    width: 20px;
+    height: 20px;
         
     ${(props) => 
-        props.background == LeftArrowButtonImg &&
+        props.background == RightArrowButtonImg &&
         css`
         /* LeftArrowButtonImg에 대한 스타일 */
-        right: 5px;
+        right: 15px;
         z-index: 5;
         @media (min-width: 820px) {
             position: fixed;
-            left: calc(50% + 230px);
-    }
+            left: calc(50% + 380px);
+        }
 
-    background: url(${props.background}); /* 배경 이미지 설정 */
-    `
+        background: url(${RightArrowButtonImg}); /* 배경 이미지 설정 */
+        `
     }
 
     ${(props) =>
-        props.background == RightArrowButtonImg &&
+        props.background == LeftArrowButtonImg &&
         css`
-        /* RightArrowButtonImg에 대한 스타일 */
-        /* 다른 스타일 */
+        /* LeftArrowButtonImg에 대한 스타일 */
+        left: 15px;
+        z-index: 5;
+        @media (min-width: 820px) {
+            position: fixed;
+            left: calc(50% - 400px);
+            
+        }      
+        background: url(${LeftArrowButtonImg}); /* 배경 이미지 설정 */
+
     `}
+
 `;

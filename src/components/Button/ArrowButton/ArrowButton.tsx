@@ -10,7 +10,7 @@ export default function ArrowButton({ currentImg, ...props }: ArrowButtonProps) 
 
   return (
     <S.ButtonWrapper background={currentImg}>
-      <Button width={30} height={30} {...props}>
+      <Button width={30} height={30} background={"transparent"} {...props}>
         {props.children}
       </Button>
     </S.ButtonWrapper>

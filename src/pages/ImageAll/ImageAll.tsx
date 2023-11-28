@@ -6,6 +6,8 @@ import Picture1Img from '@/assets/Picture/1.png';
 import Picture2Img from '@/assets/Picture/2.png';
 import Picture3Img from '@/assets/Picture/3.png';
 import ImageAllModal from '@/components/Modal/ImageAllModal/ImageAllModal';
+import ArrowButton from '@/components/Button/ArrowButton/ArrowButton';
+import LeftArrowButtonImg from '@/assets/Button/LeftArrow.png'
 
 export default function ImageAll() {
 
@@ -37,9 +39,7 @@ export default function ImageAll() {
               >{index+1}</S.Picture>
             ))}
           </S.GridWrapper>
-          <LongButton margin="52px 0 0 0" route={myURL}>
-            <S.ButtonText>{'홈으로 돌아가기'}</S.ButtonText>
-          </LongButton>
+          <ArrowButton currentImg={LeftArrowButtonImg} route={myURL}/>
 
         </S.Container>      
       </S.Layout>

@@ -19,6 +19,7 @@ import home from '@/apis/home';
 import { useQuery } from '@tanstack/react-query';
 import { HomeData } from '@/interface/home';
 import ArrowButton from '@/components/Button/ArrowButton/ArrowButton';
+import RightArrowButtonImg from '@/assets/Button/RightArrow.png'
 
 const STALE_MIN = 5;
 
@@ -35,7 +36,7 @@ export default function Home() {
     const [sendLetterModalOpen, setSendLetterModalOpen] = useState<boolean>(false);
     const handleSendLetter = () => setSendLetterModalOpen(true);
     const myURL = `https://snowmailbox.com/home/${myId}`;
-    const imageAllURL = `https://snowmailbox.com/image-all/${myId}`;
+    const imageAllURL = `/image-all/${myId}`;
 
     const {data} = useQuery<HomeData>({
         queryKey: [ownerId],
@@ -126,10 +127,7 @@ export default function Home() {
                         <LongButton margin="12px 0 0 0" onClick={handleShare}>
                             <S.ButtonText>{'링크 공유하기'}</S.ButtonText>
                         </LongButton>
-                        <LongButton margin="12px 0 0 0" route={imageAllURL}>
-                            <S.ButtonText>{'사진 모아보기'}</S.ButtonText>
-                        </LongButton>
-                        <ArrowButton currentImg={"LeftArrowButtonImg"} />
+                        <ArrowButton currentImg={RightArrowButtonImg} route={imageAllURL} />
                     </>
                 ) : (
                     <>
