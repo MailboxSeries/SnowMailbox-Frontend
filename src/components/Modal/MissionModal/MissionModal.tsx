@@ -23,6 +23,7 @@ function MissionModal({closeModal, isOpen, missionId, missionNumber, objectType}
   const {data} = useSuspenseQuery({
     queryKey: ['disabledSkin', myId],
     queryFn: () => getUnCompletedMissionContent(myId, missionId),
+    staleTime: 10000,
   });
 
   if (data !== null) {

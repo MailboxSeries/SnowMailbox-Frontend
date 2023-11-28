@@ -42,6 +42,7 @@ function SkinModal({closeModal, isOpen}: Props) {
   const {data} = useSuspenseQuery({
       queryKey: ['abledSkin', myId],
       queryFn: () => getMissionStatus(myId),
+      staleTime: 10000,
     });
 
     if (data !== null) {

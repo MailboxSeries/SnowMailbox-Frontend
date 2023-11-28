@@ -26,7 +26,6 @@ function LogoutModal({closeModal, isOpen}: Props) {
     setSignoutModalOpen(true)
   }
 
-  //TODO: api 호출하기
   const handleLogout = () => {
     logout();
     closeModal();

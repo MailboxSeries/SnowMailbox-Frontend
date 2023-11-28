@@ -16,6 +16,7 @@ export default function AuthProvider({children}: Props) {
   const {data, isSuccess} = useSuspenseQuery<null | Data>({
     queryKey: ['signInState'],
     queryFn: getMyIdAtRedirectPage,
+    staleTime: 10000,
   });
 
   if (data !== null) {
