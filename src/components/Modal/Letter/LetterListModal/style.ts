@@ -10,20 +10,6 @@ export const Wrapper = styled.div`
   align-items: center;
 `;
 
-export const ButtonText = styled.span`
-  color: ${theme.colors.textMain};
-  text-align: center;
-  font-size: 20px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: normal;
-  letter-spacing: 1px;
-  width: 45px;
-  height: 45px;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-`;
 
 export const ButtonWrapper = styled.div`
   display: flex;
@@ -55,4 +41,7 @@ export const OrnamentButton = styled.button<OrnamentButtonProps>`
   //padding-right: 25px;
   padding-top: 3px;
   margin: 12px;
+  display: flex;
+  justify-content: center; // 가로 중앙 정렬
+  align-items: center; // 세로 중앙 정렬
 `;
