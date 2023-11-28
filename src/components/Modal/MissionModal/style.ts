@@ -1,7 +1,8 @@
 import theme from '@/theme';
 import styled from 'styled-components';
 import CheckImg from '@/assets/Icon/Check.png';
-import LockIconImg from '@/assets/Icon/LockIcon.png'
+
+
 export const Wrapper = styled.div`
   width: 100%;
   height: 100%;
@@ -83,18 +84,7 @@ export const SelectClickEvent = styled.div<{ isSelected?: boolean }>`
     }
 `;
 
-export const LockIcon = styled.button`
-  position: absolute;
-    width: 50px;
-    height: 50px;
-    background-size: 50px 50px;
-    background-image: url(${LockIconImg});
-    background-repeat: no-repeat;
-    z-index: 3;
-    top: 30px;
-    left: 17px;
-    background-color: transparent;
-`;
+
 
 export const NameInput = styled.input`
 font-family: 'BareunHipi';

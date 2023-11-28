@@ -58,12 +58,13 @@ function SkinModal({closeModal, isOpen}: Props) {
     console.log('Updated skinData:', isSkinData);
   }, [isSkinData]); // isSkinData가 변경될 때마다 useEffect가 실행됩니다.
 
-  const isDisabled = (type, index) => {
-    if (!skinData[type + 'List'] || index < 0 || index >= skinData[type + 'List'].length) {
-      return true; // 유효하지 않은 type 또는 index
-    }
-    
-    return !skinData[type + 'List'][index].missionStatus;
+  const getSkinStatus = (type, index) => {
+    const item = skinData[type + 'List'] && skinData[type + 'List'][index];
+    if (!item) return 'disabled'; // 유효하지 않은 type 또는 index
+  
+    if (item.missionStatus && !item.missionChecked) return 'unlocked';
+    if (!item.missionStatus && !item.missionChecked) return 'locked';
+    return 'none'; // 모든 조건을 만족하지 않을 경우
   };
 
   const {mutate} = useMutation({
@@ -121,7 +122,7 @@ function SkinModal({closeModal, isOpen}: Props) {
           centerSlidePercentage={33}>
           {Tree.map((tree, index) => (
                 <S.SelectClickEvent 
-                onClick={() => !isDisabled('tree', index) && setTreeType(tree.index)}
+                onClick={() => getSkinStatus('tree', index) !== 'disabled' && setTreeType(tree.index)}
                 isSelected={treeType === tree.index}
                 >
                   <S.ImageButton
@@ -129,7 +130,8 @@ function SkinModal({closeModal, isOpen}: Props) {
                     selected={treeType === tree.index} 
                     style={{width: "80px", height: "107px"}}
                   />
-                  {isDisabled('tree', index) && <S.LockIcon onClick={() => handleMissionModal(skinData.treeList[tree.index].missionId, tree.index, "tree")}/>}
+                  {getSkinStatus('tree', index) === 'locked' && <S.LockIcon onClick={() => handleMissionModal(skinData.treeList[tree.index].missionId, tree.index, "tree")}/>}
+                  {getSkinStatus('tree', index) === 'unlocked' && <S.UnLockIcon onClick={() => handleMissionModal(skinData.treeList[tree.index].missionId, tree.index, "tree")}/>}
                 </S.SelectClickEvent>
               ))}
           </Carousel>
@@ -144,7 +146,7 @@ function SkinModal({closeModal, isOpen}: Props) {
           centerSlidePercentage={33}>
           {Character.map((ornament, index) => ( //TODO: 오너먼트로 바꿔야함
                 <S.SelectClickEvent 
-                onClick={() => !isDisabled('ornament', index) && setOrnamentType(ornament.index)}
+                onClick={() => getSkinStatus('ornament', index) !== 'disabled' && setOrnamentType(ornament.index)}
                 isSelected={ornamentType === ornament.index}
                 >
                   <S.ImageButton
@@ -152,8 +154,8 @@ function SkinModal({closeModal, isOpen}: Props) {
                     selected={ornamentType === ornament.index} 
                     style={{width: "60px", height: "90px"}}
                   />
-                  {isDisabled('ornament', index) && <S.LockIcon onClick={() => handleMissionModal(skinData.ornamentList[ornament.index].missionId, ornament.index, "ornament")}/>}
-
+                  {getSkinStatus('ornament', index) === 'locked' && <S.LockIcon onClick={() => handleMissionModal(skinData.ornamentList[ornament.index].missionId, ornament.index, "ornament")}/>}
+                  {getSkinStatus('ornament', index) === 'unlocked' && <S.UnLockIcon onClick={() => handleMissionModal(skinData.ornamentList[ornament.index].missionId, ornament.index, "ornament")}/>}
                 </S.SelectClickEvent>
               ))}
           </Carousel>
@@ -168,7 +170,7 @@ function SkinModal({closeModal, isOpen}: Props) {
           centerSlidePercentage={33}>
           {Character.map((box, index) => ( //TODO: 선물상자로 바꿔야함
                 <S.SelectClickEvent 
-                onClick={() => !isDisabled('box', index) && setBoxType(box.index)}
+                onClick={() => getSkinStatus('box', index) !== 'disabled' && setBoxType(box.index)}
                 isSelected={boxType === box.index}
                 >
                   <S.ImageButton
@@ -176,7 +178,8 @@ function SkinModal({closeModal, isOpen}: Props) {
                     selected={boxType === box.index} 
                     style={{width: "60px", height: "90px"}}
                   />
-                  {isDisabled('box', index) && <S.LockIcon onClick={() => handleMissionModal(skinData.boxList[box.index].missionId, box.index, "box")}/>}
+                  {getSkinStatus('box', index) === 'locked' && <S.LockIcon onClick={() => handleMissionModal(skinData.boxList[box.index].missionId, box.index, "box")}/>}
+                  {getSkinStatus('box', index) === 'unlocked' && <S.UnLockIcon onClick={() => handleMissionModal(skinData.boxList[box.index].missionId, box.index, "box")}/>}                
                 </S.SelectClickEvent>
               ))}
           </Carousel>
@@ -191,7 +194,7 @@ function SkinModal({closeModal, isOpen}: Props) {
           centerSlidePercentage={33}>
           {Character.map((star, index) => ( //TODO: 별로 바꿔야함
                 <S.SelectClickEvent 
-                onClick={() => !isDisabled('star', index) && setStarType(star.index)}
+                onClick={() => getSkinStatus('star', index) !== 'disabled' && setStarType(star.index)}
                 isSelected={starType === star.index}
                 >
                   <S.ImageButton
@@ -199,7 +202,8 @@ function SkinModal({closeModal, isOpen}: Props) {
                     selected={starType === star.index} 
                     style={{width: "60px", height: "90px"}}
                   />
-                  {isDisabled('star', index) && <S.LockIcon onClick={() => handleMissionModal(skinData.starList[star.index].missionId, star.index, "star")}/>}
+                  {getSkinStatus('star', index) === 'locked' && <S.LockIcon onClick={() => handleMissionModal(skinData.starList[star.index].missionId, star.index, "star")}/>}
+                  {getSkinStatus('star', index) === 'unlocked' && <S.UnLockIcon onClick={() => handleMissionModal(skinData.starList[star.index].missionId, star.index, "star")}/>}                                
                 </S.SelectClickEvent>
               ))}
           </Carousel>
