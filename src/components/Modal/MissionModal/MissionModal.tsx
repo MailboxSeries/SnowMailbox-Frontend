@@ -1,14 +1,11 @@
 import * as S from './style';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import Modal from '../Modal';
-import { useRecoilState, useRecoilValue } from 'recoil';
-import { HomeDataAtom } from '@/atoms/HomeAtom';
-import { skinDataState } from '@/atoms/SkinAtom'
 import ModalButton from '@/components/Button/ModalButton/ModalButton';
-import { HomeData } from '@/interface/home';
 import useIsMyHome from '@/hooks/useIsMyHome';
 import { useMutation, useQueryClient, useSuspenseQuery } from '@tanstack/react-query';
-import { getUnCompletedMissionContent, postCompletedMissionChecked } from '@/apis/skin';
+import { getUnCompletedMissionContent, postCompletedChristmas, postCompletedMissionChecked } from '@/apis/skin';
+import useInput from '@/hooks/useInput';
 type Props = {
   closeModal: () => void;
   isOpen: boolean;
@@ -19,11 +16,10 @@ type Props = {
 
 function MissionModal({closeModal, isOpen, missionId, missionNumber, objectType}: Props) {
   const {ownerId, myId, isMyHome} = useIsMyHome();
-  const homeData = useRecoilValue<HomeData>(HomeDataAtom);
-  const skinData = useRecoilValue(skinDataState);
   const [missionContent, setMissionContent] = useState<string>("지인에게 따뜻한 마음이 담긴 편지 1장을 보내봐요. 추운 겨울을 이겨내는 데에 큰 도움이 될 거예요. 어쩌면 지인이 당신임을 알게 된다면, 답장 편지가 되돌아올지도..?");
   const queryClient = useQueryClient();
-  
+  const missionAnswer = useInput<HTMLInputElement>(); // 보내는 사람 이름을 관리하는 상태
+
   const {data} = useSuspenseQuery({
     queryKey: ['disabledSkin', myId],
     queryFn: () => getUnCompletedMissionContent(myId, missionId),
@@ -49,7 +45,7 @@ function MissionModal({closeModal, isOpen, missionId, missionNumber, objectType}
 
   const mutation2 = useMutation({
     mutationFn: () =>
-    postCompletedMissionChecked(myId, missionId, true),
+    postCompletedChristmas(myId, missionId, missionAnswer.value),
     onSuccess: async () => {
         await queryClient.invalidateQueries({queryKey: ['completedmissionChecked']});
         alert("메리 크리스마스! 축하드려요!")
@@ -82,8 +78,17 @@ function MissionModal({closeModal, isOpen, missionId, missionNumber, objectType}
           </S.MissionDiscription>
           
         </S.SelectWrapper>
-        
-
+        { missionNumber == 4 && objectType == "star" &&(
+          <S.NameInput
+              maxLength={15}
+              type="text"
+              name="missionAnswer"
+              placeholder="정답을 입력해주세요!"
+              value={missionAnswer.value}
+              onChange={missionAnswer.handleChange}
+          />
+          )
+        }
         <ModalButton margin="12px 0 0 0" >
           <S.ButtonText onClick={handleMissionClear}>{'미션 완료하기'}</S.ButtonText>
         </ModalButton>
