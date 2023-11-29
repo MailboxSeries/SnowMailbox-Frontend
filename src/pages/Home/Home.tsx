@@ -48,7 +48,7 @@ function Home() {
             setSendLetterModalOpen(true);
         } else {
             alert('로그인을 하면 이용 가능해요!')
-            navigate("/sign-in");
+            navigate("/signin");
             localStorage.setItem("redirectOwnerId", `${ownerId}`) //다시 이동하기 위함.
         }
     }, []);
@@ -58,7 +58,7 @@ function Home() {
             window.location.href = myURL
         } else {
             alert('로그인을 하면 이용 가능해요!')
-            navigate("/sign-in");
+            navigate("/signin");
             localStorage.setItem("redirectOwnerId", `${ownerId}`) //다시 이동하기 위함.
         }
     }, []);
@@ -77,9 +77,6 @@ function Home() {
     useEffect(() => {
         if (data) {
         setHomeData(data);
-        } else {
-            alert('세션이 만료되었어요. 다시 로그인 해주세요!')
-            navigate('/sign-in')
         }
     }, [data]);
 

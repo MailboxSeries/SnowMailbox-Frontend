@@ -60,9 +60,6 @@ function SkinModal({closeModal, isOpen}: Props) {
     useEffect(() => {
       if (data) {
         setSkinData(data);
-      } else {
-        alert("데이터를 가져오는 데에 실패했어요. 다시 로그인 해주세요!")
-        navigate('/sign-in')
       }
     }, [data]);
 
@@ -125,7 +122,7 @@ function SkinModal({closeModal, isOpen}: Props) {
     },
     onError: (error) => {
       alert("세션이 만료되었어요. 다시 로그인 해주세요!")
-      navigate('/sign-in')
+      navigate('/signin')
     },
 });
 

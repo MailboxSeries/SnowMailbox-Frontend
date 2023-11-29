@@ -32,9 +32,6 @@ function MissionModal({closeModal, isOpen, missionId, typeNumber, objectType, mi
   useEffect(() => {
     if (data) {
       setMissionContent(data.missionContent);
-    } else {
-      alert("데이터를 가져오는 데에 실패했어요. 다시 로그인 해주세요!")
-      navigate('/sign-in')
     }
   }, [data]);
 
@@ -48,7 +45,7 @@ function MissionModal({closeModal, isOpen, missionId, typeNumber, objectType, mi
       },
       onError: (error) => {
         alert("세션이 만료되었어요. 다시 로그인 해주세요!")
-        navigate('/sign-in')      
+        navigate('/signin')      
       },
   });
 
@@ -62,7 +59,7 @@ function MissionModal({closeModal, isOpen, missionId, typeNumber, objectType, mi
     },
     onError: (error) => {
       alert("세션이 만료되었어요. 다시 로그인 해주세요!")
-      navigate('/sign-in')
+      navigate('/signin')
     },
 });
 
