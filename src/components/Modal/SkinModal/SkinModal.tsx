@@ -73,24 +73,24 @@ function SkinModal({closeModal, isOpen}: Props) {
   };
 
   const handleSelectSkinType = (type, index) => {
-    const status = getSkinStatus(type, index);
+    const status = getSkinStatus(type, index-1);
     if (status === 'clear') {
       switch (type) {
         case 'tree':
-          setTreeType(index+1);
+          setTreeType(index);
           break;
         case 'ornament':
-          setOrnamentType(index+1);
+          setOrnamentType(index);
           break;
         case 'box':
-          setBoxType(index+1);
+          setBoxType(index);
           break;
         case 'star':
-          setStarType(index+1);
+          setStarType(index);
           break;
         // 캐릭터는 모든 상태에서 선택 가능
         case 'character':
-          setCharacterType(index+1);
+          setCharacterType(index);
           break;
         default:
           break;
