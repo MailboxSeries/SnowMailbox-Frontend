@@ -83,8 +83,11 @@ function MissionModal({closeModal, isOpen, missionId, typeNumber, objectType, mi
     }
   }
 
-  const modalButtonBackground = missionStatus === 'unlocked' ? MediumButtonImg : MediumButtonDisabledImg;
-
+  const modalButtonBackground = missionStatus === 'unlocked' 
+  ? MediumButtonImg 
+  : (missionAnswer.value === '크리스마스' || missionAnswer.value === 'christmas') 
+      ? MediumButtonImg 
+      : MediumButtonDisabledImg;
 
   return (
     <Modal
