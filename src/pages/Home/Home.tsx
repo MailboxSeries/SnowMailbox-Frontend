@@ -105,7 +105,7 @@ function Home() {
             case 4: return OrnamentLayer4;
             default: return [];
         }
-    }, [homeData.ornamentType]);
+    }, [homeData?.ornamentType]);
 
     return (
         <>
