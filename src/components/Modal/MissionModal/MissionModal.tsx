@@ -59,9 +59,21 @@ function MissionModal({closeModal, isOpen, missionId, typeNumber, objectType, mi
 
   const handleMissionClear = () => {
     if(typeNumber == 3 && objectType == "star") {
-      mutation2.mutate();
+      if(missionStatus == 'unlocked') {
+        mutation2.mutate();
+      } else {
+        alert('미션을 완료하지 못했어요.')
+        closeModal();
+      }
+      
     } else {
-      mutation.mutate();
+      if(missionStatus == 'unlocked') {
+        mutation.mutate();
+      } else {
+        alert('미션을 완료하지 못했어요.')
+        closeModal();
+      }
+      
     }
   }
 
