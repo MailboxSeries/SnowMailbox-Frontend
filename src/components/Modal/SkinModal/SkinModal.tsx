@@ -168,8 +168,8 @@ function SkinModal({closeModal, isOpen}: Props) {
                     selected={treeType === tree.index} 
                     style={{width: "80px", height: "107px"}}
                   />
-                  {getSkinStatus('tree', index) === 'locked' && <S.LockIcon onClick={() => {handleMissionModal(skinData.treeList[tree.index].missionId, tree.index, "tree")}}/>}
-                  {getSkinStatus('tree', index) === 'unlocked' && <S.UnLockIcon onClick={() => {handleMissionModal(skinData.treeList[tree.index].missionId, tree.index, "tree")}}/>}
+                  {getSkinStatus('tree', index) === 'locked' && <S.LockIcon onClick={() => {handleMissionModal(skinData.treeList[index].missionId, tree.index, "tree")}}/>}
+                  {getSkinStatus('tree', index) === 'unlocked' && <S.UnLockIcon onClick={() => {handleMissionModal(skinData.treeList[index].missionId, tree.index, "tree")}}/>}
                 </S.SelectClickEvent>
               ))}
           </Carousel>
@@ -192,8 +192,8 @@ function SkinModal({closeModal, isOpen}: Props) {
                     selected={ornamentType === ornament.index} 
                     style={{width: "60px", height: "90px"}}
                   />
-                  {getSkinStatus('ornament', index) === 'locked' && <S.LockIcon onClick={() => {handleMissionModal(skinData.ornamentList[ornament.index].missionId, ornament.index, "ornament")}}/>}
-                  {getSkinStatus('ornament', index) === 'unlocked' && <S.UnLockIcon onClick={() => {handleMissionModal(skinData.ornamentList[ornament.index].missionId, ornament.index, "ornament")}}/>}
+                  {getSkinStatus('ornament', index) === 'locked' && <S.LockIcon onClick={() => {handleMissionModal(skinData.ornamentList[index].missionId, ornament.index, "ornament")}}/>}
+                  {getSkinStatus('ornament', index) === 'unlocked' && <S.UnLockIcon onClick={() => {handleMissionModal(skinData.ornamentList[index].missionId, ornament.index, "ornament")}}/>}
                 </S.SelectClickEvent>
               ))}
           </Carousel>
@@ -216,8 +216,8 @@ function SkinModal({closeModal, isOpen}: Props) {
                     selected={boxType === box.index} 
                     style={{width: "60px", height: "90px"}}
                   />
-                  {getSkinStatus('box', index) === 'locked' && <S.LockIcon onClick={() => {handleMissionModal(skinData.boxList[box.index].missionId, box.index, "box")}}/>}
-                  {getSkinStatus('box', index) === 'unlocked' && <S.UnLockIcon onClick={() => {handleMissionModal(skinData.boxList[box.index].missionId, box.index, "box")}}/>}                
+                  {getSkinStatus('box', index) === 'locked' && <S.LockIcon onClick={() => {handleMissionModal(skinData.boxList[index].missionId, box.index, "box")}}/>}
+                  {getSkinStatus('box', index) === 'unlocked' && <S.UnLockIcon onClick={() => {handleMissionModal(skinData.boxList[index].missionId, box.index, "box")}}/>}                
                 </S.SelectClickEvent>
               ))}
           </Carousel>
@@ -240,8 +240,8 @@ function SkinModal({closeModal, isOpen}: Props) {
                     selected={starType === star.index} 
                     style={{width: "60px", height: "90px"}}
                   />
-                  {getSkinStatus('star', index) === 'locked' && <S.LockIcon onClick={() => {handleMissionModal(skinData.starList[star.index].missionId, star.index, "star")}}/>}
-                  {getSkinStatus('star', index) === 'unlocked' && <S.UnLockIcon onClick={() => {handleMissionModal(skinData.starList[star.index].missionId, star.index, "star")}}/>}                                
+                  {getSkinStatus('star', index) === 'locked' && <S.LockIcon onClick={() => {handleMissionModal(skinData.starList[index].missionId, star.index, "star")}}/>}
+                  {getSkinStatus('star', index) === 'unlocked' && <S.UnLockIcon onClick={() => {handleMissionModal(skinData.starList[index].missionId, star.index, "star")}}/>}                                
                 </S.SelectClickEvent>
               ))}
           </Carousel>

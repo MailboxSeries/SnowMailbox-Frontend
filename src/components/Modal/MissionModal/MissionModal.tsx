@@ -64,7 +64,7 @@ function MissionModal({closeModal, isOpen, missionId, typeNumber, objectType, mi
 });
 
   const handleMissionClear = () => {
-    if(typeNumber == 3 && objectType == "star") {
+    if(typeNumber == 4 && objectType == "star") {
       if(missionStatus == 'unlocked') {
         mutation2.mutate();
       } else {
@@ -103,7 +103,7 @@ function MissionModal({closeModal, isOpen, missionId, typeNumber, objectType, mi
           </S.MissionDiscription>
           
         </S.SelectWrapper>
-        { typeNumber == 3 && objectType == "star" &&(
+        { typeNumber == 4 && objectType == "star" &&(
           <S.NameInput
               maxLength={15}
               type="text"
