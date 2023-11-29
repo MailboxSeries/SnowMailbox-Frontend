@@ -47,6 +47,14 @@ export const SnowWrapper = styled.div`
   right: 50%;
   transform: translateX(-50%);
   overflow: hidden;
-  z-index: 1;
+  //z-index: 1;
 `;
 
+export const Container = styled.div`
+  position: absolute;
+  width: 100%;
+  max-width: 820px;
+  max-height: 1180px;
+  height: 800px;
+  
+`;

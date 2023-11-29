@@ -23,8 +23,8 @@ export default function PageLayout({ children }: Props) {
 
     return (
         <S.Layout>
-            <SnowFalling />
             <Menu />
+            <SnowFalling />
             <S.Wrapper>
                 <S.TextWrapper>
                     <S.SubLogoText>2024년을 기다리며,</S.SubLogoText>

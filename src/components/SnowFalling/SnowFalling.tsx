@@ -28,18 +28,21 @@ const SnowFalling: React.FC = () => {
       const rotateEnd = `${Math.floor(Math.random() * 180)}deg`;
 
       newLeaves.push(
-        <S.SnowWrapper key={i}>
-          <S.Snow
-            style={{
-              backgroundImage: `url(${leafType})`,
-              animationDelay: `${delay}s`,
-              "--start-left": startLeft,
-              "--end-left": endLeft,
-              "--rotation-start": rotateStart,
-              "--rotation-end": rotateEnd
-            } as CSSPropertiesWithCustomVars}
-          />
-        </S.SnowWrapper>
+        <S.Container>
+          <S.SnowWrapper key={i}>
+            <S.Snow
+              style={{
+                backgroundImage: `url(${leafType})`,
+                animationDelay: `${delay}s`,
+                "--start-left": startLeft,
+                "--end-left": endLeft,
+                "--rotation-start": rotateStart,
+                "--rotation-end": rotateEnd
+              } as CSSPropertiesWithCustomVars}
+            />
+          </S.SnowWrapper>
+        </S.Container>
+        
       );
     }
 
