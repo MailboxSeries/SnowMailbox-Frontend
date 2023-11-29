@@ -6,12 +6,12 @@ import {Suspense} from 'react';
 const App = () => {
   return (
     <>
-    <Suspense fallback={<>Loading...</>}>
-          <AuthProvider> 
-        {/*   <BrowserRouter>  TODO: 개발 시에만 주석 처리*/}
-            <Router />
-       {/*       </BrowserRouter>TODO: 개발 시에만 주석 처리*/}
-     </AuthProvider> 
+      <Suspense fallback={<>Loading...</>}>
+        <AuthProvider> 
+          <BrowserRouter>  
+              <Router />
+          </BrowserRouter>
+        </AuthProvider> 
       </Suspense> 
     </>
   );
