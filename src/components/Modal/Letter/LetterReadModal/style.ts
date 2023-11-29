@@ -64,5 +64,9 @@ export const InnerWrapper = styled.div`
   width: 250px;
   height: 450px;
   margin-top: 55px;
+  padding-top: 45px;
   overflow-y: auto;
+  display: flex;
+  justify-content: center; // 가로 중앙 정렬
+  align-items: center; // 세로 중앙 정렬
 `;

@@ -148,6 +148,9 @@ function Home() {
                     </>
                 ) : (
                     <>
+                                            <LongButton margin="52px 0 0 0" onClick={() => {handleLetterList()}}>
+                            <S.ButtonText>{'편지 확인하기'}</S.ButtonText>
+                        </LongButton>
                         <LongButton margin="52px 0 0 0" onClick={() => {handleSendLetter()}}>
                             <S.ButtonText>{'추억 달아주기'}</S.ButtonText>
                         </LongButton>
