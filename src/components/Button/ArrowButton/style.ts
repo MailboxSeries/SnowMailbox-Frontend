@@ -27,14 +27,14 @@ export const ButtonWrapper = styled.div<ButtonWrapperProps>`
     right: 5px;
     z-index: 5;
     background-color: transparent;
-    background-size: cover;
+    background-size: 40px 40px;
     background-repeat: no-repeat;
     @media (min-width: 820px) {
         position: fixed;
         left: calc(50% + 350px);
         }
-    width: 20px;
-    height: 20px;
+    width: 40px;
+    height: 40px;
         
     ${(props) => 
         props.background == RightArrowButtonImg &&
@@ -45,7 +45,7 @@ export const ButtonWrapper = styled.div<ButtonWrapperProps>`
         animation: ${moveRight} 0.5s ease-in-out infinite;
         @media (min-width: 820px) {
             position: fixed;
-            left: calc(50% + 380px);
+            left: calc(50% + 350px);
         }
 
         background: url(${RightArrowButtonImg}); /* 배경 이미지 설정 */
@@ -61,7 +61,7 @@ export const ButtonWrapper = styled.div<ButtonWrapperProps>`
         animation: ${moveLeft} 0.5s ease-in-out infinite;
         @media (min-width: 820px) {
             position: fixed;
-            left: calc(50% - 400px);
+            left: calc(50% - 390px);
             
         }      
         background: url(${LeftArrowButtonImg}); /* 배경 이미지 설정 */

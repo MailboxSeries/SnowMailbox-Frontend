@@ -11,7 +11,7 @@ interface SnowProps extends CSSProperties {
 
 const SnowFall = keyframes`
   0% {
-     opacity: 0.5;
+      opacity: 0.5;
       top: -10%;
       left: var(--start-left);  
       transform: rotate(var(--rotation-start));
