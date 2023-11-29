@@ -49,7 +49,13 @@ export default function SignUp() {
             mutate();
         }
     }
-    
+    const handleButtonKakao = () => {
+        window.location.href = `https://snowmailbox.com/oauth2/authorization/kakao`;
+    };
+
+    const handleButtonNaver = () => {
+        window.location.href = `https://snowmailbox.com/oauth2/authorization/naver`;
+    };
 
   return (
     <>
@@ -84,13 +90,13 @@ export default function SignUp() {
             
             <SocialButton 
             margin="8px 0 0 0" 
-            route="/oauth2/authorization/kakao"
             socialType="KakaoSignUp"
+            onClick={handleButtonKakao}
             />
             <SocialButton 
             margin="8px 0 0 0" 
-            route="/oauth2/authorization/naver"
             socialType="NaverSignUp"
+            onClick={handleButtonNaver}
             />
         </PageLayout>
         
