@@ -40,7 +40,7 @@ export const LetterImage = styled.div<{src: string}>`
 export const InnerWrapper = styled.div`
   width: 250px;
   height: 450px;
-  margin-top: 55px;
+  margin-top: 75px;
   padding-top: 45px;
   overflow-y: auto;
   display: flex;
