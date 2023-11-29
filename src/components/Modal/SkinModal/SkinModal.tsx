@@ -28,11 +28,11 @@ function SkinModal({closeModal, isOpen}: Props) {
   const {ownerId, myId, isMyHome} = useIsMyHome();
   const homeData = useRecoilValue<HomeData>(HomeDataAtom);
   const setHomeData = useSetRecoilState(HomeDataAtom);
-  const [treeType, setTreeType] = useState<number>(homeData.treeType-1);
-  const [characterType, setCharacterType] = useState<number>(homeData.characterType-1);
-  const [starType, setStarType] = useState<number>(homeData.starType-1);
-  const [boxType, setBoxType] = useState<number>(homeData.boxType-1);
-  const [ornamentType, setOrnamentType] = useState<number>(homeData.ornamentType-1);
+  const [treeType, setTreeType] = useState<number>(homeData.treeType);
+  const [characterType, setCharacterType] = useState<number>(homeData.characterType);
+  const [starType, setStarType] = useState<number>(homeData.starType);
+  const [boxType, setBoxType] = useState<number>(homeData.boxType);
+  const [ornamentType, setOrnamentType] = useState<number>(homeData.ornamentType);
   const [missionModalOpen, setMissionModalOpen] = useState<boolean>(false);
   const [isSkinData, setSkinData] = useRecoilState(skinDataState);
   const skinData = useRecoilValue(skinDataState);
