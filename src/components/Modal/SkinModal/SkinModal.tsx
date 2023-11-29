@@ -27,7 +27,7 @@ type Props = {
 function SkinModal({closeModal, isOpen}: Props) {
   const {ownerId, myId, isMyHome} = useIsMyHome();
   const homeData = useRecoilValue<HomeData>(HomeDataAtom);
-  const setHomeData = useSetRecoilState(HomeDataAtom);
+  const setHomeData = useSetRecoilState<HomeData>(HomeDataAtom);
   const [treeType, setTreeType] = useState<number>(homeData.treeType);
   const [characterType, setCharacterType] = useState<number>(homeData.characterType);
   const [starType, setStarType] = useState<number>(homeData.starType);
