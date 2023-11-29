@@ -52,12 +52,14 @@ font-size: 20px;
 
 export const LetterImage = styled.div<{src: string}>`
   position: relative;
-  width: 236px;
-  height: 236px;
+  width: 240px;
+  height: 240px;
   background-image: ${(props) => `url(${props.src})`};
   border: 3px solid ${theme.colors.textNavy};
   border-radius: 10px;
-  background-size: 236.538px 236.538px;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
 `;
 
 export const InnerWrapper = styled.div`
