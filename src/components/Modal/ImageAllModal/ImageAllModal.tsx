@@ -4,6 +4,7 @@ import Modal from '@/components/Modal/Modal';
 import { getDayImages } from '@/apis/imageAll';
 import { useQuery } from '@tanstack/react-query';
 import useIsMyHome from '@/hooks/useIsMyHome';
+import { useNavigate } from 'react-router';
 
 type Props = {
   closeModal: () => void;
@@ -13,7 +14,7 @@ type Props = {
 
 function ImageAllModal({closeModal, isOpen, selectedDate}: Props) {
     const {ownerId, myId, isMyHome} = useIsMyHome();
-
+    const navigate = useNavigate();
     const {data} = useQuery({
         queryKey: ['images', myId],
         queryFn: () => getDayImages(selectedDate, myId),
@@ -24,11 +25,11 @@ function ImageAllModal({closeModal, isOpen, selectedDate}: Props) {
     useEffect(() => {
         // data가 아직 로드되지 않은 경우, null을 반환
         if (!data) {
-            alert('이미지를 불러오지 못했어요.')
-            return null;
+            alert('세션이 만료되었어요. 다시 로그인 해주세요!')
+            navigate('/sign-in')
         }
     }, [data]);
-    
+
     // data가 로드된 후에 이미지 목록을 설정
     const imageList = data.imageList || [];
 

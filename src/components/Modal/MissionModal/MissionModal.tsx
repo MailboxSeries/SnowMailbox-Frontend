@@ -8,6 +8,7 @@ import { getUnCompletedMissionContent, postCompletedChristmas, postCompletedMiss
 import useInput from '@/hooks/useInput';
 import MediumButtonImg from '@/assets/Button/MediumButton.png';
 import MediumButtonDisabledImg from '@/assets/Button/MediumButtonDisabled.png';
+import { useNavigate } from 'react-router-dom';
 
 type Props = {
   closeModal: () => void;
@@ -23,7 +24,7 @@ function MissionModal({closeModal, isOpen, missionId, typeNumber, objectType, mi
   const [missionContent, setMissionContent] = useState<string>("지인에게 따뜻한 마음이 담긴 편지 1장을 보내봐요. 추운 겨울을 이겨내는 데에 큰 도움이 될 거예요. 어쩌면 지인이 당신임을 알게 된다면, 답장 편지가 되돌아올지도..?");
   const queryClient = useQueryClient();
   const missionAnswer = useInput<HTMLInputElement>(); // 보내는 사람 이름을 관리하는 상태
-
+  const navigate = useNavigate();
   const {data} = useSuspenseQuery({
     queryKey: ['disabledSkin', myId],
     queryFn: () => getUnCompletedMissionContent(myId, missionId),
@@ -32,8 +33,8 @@ function MissionModal({closeModal, isOpen, missionId, typeNumber, objectType, mi
     if (data) {
       setMissionContent(data.missionContent);
     } else {
-      alert("데이터를 가져오는 데에 실패했어요. 다시 로그인 해주세요.")
-      //TODO: 로그인 페이지로 
+      alert("데이터를 가져오는 데에 실패했어요. 다시 로그인 해주세요!")
+      navigate('/sign-in')
     }
   }, [data]);
 
@@ -45,6 +46,10 @@ function MissionModal({closeModal, isOpen, missionId, typeNumber, objectType, mi
           alert("미션에 성공했어요! 새로운 스킨을 적용해보아요!")
           closeModal();
       },
+      onError: (error) => {
+        alert("세션이 만료되었어요. 다시 로그인 해주세요!")
+        navigate('/sign-in')      
+      },
   });
 
   const mutation2 = useMutation({
@@ -54,6 +59,10 @@ function MissionModal({closeModal, isOpen, missionId, typeNumber, objectType, mi
         await queryClient.invalidateQueries({queryKey: ['abledSkin', myId]});
         alert("메리 크리스마스! 축하드려요!")
         closeModal();
+    },
+    onError: (error) => {
+      alert("세션이 만료되었어요. 다시 로그인 해주세요!")
+      navigate('/sign-in')
     },
 });
 

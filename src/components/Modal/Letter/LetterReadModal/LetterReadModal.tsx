@@ -6,6 +6,7 @@ import { HomeDataAtom } from '@/atoms/HomeAtom';
 import { useSuspenseQuery } from '@tanstack/react-query';
 import { getDayLetter } from '@/apis/letter';
 import useIsMyHome from '@/hooks/useIsMyHome';
+import { useNavigate } from 'react-router';
 
 type Props = {
   closeModal: () => void;
@@ -22,6 +23,7 @@ type Letter = {
 
 function LetterReadModal({closeModal, isOpen, selectedDate}: Props) {
     const {ownerId, myId, isMyHome} = useIsMyHome();
+    const navigate = useNavigate();
     const [letters, setLetters] = useState<Letter[]>([ //TODO: 더미데이터. 배포시 삭제
         {
             sender:"ㅇㅇ",
@@ -41,11 +43,11 @@ function LetterReadModal({closeModal, isOpen, selectedDate}: Props) {
       if (data) {
         setLetters(data.letterList);
       } else {
-        alert("데이터를 가져오는 데에 실패했어요. 다시 로그인 해주세요.")
-        //TODO: 로그인 페이지로 
+          alert('세션이 만료되었어요. 다시 로그인 해주세요!')
+          navigate('/sign-in')
       }
   }, [data]);
-  
+
     return (
         <Modal
         isOpen={isOpen}

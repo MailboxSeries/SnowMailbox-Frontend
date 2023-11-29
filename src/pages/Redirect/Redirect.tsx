@@ -23,7 +23,8 @@ export default function Redirect() {
           setUserInfoState(initialUserInfoState);
         }
       } catch (error) {
-        console.error(error);
+        alert("세션이 만료되었어요. 다시 로그인 해주세요!")
+        navigate('/sign-in')
       }
     };
 

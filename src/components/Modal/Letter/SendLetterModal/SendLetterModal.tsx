@@ -6,6 +6,7 @@ import LongButton from '@/components/Button/LongButton/LongButton';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { postLetter } from '@/apis/letter';
 import useIsMyHome from '@/hooks/useIsMyHome';
+import { Navigate, useNavigate } from 'react-router';
 
 type Props = {
   closeModal: () => void;
@@ -20,6 +21,7 @@ function SendLetterModal({closeModal, isOpen}: Props) {
     const [uploadedImage, setUploadedImage] = useState<string | ArrayBuffer>(''); // 업로드 된 이미지 url 관리하는 상태
     const queryClient = useQueryClient();
     const nowDate = new Date().getDate();
+    const navigate = useNavigate();
 
     const {mutate} = useMutation({
         mutationFn: () =>
@@ -28,6 +30,10 @@ function SendLetterModal({closeModal, isOpen}: Props) {
             await queryClient.invalidateQueries({queryKey: ['sendLetter']});
             alert("따뜻한 마음이 담긴 편지가 보내졌어요.")
             closeModal();
+        },
+        onError: (error) => {
+            alert('세션이 만료되었어요. 다시 로그인 해주세요!')
+            navigate('/sign-in')
         },
     });
 
@@ -56,8 +62,8 @@ function SendLetterModal({closeModal, isOpen}: Props) {
 
     const handleCheckExistSenderContent = async () => {
         if (!imageFile || !content.value.trim()) {
-          alert('이름과 편지 모두 입력해야 해요.');
-          //return; //TODO: 실제 환경에서 주석 해제하기
+            alert('이름과 편지 모두 입력해야 해요.');
+            return;
         } else {
             handleSendLetter();
         }

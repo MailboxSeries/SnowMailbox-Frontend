@@ -15,7 +15,7 @@ import MissionModal from "@/components/Modal/MissionModal/MissionModal"
 import { HomeData } from '@/interface/home';
 import ModalButton from '@/components/Button/ModalButton/ModalButton';
 import { useMutation, useQueryClient, useSuspenseQuery } from '@tanstack/react-query';
-import { useNavigate } from 'react-router';
+import { useNavigate } from 'react-router-dom';
 import { getMissionStatus, postSelectedSkin } from '@/apis/skin';
 import useIsMyHome from '@/hooks/useIsMyHome';
 
@@ -37,6 +37,7 @@ function SkinModal({closeModal, isOpen}: Props) {
   const [isSkinData, setSkinData] = useRecoilState(skinDataState);
   const skinData = useRecoilValue(skinDataState);
   const queryClient = useQueryClient();
+  const navigate = useNavigate();
   const closeMissionModal = useCallback(
     () => setMissionModalOpen(false),
     [setMissionModalOpen],
@@ -60,8 +61,8 @@ function SkinModal({closeModal, isOpen}: Props) {
       if (data) {
         setSkinData(data);
       } else {
-        alert("데이터를 가져오는 데에 실패했어요. 다시 로그인 해주세요.")
-        //TODO: 로그인 페이지로 
+        alert("데이터를 가져오는 데에 실패했어요. 다시 로그인 해주세요!")
+        navigate('/sign-in')
       }
     }, [data]);
 
@@ -121,7 +122,10 @@ function SkinModal({closeModal, isOpen}: Props) {
       //await queryClient.invalidateQueries({queryKey:  ["homeData", ownerId]}); //TODO: 
       alert("새로운 스킨이 적용되었어요!")
       closeModal();
-        
+    },
+    onError: (error) => {
+      alert("세션이 만료되었어요. 다시 로그인 해주세요!")
+      navigate('/sign-in')
     },
 });
 
