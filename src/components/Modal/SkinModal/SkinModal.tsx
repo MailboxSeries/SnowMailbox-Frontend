@@ -56,12 +56,14 @@ function SkinModal({closeModal, isOpen}: Props) {
       gcTime: 10000
     });
 
-    if (data !== null) {
-      setSkinData(data);
-    } else {
-      alert("데이터를 가져오는 데에 실패했어요. 다시 로그인 해주세요.")
-      //TODO: 로그인 페이지로 
-    }
+    useEffect(() => {
+      if (data) {
+        setSkinData(data);
+      } else {
+        alert("데이터를 가져오는 데에 실패했어요. 다시 로그인 해주세요.")
+        //TODO: 로그인 페이지로 
+      }
+    }, [data]);
 
   const getSkinStatus = (type, index) => {
     const item = skinData[type + 'List'] && skinData[type + 'List'][index];
@@ -110,9 +112,13 @@ function SkinModal({closeModal, isOpen}: Props) {
         boxType: boxType,
         ornamentType: ornamentType,
       };
+      useEffect(() => {
+        if (newHomeData) {
+          // HomeDataAtom의 상태를 업데이트합니다.
+          setHomeData(newHomeData);
+        }
+      }, [newHomeData]);
 
-      // HomeDataAtom의 상태를 업데이트합니다.
-      setHomeData(newHomeData);
       //await queryClient.invalidateQueries({queryKey:  ["homeData", ownerId]}); //TODO: 
       alert("새로운 스킨이 적용되었어요!")
       closeModal();
@@ -162,8 +168,8 @@ function SkinModal({closeModal, isOpen}: Props) {
                     selected={treeType === tree.index} 
                     style={{width: "80px", height: "107px"}}
                   />
-                  {getSkinStatus('tree', index) === 'locked' && <S.LockIcon onClick={() => handleMissionModal(skinData.treeList[tree.index].missionId, tree.index, "tree")}/>}
-                  {getSkinStatus('tree', index) === 'unlocked' && <S.UnLockIcon onClick={() => handleMissionModal(skinData.treeList[tree.index].missionId, tree.index, "tree")}/>}
+                  {getSkinStatus('tree', index) === 'locked' && <S.LockIcon onClick={() => {handleMissionModal(skinData.treeList[tree.index].missionId, tree.index, "tree")}}/>}
+                  {getSkinStatus('tree', index) === 'unlocked' && <S.UnLockIcon onClick={() => {handleMissionModal(skinData.treeList[tree.index].missionId, tree.index, "tree")}}/>}
                 </S.SelectClickEvent>
               ))}
           </Carousel>
@@ -186,8 +192,8 @@ function SkinModal({closeModal, isOpen}: Props) {
                     selected={ornamentType === ornament.index} 
                     style={{width: "60px", height: "90px"}}
                   />
-                  {getSkinStatus('ornament', index) === 'locked' && <S.LockIcon onClick={() => handleMissionModal(skinData.ornamentList[ornament.index].missionId, ornament.index, "ornament")}/>}
-                  {getSkinStatus('ornament', index) === 'unlocked' && <S.UnLockIcon onClick={() => handleMissionModal(skinData.ornamentList[ornament.index].missionId, ornament.index, "ornament")}/>}
+                  {getSkinStatus('ornament', index) === 'locked' && <S.LockIcon onClick={() => {handleMissionModal(skinData.ornamentList[ornament.index].missionId, ornament.index, "ornament")}}/>}
+                  {getSkinStatus('ornament', index) === 'unlocked' && <S.UnLockIcon onClick={() => {handleMissionModal(skinData.ornamentList[ornament.index].missionId, ornament.index, "ornament")}}/>}
                 </S.SelectClickEvent>
               ))}
           </Carousel>
@@ -210,8 +216,8 @@ function SkinModal({closeModal, isOpen}: Props) {
                     selected={boxType === box.index} 
                     style={{width: "60px", height: "90px"}}
                   />
-                  {getSkinStatus('box', index) === 'locked' && <S.LockIcon onClick={() => handleMissionModal(skinData.boxList[box.index].missionId, box.index, "box")}/>}
-                  {getSkinStatus('box', index) === 'unlocked' && <S.UnLockIcon onClick={() => handleMissionModal(skinData.boxList[box.index].missionId, box.index, "box")}/>}                
+                  {getSkinStatus('box', index) === 'locked' && <S.LockIcon onClick={() => {handleMissionModal(skinData.boxList[box.index].missionId, box.index, "box")}}/>}
+                  {getSkinStatus('box', index) === 'unlocked' && <S.UnLockIcon onClick={() => {handleMissionModal(skinData.boxList[box.index].missionId, box.index, "box")}}/>}                
                 </S.SelectClickEvent>
               ))}
           </Carousel>
@@ -234,8 +240,8 @@ function SkinModal({closeModal, isOpen}: Props) {
                     selected={starType === star.index} 
                     style={{width: "60px", height: "90px"}}
                   />
-                  {getSkinStatus('star', index) === 'locked' && <S.LockIcon onClick={() => handleMissionModal(skinData.starList[star.index].missionId, star.index, "star")}/>}
-                  {getSkinStatus('star', index) === 'unlocked' && <S.UnLockIcon onClick={() => handleMissionModal(skinData.starList[star.index].missionId, star.index, "star")}/>}                                
+                  {getSkinStatus('star', index) === 'locked' && <S.LockIcon onClick={() => {handleMissionModal(skinData.starList[star.index].missionId, star.index, "star")}}/>}
+                  {getSkinStatus('star', index) === 'unlocked' && <S.UnLockIcon onClick={() => {handleMissionModal(skinData.starList[star.index].missionId, star.index, "star")}}/>}                                
                 </S.SelectClickEvent>
               ))}
           </Carousel>
@@ -250,7 +256,7 @@ function SkinModal({closeModal, isOpen}: Props) {
           centerSlidePercentage={33}>
           {Character.map((character) => (
                 <S.SelectClickEvent 
-                onClick={() => setCharacterType(character.index)}
+                onClick={() => {setCharacterType(character.index)}}
                 isSelected={characterType === character.index}
                 >
                   <S.ImageButton
@@ -264,7 +270,7 @@ function SkinModal({closeModal, isOpen}: Props) {
         </S.SelectWrapper>
   
         <ModalButton margin="12px 0 0 0" >
-          <S.ButtonText onClick={handleSelectSkin}>{'선택 완료하기'}</S.ButtonText>
+          <S.ButtonText onClick={() => {handleSelectSkin()}}>{'선택 완료하기'}</S.ButtonText>
         </ModalButton>
 
       </S.Wrapper>

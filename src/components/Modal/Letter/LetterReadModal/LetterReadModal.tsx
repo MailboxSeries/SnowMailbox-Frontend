@@ -1,5 +1,5 @@
 import * as S from './style';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Modal from '@/components/Modal/Modal';
 import { useRecoilValue } from 'recoil';
 import { HomeDataAtom } from '@/atoms/HomeAtom';
@@ -36,13 +36,16 @@ function LetterReadModal({closeModal, isOpen, selectedDate}: Props) {
         staleTime: 10000,
         gcTime: 10000
     });
-  
-      if (data !== null) {
+
+    useEffect(() => {
+      if (data) {
         setLetters(data.letterList);
       } else {
         alert("데이터를 가져오는 데에 실패했어요. 다시 로그인 해주세요.")
         //TODO: 로그인 페이지로 
       }
+  }, [data]);
+  
     return (
         <Modal
         isOpen={isOpen}
