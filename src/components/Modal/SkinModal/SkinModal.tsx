@@ -112,12 +112,11 @@ function SkinModal({closeModal, isOpen}: Props) {
         boxType: boxType,
         ornamentType: ornamentType,
       };
-      useEffect(() => {
+
         if (newHomeData) {
           // HomeDataAtom의 상태를 업데이트합니다.
           setHomeData(newHomeData);
         }
-      }, [newHomeData]);
 
       //await queryClient.invalidateQueries({queryKey:  ["homeData", ownerId]}); //TODO: 
       alert("새로운 스킨이 적용되었어요!")
@@ -126,9 +125,9 @@ function SkinModal({closeModal, isOpen}: Props) {
     },
 });
 
-  const handleSelectSkin = () => {
+  const handleSelectSkin = useCallback(() => {
     mutate();
-  }
+  }, []);
 
   const handleMissionModal = (missionId: string, missionNumber: number, objectType: string) => {
     const missionStatus = getSkinStatus(objectType, missionNumber);
