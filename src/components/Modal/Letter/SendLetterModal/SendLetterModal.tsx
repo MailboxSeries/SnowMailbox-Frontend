@@ -119,10 +119,10 @@ function SendLetterModal({closeModal, isOpen}: Props) {
                 <S.CheckTextLength>{content.value.length}/200</S.CheckTextLength>
             </S.Form>
             
-            <LongButton margin="12px 0 0 0">
-                <S.ButtonText onClick={
+            <LongButton margin="12px 0 0 0" onClick={
                     handleCheckExistSenderContent
-                }>{'보내기'}</S.ButtonText>
+                }>
+                <S.ButtonText >{'보내기'}</S.ButtonText>
             </LongButton>
         </S.Wrapper>
         </Modal>
