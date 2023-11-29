@@ -1,5 +1,5 @@
 import * as S from './style';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Modal from '../Modal';
 import ModalButton from '@/components/Button/ModalButton/ModalButton';
 import useIsMyHome from '@/hooks/useIsMyHome';
@@ -28,14 +28,14 @@ function MissionModal({closeModal, isOpen, missionId, typeNumber, objectType, mi
     queryKey: ['disabledSkin', myId],
     queryFn: () => getUnCompletedMissionContent(myId, missionId),
   });
-
-  if (data !== null) {
-    setMissionContent(data.missionContent);
-  } else {
-    alert("데이터를 가져오는 데에 실패했어요. 다시 로그인 해주세요.")
-    //TODO: 로그인 페이지로 
-  }
-
+  useEffect(() => {
+    if (data) {
+      setMissionContent(data.missionContent);
+    } else {
+      alert("데이터를 가져오는 데에 실패했어요. 다시 로그인 해주세요.")
+      //TODO: 로그인 페이지로 
+    }
+  }, [data]);
 
   const mutation = useMutation({
       mutationFn: () =>
