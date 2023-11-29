@@ -20,7 +20,8 @@ function SendLetterModal({closeModal, isOpen}: Props) {
     const [imageFile, setImageFile] = useState(null); // 업로드할 이미지 파일을 관리하는 상태
     const [uploadedImage, setUploadedImage] = useState<string | ArrayBuffer>(''); // 업로드 된 이미지 url 관리하는 상태
     const queryClient = useQueryClient();
-    const nowDate = new Date().getDate();
+    //const nowDate = new Date().getDate(); //TODO: 
+    const nowDate = 1;
     const navigate = useNavigate();
 
     const {mutate} = useMutation({
