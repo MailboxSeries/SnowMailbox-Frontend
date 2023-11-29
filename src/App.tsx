@@ -6,13 +6,13 @@ import {Suspense} from 'react';
 const App = () => {
   return (
     <>
-      {/* <Suspense>
-        <AuthProvider> 
+    <Suspense fallback={<div>Loading...</div>}>
+        {/*   <AuthProvider> 
           <BrowserRouter>  TODO: 개발 시에만 주석 처리*/}
             <Router />
        {/*       </BrowserRouter>
-     </AuthProvider>
-      </Suspense> TODO: 개발 시에만 주석 처리*/}
+     </AuthProvider> TODO: 개발 시에만 주석 처리*/}
+      </Suspense> 
     </>
   );
 };
