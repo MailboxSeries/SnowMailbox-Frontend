@@ -12,6 +12,10 @@ const SunWrapper = styled.div`
       position: fixed;
       left: calc(50% + 230px);
     }
+    @media (min-height: 1020px) {
+      position: fixed;
+      top: calc(50% - 350px);
+    }
     width: 90px;
     height: 100px;
 `;
