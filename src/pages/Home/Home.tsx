@@ -44,7 +44,7 @@ function Home() {
     }, []);
     const [sendLetterModalOpen, setSendLetterModalOpen] = useState<boolean>(false);
     const handleSendLetter = useCallback(() => { 
-        if(loggedIn) {
+        if(loggedIn == true) {
             setSendLetterModalOpen(true);
         } else {
             alert('로그인을 하면 이용 가능해요!')
@@ -54,7 +54,7 @@ function Home() {
     }, []);
     const myURL = `https://snowmailbox.com/home/${myId}`;
     const handleGoMyHome = useCallback(() => {
-        if(loggedIn) {
+        if(loggedIn == true) {
             window.location.href = myURL
         } else {
             alert('로그인을 하면 이용 가능해요!')

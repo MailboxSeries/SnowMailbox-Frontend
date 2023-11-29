@@ -1,7 +1,7 @@
 import {atom, selector} from 'recoil';
 
 export type Data = {
-  myId: string;
+  myId: string | null;
 };
 
 export const initialUserInfoState : Data = {
