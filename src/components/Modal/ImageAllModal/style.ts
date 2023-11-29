@@ -30,7 +30,7 @@ export const LetterImage = styled.div<{src: string}>`
   width: 200px;
   height: 200px;
   background-image: ${(props) => `url(${props.src})`};
-  border: 3px solid ${theme.colors.textNavy};
+  border: 3px solid #7c7e9a;
   border-radius: 10px;
   background-size: contain;
   background-position: center;

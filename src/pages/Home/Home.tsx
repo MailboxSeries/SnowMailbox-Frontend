@@ -68,8 +68,6 @@ function Home() {
     const {data} = useQuery<HomeData>({
         queryKey: ["homeData", ownerId],
         queryFn: () => home.getHomeData(ownerId),
-        staleTime: 1000 * 60 * STALE_MIN,
-        gcTime: 1000 * 60 * STALE_MIN,
         enabled: !!ownerId, // ownerId가 정의되었을 때만 쿼리를 활성화
     });
 

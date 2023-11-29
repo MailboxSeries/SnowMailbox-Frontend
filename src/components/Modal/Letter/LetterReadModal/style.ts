@@ -57,7 +57,9 @@ export const LetterImage = styled.div<{src: string}>`
   background-image: ${(props) => `url(${props.src})`};
   border: 3px solid #7c7e9a;
   border-radius: 10px;
-  background-size: 200px 200px;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
 `;
 
 export const InnerWrapper = styled.div`
