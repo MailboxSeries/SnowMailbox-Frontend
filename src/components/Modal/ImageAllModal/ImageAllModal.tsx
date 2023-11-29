@@ -1,5 +1,5 @@
 import * as S from './style';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Modal from '@/components/Modal/Modal';
 import { getDayImages } from '@/apis/imageAll';
 import { useQuery } from '@tanstack/react-query';
@@ -21,11 +21,14 @@ function ImageAllModal({closeModal, isOpen, selectedDate}: Props) {
         gcTime: 15000
     });
 
-      // data가 아직 로드되지 않은 경우, null을 반환
-    if (!data) {
-        return null;
-    }
-
+    useEffect(() => {
+        // data가 아직 로드되지 않은 경우, null을 반환
+        if (!data) {
+            alert('이미지를 불러오지 못했어요.')
+            return null;
+        }
+    }, [data]);
+    
     // data가 로드된 후에 이미지 목록을 설정
     const imageList = data.imageList || [];
 

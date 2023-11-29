@@ -17,10 +17,11 @@ export default function ImageAll() {
   const [day, setDay] = useState<number>(1);
   const [imageAllModalOpen, setImageAllModalOpen] = useState<boolean>(false);
 
-  const handleImageAll = (day) => {
-    setDay(day+1)
+  const handleImageAll = useCallback((day) => {
+    setDay(day + 1);
     setImageAllModalOpen(true);
-  }
+  }, [setDay, setImageAllModalOpen]);
+  
 
   const closeImageAllModal = useCallback(
     () => setImageAllModalOpen(false),
