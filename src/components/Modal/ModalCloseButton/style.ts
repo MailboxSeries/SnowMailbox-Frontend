@@ -1,5 +1,5 @@
 import {styled} from 'styled-components';
-import ModalCloseButtonImg from '@/assets/Button/LeftArrow.png';
+import ModalCloseButtonImg from '@/assets/Button/LeftArrowSmall.png';
 
 const ModalCloseButton = styled.button`
   position: absolute;
@@ -9,6 +9,7 @@ const ModalCloseButton = styled.button`
   height: 20px;
   background-image: url(${ModalCloseButtonImg});
   background-size: 20px 20px;
+  background-repeat: no-repeat;
   text-align: center;
   flex-direction: column;
   display: flex;
