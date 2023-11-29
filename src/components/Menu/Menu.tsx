@@ -2,12 +2,15 @@ import React from 'react';
 import ServiceModal from '../Modal/ServiceModal/ServiceModal';
 import LogOutModal from '../Modal/LogOutModal/LogOutModal';
 import {s} from "./style";
+import { useRecoilValue } from 'recoil';
+import { loginStateAtom } from '@/atoms/SignInAtom';
 
 
 export default function Menu() { 
   const [isOpen, setIsOpen] = React.useState(false);
   const [isServiceModalOpen, setIsServiceModalOpen] = React.useState(false);
   const [isLogOutModalOpen, setIsLogOutModalOpen] = React.useState(false);
+  const loggedIn = useRecoilValue(loginStateAtom); //로그인 상태인지 확인하기 위함.
 
   const handleMenuToggle = () => {
     setIsOpen((prev) => !prev);
@@ -40,10 +43,13 @@ export default function Menu() {
 
       {isOpen && (
         <s.MenuWrapper>
-          <s.LinkContainer isActive={isOpen}>
-            <s.LinkText to="/signin">로그인</s.LinkText>
-          </s.LinkContainer>
-          <s.MenuItem onClick={handleLogOutModalToggle} isActive={isOpen}>로그아웃</s.MenuItem>
+          {loggedIn ? (
+              <s.MenuItem onClick={handleLogOutModalToggle} isActive={isOpen}>로그아웃</s.MenuItem>
+            ) : (
+              <s.LinkContainer isActive={isOpen}>
+                <s.LinkText to="/signin">로그인</s.LinkText>
+              </s.LinkContainer>
+            )}
           <s.MenuItem onClick={handleServiceModalToggle} isActive={isOpen}>이용안내</s.MenuItem>
         </s.MenuWrapper>
       )}

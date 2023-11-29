@@ -20,7 +20,7 @@ import { useQuery } from '@tanstack/react-query';
 import { HomeData } from '@/interface/home';
 import ArrowButton from '@/components/Button/ArrowButton/ArrowButton';
 import RightArrowButtonImg from '@/assets/Button/RightArrow.png'
-import { userInfoAtom } from '@/atoms/SignInAtom';
+import { loginStateAtom, userInfoAtom } from '@/atoms/SignInAtom';
 import { useNavigate } from 'react-router-dom';
 
 const STALE_MIN = 5;
@@ -63,7 +63,7 @@ function Home() {
         }
     }, []);
     const imageAllURL = `/image-all/${myId}`;
-    const loggedIn = useRecoilValue(userInfoAtom); //로그인 상태인지 확인하기 위함.
+    const loggedIn = useRecoilValue(loginStateAtom); //로그인 상태인지 확인하기 위함.
 
     const {data} = useQuery<HomeData>({
         queryKey: ["homeData", ownerId],
