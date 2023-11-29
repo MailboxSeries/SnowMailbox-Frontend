@@ -37,6 +37,15 @@ export const LetterImage = styled.div<{src: string}>`
   background-repeat: no-repeat;
 `;
 
+export const NoContent = styled.div`
+    margin-top: -10px;
+    color: ${theme.colors.textNavy};
+    width: 250px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+`;
+
 export const InnerWrapper = styled.div`
   width: 250px;
   height: 450px;

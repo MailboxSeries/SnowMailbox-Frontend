@@ -38,6 +38,18 @@ export const LetterContent = styled.div`
     margin-top: 10px;
     color: ${theme.colors.textNavy};
     width: 250px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+`;
+
+export const NoContent = styled.div`
+    margin-top: -10px;
+    color: ${theme.colors.textNavy};
+    width: 250px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 `;
 
 export const SenderNameText = styled.span`

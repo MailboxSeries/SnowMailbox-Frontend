@@ -65,9 +65,9 @@ function LetterReadModal({closeModal, isOpen, selectedDate}: Props) {
                 </S.LetterContent>
                 ))
               ) : (
-                  <S.LetterContent>
+                  <S.NoContent>
                       아직 받은 편지가 없어요.
-                  </S.LetterContent>
+                  </S.NoContent>
               )}  
           </S.InnerWrapper>
         </S.Wrapper>

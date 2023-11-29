@@ -48,9 +48,9 @@ function ImageAllModal({closeModal, isOpen, selectedDate}: Props) {
                             </S.LetterContent>
                         ))
                     ) : (
-                        <S.LetterContent>
+                        <S.NoContent>
                             아직 모인 사진이 없어요.
-                        </S.LetterContent>
+                        </S.NoContent>
                     )}  
                 </S.InnerWrapper>
             </S.Wrapper>
