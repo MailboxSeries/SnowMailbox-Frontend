@@ -27,8 +27,8 @@ type Props = {
 
 function SkinModal({closeModal, isOpen}: Props) {
   const {ownerId, myId, isMyHome} = useIsMyHome();
-  const homeData = useRecoilValue<HomeData>(HomeDataAtom);
   const setHomeData = useSetRecoilState<HomeData>(HomeDataAtom);
+  const homeData = useRecoilValue<HomeData>(HomeDataAtom);
   const [treeType, setTreeType] = useState<number>(homeData.treeType);
   const [characterType, setCharacterType] = useState<number>(homeData.characterType);
   const [starType, setStarType] = useState<number>(homeData.starType);
@@ -58,6 +58,12 @@ function SkinModal({closeModal, isOpen}: Props) {
     gcTime: 1000 * 60 * 5,
     enabled: !!ownerId, // ownerId가 정의되었을 때만 쿼리를 활성화
 });
+
+  useEffect(() => {
+    if (typeData) {
+      setHomeData(typeData.data);
+    }
+  }, [typeData]);
 
   const {data} = useSuspenseQuery({
       queryKey: ['abledSkin', myId],
@@ -170,7 +176,7 @@ function SkinModal({closeModal, isOpen}: Props) {
           {Tree.map((tree, index) => (
                 <S.SelectClickEvent 
                 onClick={() => handleSelectSkinType('tree', tree.index)}
-                isSelected={typeData.data?.treeType === tree.index}>
+                isSelected={homeData.treeType === tree.index}>
                   <S.ImageButton
                     src={tree.imgSrc} 
                     style={{width: "80px", height: "107px"}}
@@ -192,7 +198,7 @@ function SkinModal({closeModal, isOpen}: Props) {
           {OrnamentThumnail.map((ornament, index) => ( 
                 <S.SelectClickEvent 
                 onClick={() => handleSelectSkinType('ornament', ornament.index)}
-                isSelected={typeData.data?.ornamentType === ornament.index}>
+                isSelected={homeData.ornamentType === ornament.index}>
                   <S.ImageButton
                     src={ornament.imgSrc} 
                     style={{width: "60px", height: "90px"}}
@@ -214,7 +220,7 @@ function SkinModal({closeModal, isOpen}: Props) {
           {BoxThumnail.map((box, index) => (
                 <S.SelectClickEvent 
                 onClick={() => handleSelectSkinType('box', box.index)}
-                isSelected={typeData.data?.boxType === box.index}>
+                isSelected={homeData.boxType === box.index}>
                   <S.ImageButton
                     src={box.imgSrc} 
                     style={{width: "60px", height: "90px"}}
@@ -236,7 +242,7 @@ function SkinModal({closeModal, isOpen}: Props) {
           {StarThumbnail.map((star, index) => (
                 <S.SelectClickEvent 
                 onClick={() => handleSelectSkinType('star', star.index)}
-                isSelected={typeData.data?.starType === star.index}>
+                isSelected={homeData.starType === star.index}>
                   <S.ImageButton
                     src={star.imgSrc} 
                     style={{width: "60px", height: "90px"}}
@@ -258,7 +264,7 @@ function SkinModal({closeModal, isOpen}: Props) {
           {Character.map((character) => (
                 <S.SelectClickEvent 
                 onClick={() => {setCharacterType(character.index)}}
-                isSelected={typeData.data?.characterType === character.index}
+                isSelected={homeData.characterType === character.index}
                 >
                   <S.ImageButton
                     src={character.imgSrc} 
