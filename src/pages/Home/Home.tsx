@@ -144,6 +144,8 @@ function Home() {
                         <LongButton margin="12px 0 0 0" onClick={() => {handleShare()}}>
                             <S.ButtonText>{'링크 공유하기'}</S.ButtonText>
                         </LongButton>
+                        <ArrowButton currentImg={RightArrowButtonImg} route={imageAllURL} />
+
                     </>
                 ) : (
                     <>
@@ -153,7 +155,6 @@ function Home() {
                         <LongButton margin="12px 0 0 0" onClick={() => {handleGoMyHome()}}>
                             <S.ButtonText>{'내 트리 보러가기'}</S.ButtonText>
                         </LongButton>
-                        <ArrowButton currentImg={RightArrowButtonImg} route={imageAllURL} />
 
                     </>
                 )}
