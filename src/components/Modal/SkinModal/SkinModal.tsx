@@ -77,20 +77,20 @@ function SkinModal({closeModal, isOpen}: Props) {
     if (status === 'clear') {
       switch (type) {
         case 'tree':
-          setTreeType(index);
+          setTreeType(index+1);
           break;
         case 'ornament':
-          setOrnamentType(index);
+          setOrnamentType(index+1);
           break;
         case 'box':
-          setBoxType(index);
+          setBoxType(index+1);
           break;
         case 'star':
-          setStarType(index);
+          setStarType(index+1);
           break;
         // 캐릭터는 모든 상태에서 선택 가능
         case 'character':
-          setCharacterType(index);
+          setCharacterType(index+1);
           break;
         default:
           break;
