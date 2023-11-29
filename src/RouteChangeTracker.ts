@@ -28,6 +28,8 @@ const RouteChangeTracker = () => {
       console.log(2);
     }
   }, [initialized, location]);
+
+  return null; // 또는 return <></>; JSX 컴포넌트로 사용하기 위해 필요
 };
 
 export default RouteChangeTracker;
