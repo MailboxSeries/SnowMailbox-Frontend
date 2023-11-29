@@ -27,8 +27,8 @@ export const LetterContent = styled.div`
 
 export const LetterImage = styled.div<{src: string}>`
   position: relative;
-  width: 240px;
-  height: 240px;
+  width: 200px;
+  height: 200px;
   background-image: ${(props) => `url(${props.src})`};
   border: 3px solid ${theme.colors.textNavy};
   border-radius: 10px;

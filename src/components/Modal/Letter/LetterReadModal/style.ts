@@ -37,7 +37,7 @@ margin-bottom:10px;
 export const LetterContent = styled.div`
     margin-top: 10px;
     color: ${theme.colors.textNavy};
-
+    width: 250px;
 `;
 
 export const SenderNameText = styled.span`
@@ -52,12 +52,12 @@ font-size: 20px;
 
 export const LetterImage = styled.div<{src: string}>`
   position: relative;
-  width: 236px;
-  height: 236px;
+  width: 200px;
+  height: 200px;
   background-image: ${(props) => `url(${props.src})`};
   border: 3px solid #7c7e9a;
   border-radius: 10px;
-  background-size: 236.538px 236.538px;
+  background-size: 200px 200px;
 `;
 
 export const InnerWrapper = styled.div`
