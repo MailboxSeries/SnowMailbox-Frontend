@@ -11,6 +11,7 @@ export const Wrapper = styled.div`
 `;
 
 
+
 export const ButtonWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
@@ -44,4 +45,11 @@ export const OrnamentButton = styled.button<OrnamentButtonProps>`
   display: flex;
   justify-content: center; // 가로 중앙 정렬
   align-items: center; // 세로 중앙 정렬
+`;
+
+export const InnerWrapper = styled.div`
+  width: 250px;
+  height: 450px;
+  margin-top: 55px;
+  overflow-y: auto;
 `;

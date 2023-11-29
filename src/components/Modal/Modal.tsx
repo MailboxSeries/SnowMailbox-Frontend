@@ -14,7 +14,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children, modalTitle, im
           <S.ModalTitle>
             {modalTitle}
           </S.ModalTitle>
-          {children}
+            {children}
         </S.ModalInnerContent>
       </S.ModalContent>
     </S.ModalWrapper>

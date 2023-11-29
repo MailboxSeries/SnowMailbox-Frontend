@@ -39,11 +39,13 @@ function ImageAllModal({closeModal, isOpen, selectedDate}: Props) {
             imageType={'Modal'}
         >
             <S.Wrapper>
-                {data !== null && imageList.map((imageSrc, index) => (
-                <S.LetterContent key={index}>
-                    <S.LetterImage src={imageSrc} />
-                </S.LetterContent>
-                ))}
+                <S.InnerWrapper>
+                    {data !== null && imageList.map((imageSrc, index) => (
+                        <S.LetterContent key={index}>
+                            <S.LetterImage src={imageSrc} />
+                        </S.LetterContent>
+                    ))}
+                </S.InnerWrapper>
             </S.Wrapper>
         </Modal>
     );

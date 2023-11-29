@@ -35,35 +35,37 @@ function LetterListModal({closeModal, isOpen}: Props) {
         imageType={'Modal'}
         >
         <S.Wrapper>
-        <S.ButtonWrapper>
-            {Array.from({ length: 25 }).map((_, index) => {
-            
-                const date = index + 1;
-                let isButtonActive = false;
-                if (homeData.nowDate !== null && date < homeData.nowDate) {
-                    isButtonActive = true;
-                } else if (homeData.nowDate !== null && date === homeData.nowDate) {
-                    isButtonActive = true;
-                } 
+            <S.InnerWrapper>
+                <S.ButtonWrapper>
+                    {Array.from({ length: 25 }).map((_, index) => {
+                    
+                        const date = index + 1;
+                        let isButtonActive = false;
+                        if (homeData.nowDate !== null && date < homeData.nowDate) {
+                            isButtonActive = true;
+                        } else if (homeData.nowDate !== null && date === homeData.nowDate) {
+                            isButtonActive = true;
+                        } 
 
-                return (
-                    <S.OrnamentButton
-                    key={index}
-                    onClick={() => {
-                        if (isButtonActive) {
-                            handleLetterReadModalOpen(date);
-                        } else {
-                            alert(`${date - homeData.nowDate}일 뒤에 열람 가능해요.`)
-                        }
-                    }}
-                    OrnamentImage={
-                    (!isButtonActive ? DisabledOrnamentIconImg : OrnamentIconImg ) }
-                    >
-                    {date}
-                    </S.OrnamentButton>
-                );
-            })}
-        </S.ButtonWrapper>
+                        return (
+                            <S.OrnamentButton
+                            key={index}
+                            onClick={() => {
+                                if (isButtonActive) {
+                                    handleLetterReadModalOpen(date);
+                                } else {
+                                    alert(`${date - homeData.nowDate}일 뒤에 열람 가능해요.`)
+                                }
+                            }}
+                            OrnamentImage={
+                            (!isButtonActive ? DisabledOrnamentIconImg : OrnamentIconImg ) }
+                            >
+                            {date}
+                            </S.OrnamentButton>
+                        );
+                    })}
+                </S.ButtonWrapper>
+            </S.InnerWrapper>
         </S.Wrapper>
         </Modal>
 

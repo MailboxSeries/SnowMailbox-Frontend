@@ -59,3 +59,10 @@ export const LetterImage = styled.div<{src: string}>`
   border-radius: 10px;
   background-size: 236.538px 236.538px;
 `;
+
+export const InnerWrapper = styled.div`
+  width: 250px;
+  height: 450px;
+  margin-top: 55px;
+  overflow-y: auto;
+`;
