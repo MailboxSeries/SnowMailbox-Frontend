@@ -36,7 +36,7 @@ export const SignUpForm = styled.form`
   flex-direction: column;
   align-items: center;
   gap: 20px;
-  margin-top: 300px;
+  margin-top: 80px;
   position: relative;
 `;
 

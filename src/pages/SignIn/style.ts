@@ -36,7 +36,7 @@ export const LoginForm = styled.form`
   flex-direction: column;
   align-items: center;
   gap: 20px;
-  margin-top: 350px;
+  margin-top: 100px;
   position: relative;
 `;
 

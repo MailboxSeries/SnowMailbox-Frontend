@@ -11,8 +11,11 @@ position: relative;
 width: 300px;
 height: 400px;
   z-index: 2;
-  margin-top: 220px;
-    margin-bottom: 10px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  @media (min-height: 1021px) {
+    margin-top: 30px;
+  }
 `;
 
 export const RudolfButtonWrapper = styled.div`
