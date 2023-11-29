@@ -64,7 +64,7 @@ function SkinModal({closeModal, isOpen}: Props) {
     }, [data]);
 
   const getSkinStatus = (type, index) => {
-    const item = skinData[type + 'List'] && skinData[type + 'List'][index];
+    const item = skinData[type + 'List'] && skinData[type + 'List'][index-1];
     if (!item) return 'disabled'; // 유효하지 않은 type 또는 index
     if (item.missionStatus && item.missionChecked) return 'clear';
     if (item.missionStatus && !item.missionChecked) return 'unlocked';
@@ -161,7 +161,7 @@ function SkinModal({closeModal, isOpen}: Props) {
           {Tree.map((tree, index) => (
                 <S.SelectClickEvent 
                 onClick={() => handleSelectSkinType('tree', tree.index)}
-                isSelected={treeType === tree.index && getSkinStatus('tree', index) == 'clear'}
+                isSelected={treeType === tree.index && getSkinStatus('tree', tree.index) === 'clear'}
                 >
                   <S.ImageButton
                     src={tree.imgSrc} 
@@ -185,7 +185,7 @@ function SkinModal({closeModal, isOpen}: Props) {
           {OrnamentThumnail.map((ornament, index) => ( 
                 <S.SelectClickEvent 
                 onClick={() => handleSelectSkinType('ornament', ornament.index)}
-                isSelected={ornamentType === ornament.index && getSkinStatus('ornament', index) == 'clear'}
+                isSelected={ornamentType === ornament.index && getSkinStatus('ornament', ornament.index) === 'clear'}
                 >
                   <S.ImageButton
                     src={ornament.imgSrc} 
@@ -209,7 +209,7 @@ function SkinModal({closeModal, isOpen}: Props) {
           {BoxThumnail.map((box, index) => (
                 <S.SelectClickEvent 
                 onClick={() => handleSelectSkinType('box', box.index)}
-                isSelected={boxType === box.index && getSkinStatus('box', index) == 'clear'}
+                isSelected={boxType === box.index && getSkinStatus('box', box.index) === 'clear'}
                 >
                   <S.ImageButton
                     src={box.imgSrc} 
@@ -233,7 +233,7 @@ function SkinModal({closeModal, isOpen}: Props) {
           {StarThumbnail.map((star, index) => (
                 <S.SelectClickEvent 
                 onClick={() => handleSelectSkinType('star', star.index)}
-                isSelected={starType === star.index && getSkinStatus('star', index) == 'clear'}
+                isSelected={starType === star.index && getSkinStatus('star', star.index) === 'clear'}
                 >
                   <S.ImageButton
                     src={star.imgSrc} 
