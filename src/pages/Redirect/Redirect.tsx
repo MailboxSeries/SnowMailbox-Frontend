@@ -36,7 +36,7 @@ export default function Redirect() {
       const redirectOwnerId = localStorage.getItem("redirectOwnerId");
       if (redirectOwnerId) {
         navigate(`/home/${redirectOwnerId}`);
-        localStorage.removeItem("redirectOwnerId");
+        //localStorage.removeItem("redirectOwnerId");
       } else {
         navigate(`/home/${userInfo.myId}`);
       }
