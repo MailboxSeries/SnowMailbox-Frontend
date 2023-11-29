@@ -27,8 +27,8 @@ const STALE_MIN = 5;
 
 function Home() {
     const {ownerId, myId, isMyHome} = useIsMyHome();
-    const homeData = useRecoilValue(HomeDataAtom);
-    const setHomeData = useSetRecoilState(HomeDataAtom);
+    const homeData = useRecoilValue<HomeData>(HomeDataAtom);
+    const setHomeData = useSetRecoilState<HomeData>(HomeDataAtom);
     const navigate = useNavigate();
     const [shareModalOpen, setShareModalOpen] = useState<boolean>(false);
     const handleShare = useCallback(() => { 
@@ -98,7 +98,7 @@ function Home() {
     }, []);
 
     const selectedOrnamentLayer = useMemo(() => {
-        switch(homeData.ornamentType) {
+        switch(homeData?.ornamentType) {
             case 1: return OrnamentLayer1;
             case 2: return OrnamentLayer2;
             case 3: return OrnamentLayer3;
@@ -112,17 +112,17 @@ function Home() {
             <PageLayout>
                 <S.ObjectWrapper>
                     <S.OrnamentLayerWrapper>
-                        <S.StarImage starType={homeData.starType}/>
-                        <S.TreeImage treeType={homeData.treeType}/>
+                        <S.StarImage starType={homeData?.starType}/>
+                        <S.TreeImage treeType={homeData?.treeType}/>
                         <OrnamentLayer
                             width={300}
                             height={400}
                             margin="0 0 0 0"
                             imgs={selectedOrnamentLayer}
-                            nowDate = {homeData.nowDate}
+                            nowDate = {homeData?.nowDate}
                         />
-                        <S.MainCharacter characterType = {homeData.characterType} />
-                        <S.BoxImage boxType={homeData.boxType} />
+                        <S.MainCharacter characterType = {homeData?.characterType} />
+                        <S.BoxImage boxType={homeData?.boxType} />
                     </S.OrnamentLayerWrapper>
                     {isMyHome ? (
                         <>

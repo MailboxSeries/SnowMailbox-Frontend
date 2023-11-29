@@ -1,10 +1,10 @@
 import {styled} from 'styled-components';
-import ModalCloseButtonImg from '@/assets/Button/ModalCloseButton.svg';
+import ModalCloseButtonImg from '@/assets/Button/LeftArrow.png';
 
 const ModalCloseButton = styled.button`
   position: absolute;
   top: 22px;
-  right: 25px;
+  left: 25px;
   width: 26px;
   height: 26px;
   background-image: url(${ModalCloseButtonImg});

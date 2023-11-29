@@ -9,6 +9,7 @@ import useInput from '@/hooks/useInput';
 import MediumButtonImg from '@/assets/Button/MediumButton.png';
 import MediumButtonDisabledImg from '@/assets/Button/MediumButtonDisabled.png';
 import { useNavigate } from 'react-router-dom';
+import ModalCloseButton from '../ModalCloseButton/ModalCloseButton';
 
 type Props = {
   closeModal: () => void;
@@ -92,10 +93,11 @@ function MissionModal({closeModal, isOpen, missionId, typeNumber, objectType, mi
   return (
     <Modal
       isOpen={isOpen}
-      onClose={closeModal}
+      onClose={()=>{closeModal()}}
       modalTitle={'미션'}
       imageType={'Modal'}
     >
+      <ModalCloseButton onClick={()=>{closeModal()}} />
       <S.Wrapper>
         <S.SelectWrapper>
           <S.DiscriptionText>
