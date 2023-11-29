@@ -2,14 +2,14 @@ import styled, { keyframes } from 'styled-components';
 import { CSSProperties } from 'react';
 
 // Leaf 컴포넌트에서 사용할 속성의 타입을 정의
-interface LeafProps extends CSSProperties {
+interface SnowProps extends CSSProperties {
   '--start-left'?: string;
   '--end-left'?: string;
   '--rotation-start'?: string;
   '--rotation-end'?: string;
 }
 
-const leafFall = keyframes`
+const SnowFall = keyframes`
   0% {
      opacity: 0.5;
       top: -10%;
@@ -26,14 +26,14 @@ const leafFall = keyframes`
   
 `;
 
-export const Snow = styled.div<LeafProps>`
+export const Snow = styled.div<SnowProps>`
   position: absolute;
   top: -20px;
   width: 20px;
   height: 20px;
   background-size: cover;
   
-  animation: ${leafFall} 6s linear infinite;
+  animation: ${SnowFall} 6s linear infinite;
 `;
 
 export const SnowWrapper = styled.div`
