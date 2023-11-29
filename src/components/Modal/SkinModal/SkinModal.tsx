@@ -170,7 +170,7 @@ function SkinModal({closeModal, isOpen}: Props) {
           {Tree.map((tree, index) => (
                 <S.SelectClickEvent 
                 onClick={() => handleSelectSkinType('tree', tree.index)}
-                isSelected={typeData.data.treeType === tree.index}>
+                isSelected={typeData.data?.treeType === tree.index}>
                   <S.ImageButton
                     src={tree.imgSrc} 
                     style={{width: "80px", height: "107px"}}
@@ -192,7 +192,7 @@ function SkinModal({closeModal, isOpen}: Props) {
           {OrnamentThumnail.map((ornament, index) => ( 
                 <S.SelectClickEvent 
                 onClick={() => handleSelectSkinType('ornament', ornament.index)}
-                isSelected={typeData.data.ornamentType === ornament.index}>
+                isSelected={typeData.data?.ornamentType === ornament.index}>
                   <S.ImageButton
                     src={ornament.imgSrc} 
                     style={{width: "60px", height: "90px"}}
@@ -214,7 +214,7 @@ function SkinModal({closeModal, isOpen}: Props) {
           {BoxThumnail.map((box, index) => (
                 <S.SelectClickEvent 
                 onClick={() => handleSelectSkinType('box', box.index)}
-                isSelected={typeData.data.boxType === box.index}>
+                isSelected={typeData.data?.boxType === box.index}>
                   <S.ImageButton
                     src={box.imgSrc} 
                     style={{width: "60px", height: "90px"}}
@@ -236,7 +236,7 @@ function SkinModal({closeModal, isOpen}: Props) {
           {StarThumbnail.map((star, index) => (
                 <S.SelectClickEvent 
                 onClick={() => handleSelectSkinType('star', star.index)}
-                isSelected={typeData.data.starType === star.index}>
+                isSelected={typeData.data?.starType === star.index}>
                   <S.ImageButton
                     src={star.imgSrc} 
                     style={{width: "60px", height: "90px"}}
@@ -258,7 +258,7 @@ function SkinModal({closeModal, isOpen}: Props) {
           {Character.map((character) => (
                 <S.SelectClickEvent 
                 onClick={() => {setCharacterType(character.index)}}
-                isSelected={typeData.data.characterType === character.index}
+                isSelected={typeData.data?.characterType === character.index}
                 >
                   <S.ImageButton
                     src={character.imgSrc} 
