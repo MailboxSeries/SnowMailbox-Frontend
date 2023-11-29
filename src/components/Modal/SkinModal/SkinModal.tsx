@@ -54,8 +54,6 @@ function SkinModal({closeModal, isOpen}: Props) {
   const typeData = useQuery<HomeData>({
     queryKey: ["homeData", ownerId],
     queryFn: () => home.getHomeData(ownerId),
-    staleTime: 1000 * 60 * 5,
-    gcTime: 1000 * 60 * 5,
     enabled: !!ownerId, // ownerId가 정의되었을 때만 쿼리를 활성화
 });
 
@@ -131,7 +129,7 @@ function SkinModal({closeModal, isOpen}: Props) {
           setHomeData(newHomeData);
         }
 
-      //await queryClient.invalidateQueries({queryKey:  ["homeData", ownerId]}); //TODO: 
+      await queryClient.invalidateQueries({queryKey:  ["homeData", ownerId]});
       alert("새로운 스킨이 적용되었어요!")
       closeModal();
     },
