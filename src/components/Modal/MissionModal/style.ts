@@ -88,7 +88,7 @@ export const SelectClickEvent = styled.div<{ isSelected?: boolean }>`
 
 export const NameInput = styled.input`
 font-family: 'BareunHipi';
-margin-top: 120px;
+margin-top: 50px;
 width: 180px;
 height: 10px;
 border-radius: 20px;
