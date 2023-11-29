@@ -185,7 +185,8 @@ function SkinModal({closeModal, isOpen}: Props) {
           {OrnamentThumnail.map((ornament, index) => ( 
                 <S.SelectClickEvent 
                 onClick={() => handleSelectSkinType('ornament', ornament.index)}
-                isSelected={ornamentType === ornament.index && getSkinStatus('ornament', index) === 'clear'}
+                isSelected={ornamentType === ornament.index && 
+                  !(getSkinStatus('ornament', index) === 'locked' || getSkinStatus('ornament', index) === 'unlocked')}
                 >
                   <S.ImageButton
                     src={ornament.imgSrc} 
