@@ -154,6 +154,7 @@ function Home() {
                         <LongButton margin="12px 0 0 0" onClick={() => {handleGoMyHome()}}>
                             <S.ButtonText>{'내 트리 보러가기'}</S.ButtonText>
                         </LongButton>
+                        <ArrowButton currentImg={RightArrowButtonImg} route={imageAllURL} />
 
                     </>
                 )}
