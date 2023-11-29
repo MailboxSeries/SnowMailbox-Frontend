@@ -16,10 +16,16 @@ export default function ImageAll() {
   const images = [Picture1Img, Picture2Img, Picture3Img];
   const [day, setDay] = useState<number>(1);
   const [imageAllModalOpen, setImageAllModalOpen] = useState<boolean>(false);
+  //const nowDate = new Date().getDate(); //TODO: 
+  const nowDate = 1;
 
   const handleImageAll = useCallback((day) => {
-    setDay(day + 1);
-    setImageAllModalOpen(true);
+    if(day+1 === nowDate) {
+      setDay(day + 1);
+      setImageAllModalOpen(true);
+    } else {
+      alert(`${day + 1 - nowDate}일 뒤에 열어봐요!`)
+    }
   }, [setDay, setImageAllModalOpen]);
   
 

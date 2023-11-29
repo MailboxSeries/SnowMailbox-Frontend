@@ -23,6 +23,7 @@ function ImageAllModal({closeModal, isOpen, selectedDate}: Props) {
         gcTime: 15000
     });
 
+
     useEffect(() => {
     // data가 로드된 후에 이미지 목록을 설정
         if (data) {
