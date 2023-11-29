@@ -54,15 +54,21 @@ function LetterReadModal({closeModal, isOpen, selectedDate}: Props) {
         >
         <S.Wrapper>
           <S.InnerWrapper>
-            {letters.map((letter, index) => (
-              <S.LetterContent key={index}>
-                  <S.TextsStyle>
-                  <S.SenderNameText>보낸이: {letter.sender}</S.SenderNameText>
-                  <S.LetterImage src={letter.image} />
-                  <S.LetterContentText>{letter.content}</S.LetterContentText>
-                  </S.TextsStyle>
-              </S.LetterContent>
-            ))}
+            {data !== null && letters.length > 0 ? (
+              letters.map((letter, index) => (
+                <S.LetterContent key={index}>
+                    <S.TextsStyle>
+                    <S.SenderNameText>보낸이: {letter.sender}</S.SenderNameText>
+                    <S.LetterImage src={letter.image} />
+                    <S.LetterContentText>{letter.content}</S.LetterContentText>
+                    </S.TextsStyle>
+                </S.LetterContent>
+                ))
+              ) : (
+                  <S.LetterContent>
+                      아직 모인 사진이 없어요.
+                  </S.LetterContent>
+              )}  
           </S.InnerWrapper>
         </S.Wrapper>
         </Modal>

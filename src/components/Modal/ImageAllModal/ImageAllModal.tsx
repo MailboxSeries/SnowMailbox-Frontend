@@ -40,11 +40,17 @@ function ImageAllModal({closeModal, isOpen, selectedDate}: Props) {
         >
             <S.Wrapper>
                 <S.InnerWrapper>
-                    {data !== null && imageList.map((imageSrc, index) => (
-                        <S.LetterContent key={index}>
-                            <S.LetterImage src={imageSrc} />
+                    {data !== null && imageList.length > 0 ? (
+                        imageList.map((imageSrc, index) => (
+                            <S.LetterContent key={index}>
+                                <S.LetterImage src={imageSrc} />
+                            </S.LetterContent>
+                        ))
+                    ) : (
+                        <S.LetterContent>
+                            아직 모인 사진이 없어요.
                         </S.LetterContent>
-                    ))}
+                    )}  
                 </S.InnerWrapper>
             </S.Wrapper>
         </Modal>
