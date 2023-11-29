@@ -131,7 +131,7 @@ function SkinModal({closeModal, isOpen}: Props) {
   }, []);
 
   const handleMissionModal = (missionId: string, missionNumber: number, objectType: string) => {
-    const missionStatus = getSkinStatus(objectType, missionNumber);
+    const missionStatus = getSkinStatus(objectType, missionNumber-1);
     const typeNumber = missionNumber;
     setSelectedMission({ missionId, typeNumber, objectType, missionStatus});
     setMissionModalOpen(true);
