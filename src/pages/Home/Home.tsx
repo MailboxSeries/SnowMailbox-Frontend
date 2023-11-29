@@ -27,8 +27,8 @@ const STALE_MIN = 5;
 
 function Home() {
     const {ownerId, myId, isMyHome} = useIsMyHome();
-    const homeData = useRecoilValue<HomeData>(HomeDataAtom);
-    const setHomeData = useSetRecoilState<HomeData>(HomeDataAtom);
+    const homeData = useRecoilValue(HomeDataAtom);
+    const setHomeData = useSetRecoilState(HomeDataAtom);
     const navigate = useNavigate();
     const [shareModalOpen, setShareModalOpen] = useState<boolean>(false);
     const handleShare = useCallback(() => { 
