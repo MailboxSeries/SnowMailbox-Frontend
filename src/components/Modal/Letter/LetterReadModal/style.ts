@@ -35,7 +35,7 @@ margin-bottom:10px;
 `;
 
 export const LetterContent = styled.div`
-    margin-top: 50px;
+    margin-top: 10px;
     color: ${theme.colors.textNavy};
 
 `;
@@ -66,6 +66,7 @@ export const InnerWrapper = styled.div`
   margin-top: 55px;
   padding-top: 45px;
   overflow-y: auto;
+  flex-direction: column;
   display: flex;
   justify-content: center; // 가로 중앙 정렬
   align-items: center; // 세로 중앙 정렬

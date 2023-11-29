@@ -19,35 +19,10 @@ export const ButtonText = styled.span`
   letter-spacing: 1px;
 `;
 
-export const TextsStyle = styled.div`
-font-family: 'BareunHipi';
-display: flex;
-flex-direction: column;
-font-size: 25px; 
-border:2px; 
-border-style:hidden;
-border-radius: 5%;
-background-color: #FFE5CC;
-padding: 10px;
-margin-top:5px;
-margin-bottom:10px;
-
-`;
-
 export const LetterContent = styled.div`
-    margin-top: 50px;
+    margin-top: 10px;
     color: ${theme.colors.textNavy};
 
-`;
-
-export const SenderNameText = styled.span`
-font-size: 20px;
-`;
-
-export const LetterContentText = styled.span`
-margin-top:5px;
-margin-bottom:10px;
-font-size: 20px;
 `;
 
 export const LetterImage = styled.div<{src: string}>`
@@ -69,6 +44,7 @@ export const InnerWrapper = styled.div`
   padding-top: 45px;
   overflow-y: auto;
   display: flex;
+  flex-direction: column;
   justify-content: center; // 가로 중앙 정렬
   align-items: center; // 세로 중앙 정렬
 `;
