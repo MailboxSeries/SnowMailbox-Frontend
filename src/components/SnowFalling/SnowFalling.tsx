@@ -21,7 +21,7 @@ const SnowFalling: React.FC = () => {
       
     for (let i = 0; i < numSnows; i++) {
       const leafType = Math.random() > 0.5 ? MediumSnowImg : SmallSnowImg;
-      const delay = Math.random() * 10;
+      const delay = Math.random() * 15;
       const startLeft = `${Math.random() * 200 - 50}%`;  
       const endLeft = `${Math.random() * 200 - 50}%`;   
       const rotateStart = `${Math.floor(Math.random() * 180)}deg`;

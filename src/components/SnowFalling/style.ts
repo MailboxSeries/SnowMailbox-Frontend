@@ -42,7 +42,7 @@ export const SnowWrapper = styled.div`
   max-width: 820px;
   max-height: 1180px;
   height: 800px;
-  top: -10px;
+  top: -30px;
   left: 50%;
   right: 50%;
   transform: translateX(-50%);
