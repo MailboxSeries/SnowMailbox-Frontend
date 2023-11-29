@@ -51,7 +51,6 @@ export const DiscriptionText = styled.span`
 
 type ImageButtonProps = {
   src: string;
-  selected: boolean;
 };
 
 export const SelectWrapper = styled.div`
@@ -63,8 +62,8 @@ export const SelectWrapper = styled.div`
 
 export const ImageButton = styled.button<ImageButtonProps>`
 cursor: pointer;
-border: ${props => props.selected ? 'none' : 'none'};
 background-image: url(${props => props.src});
+border: transparent;
 background-size: cover;
 background-color: transparent;
 z-index: 2;

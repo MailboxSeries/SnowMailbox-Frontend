@@ -161,11 +161,9 @@ function SkinModal({closeModal, isOpen}: Props) {
           {Tree.map((tree, index) => (
                 <S.SelectClickEvent 
                 onClick={() => handleSelectSkinType('tree', tree.index)}
-                isSelected={treeType === tree.index && getSkinStatus('tree', index) === 'clear'}
-                >
+                isSelected={treeType === tree.index}>
                   <S.ImageButton
                     src={tree.imgSrc} 
-                    selected={treeType === tree.index} 
                     style={{width: "80px", height: "107px"}}
                   />
                   {getSkinStatus('tree', index) === 'locked' && <S.LockIcon onClick={() => {handleMissionModal(skinData.treeList[index].missionId, tree.index, "tree")}}/>}
@@ -185,12 +183,9 @@ function SkinModal({closeModal, isOpen}: Props) {
           {OrnamentThumnail.map((ornament, index) => ( 
                 <S.SelectClickEvent 
                 onClick={() => handleSelectSkinType('ornament', ornament.index)}
-                isSelected={ornamentType === ornament.index && 
-                  !(getSkinStatus('ornament', index) === 'locked' || getSkinStatus('ornament', index) === 'unlocked')}
-                >
+                isSelected={ornamentType === ornament.index}>
                   <S.ImageButton
                     src={ornament.imgSrc} 
-                    selected={ornamentType === ornament.index} 
                     style={{width: "60px", height: "90px"}}
                   />
                   {getSkinStatus('ornament', index) === 'locked' && <S.LockIcon onClick={() => {handleMissionModal(skinData.ornamentList[index].missionId, ornament.index, "ornament")}}/>}
@@ -210,11 +205,9 @@ function SkinModal({closeModal, isOpen}: Props) {
           {BoxThumnail.map((box, index) => (
                 <S.SelectClickEvent 
                 onClick={() => handleSelectSkinType('box', box.index)}
-                isSelected={boxType === box.index && getSkinStatus('box', index) === 'clear'}
-                >
+                isSelected={boxType === box.index}>
                   <S.ImageButton
                     src={box.imgSrc} 
-                    selected={boxType === box.index} 
                     style={{width: "60px", height: "90px"}}
                   />
                   {getSkinStatus('box', index) === 'locked' && <S.LockIcon onClick={() => {handleMissionModal(skinData.boxList[index].missionId, box.index, "box")}}/>}
@@ -234,11 +227,9 @@ function SkinModal({closeModal, isOpen}: Props) {
           {StarThumbnail.map((star, index) => (
                 <S.SelectClickEvent 
                 onClick={() => handleSelectSkinType('star', star.index)}
-                isSelected={starType === star.index && getSkinStatus('star', index) === 'clear'}
-                >
+                isSelected={starType === star.index}>
                   <S.ImageButton
                     src={star.imgSrc} 
-                    selected={starType === star.index} 
                     style={{width: "60px", height: "90px"}}
                   />
                   {getSkinStatus('star', index) === 'locked' && <S.LockIcon onClick={() => {handleMissionModal(skinData.starList[index].missionId, star.index, "star")}}/>}
@@ -262,7 +253,6 @@ function SkinModal({closeModal, isOpen}: Props) {
                 >
                   <S.ImageButton
                     src={character.imgSrc} 
-                    selected={characterType === character.index} 
                     style={{width: "60px", height: "90px"}}
                   />
                 </S.SelectClickEvent>
