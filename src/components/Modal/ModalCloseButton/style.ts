@@ -3,12 +3,12 @@ import ModalCloseButtonImg from '@/assets/Button/LeftArrow.png';
 
 const ModalCloseButton = styled.button`
   position: absolute;
-  top: 22px;
+  top: 25px;
   left: 25px;
-  width: 26px;
-  height: 26px;
+  width: 20px;
+  height: 20px;
   background-image: url(${ModalCloseButtonImg});
-  background-size: 26px 26px;
+  background-size: 20px 20px;
   text-align: center;
   flex-direction: column;
   display: flex;

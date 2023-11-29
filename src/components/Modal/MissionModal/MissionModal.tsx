@@ -22,7 +22,7 @@ type Props = {
 
 function MissionModal({closeModal, isOpen, missionId, typeNumber, objectType, missionStatus}: Props) {
   const {ownerId, myId, isMyHome} = useIsMyHome();
-  const [missionContent, setMissionContent] = useState<string>("지인에게 따뜻한 마음이 담긴 편지 1장을 보내봐요. 추운 겨울을 이겨내는 데에 큰 도움이 될 거예요. 어쩌면 지인이 당신임을 알게 된다면, 답장 편지가 되돌아올지도..?");
+  const [missionContent, setMissionContent] = useState<string>("");
   const queryClient = useQueryClient();
   const missionAnswer = useInput<HTMLInputElement>(); // 보내는 사람 이름을 관리하는 상태
   const navigate = useNavigate();
@@ -97,8 +97,8 @@ function MissionModal({closeModal, isOpen, missionId, typeNumber, objectType, mi
       modalTitle={'미션'}
       imageType={'Modal'}
     >
-      <ModalCloseButton onClick={()=>{closeModal()}} />
       <S.Wrapper>
+      <ModalCloseButton onClick={()=>{closeModal()}} />
         <S.SelectWrapper>
           <S.DiscriptionText>
             잠금표시 된 스킨은 미션을 클리어해야<br/>획득할 수 있어요. 미션을 클리어해봐요.
