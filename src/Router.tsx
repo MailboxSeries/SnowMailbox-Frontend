@@ -6,7 +6,10 @@ import SignUp from './pages/SignUp/SignUp';
 import Home from './pages/Home/Home';
 import ImageAll from './pages/ImageAll/ImageAll';
 import Redirect from './pages/Redirect/Redirect';
+import RouteChangeTracker from './RouteChangeTracker';
 export default function Router() {
+  RouteChangeTracker();
+
   return (
     <BrowserRouter>
       <Routes>
