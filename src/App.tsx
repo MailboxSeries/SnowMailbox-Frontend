@@ -7,11 +7,11 @@ const App = () => {
   return (
     <>
     <Suspense fallback={<div>Loading...</div>}>
-        {/*   <AuthProvider> 
-          <BrowserRouter>  TODO: 개발 시에만 주석 처리*/}
+          <AuthProvider> 
+        {/*   <BrowserRouter>  TODO: 개발 시에만 주석 처리*/}
             <Router />
-       {/*       </BrowserRouter>
-     </AuthProvider> TODO: 개발 시에만 주석 처리*/}
+       {/*       </BrowserRouter>TODO: 개발 시에만 주석 처리*/}
+     </AuthProvider> 
       </Suspense> 
     </>
   );
