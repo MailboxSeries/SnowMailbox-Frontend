@@ -14,10 +14,11 @@ import { skinDataState } from '@/atoms/SkinAtom'
 import MissionModal from "@/components/Modal/MissionModal/MissionModal"
 import { HomeData } from '@/interface/home';
 import ModalButton from '@/components/Button/ModalButton/ModalButton';
-import { useMutation, useQueryClient, useSuspenseQuery } from '@tanstack/react-query';
+import { useMutation, useQuery, useQueryClient, useSuspenseQuery } from '@tanstack/react-query';
 import { useNavigate } from 'react-router-dom';
 import { getMissionStatus, postSelectedSkin } from '@/apis/skin';
 import useIsMyHome from '@/hooks/useIsMyHome';
+import home from '@/apis/home';
 
 type Props = {
   closeModal: () => void;
@@ -49,6 +50,14 @@ function SkinModal({closeModal, isOpen}: Props) {
     objectType: '',
     missionStatus: ''
   });
+
+  const typeData = useQuery<HomeData>({
+    queryKey: ["homeData", ownerId],
+    queryFn: () => home.getHomeData(ownerId),
+    staleTime: 1000 * 60 * 5,
+    gcTime: 1000 * 60 * 5,
+    enabled: !!ownerId, // ownerId가 정의되었을 때만 쿼리를 활성화
+});
 
   const {data} = useSuspenseQuery({
       queryKey: ['abledSkin', myId],
@@ -161,7 +170,7 @@ function SkinModal({closeModal, isOpen}: Props) {
           {Tree.map((tree, index) => (
                 <S.SelectClickEvent 
                 onClick={() => handleSelectSkinType('tree', tree.index)}
-                isSelected={treeType === tree.index}>
+                isSelected={typeData.data.treeType === tree.index}>
                   <S.ImageButton
                     src={tree.imgSrc} 
                     style={{width: "80px", height: "107px"}}
@@ -183,7 +192,7 @@ function SkinModal({closeModal, isOpen}: Props) {
           {OrnamentThumnail.map((ornament, index) => ( 
                 <S.SelectClickEvent 
                 onClick={() => handleSelectSkinType('ornament', ornament.index)}
-                isSelected={ornamentType === ornament.index}>
+                isSelected={typeData.data.ornamentType === ornament.index}>
                   <S.ImageButton
                     src={ornament.imgSrc} 
                     style={{width: "60px", height: "90px"}}
@@ -205,7 +214,7 @@ function SkinModal({closeModal, isOpen}: Props) {
           {BoxThumnail.map((box, index) => (
                 <S.SelectClickEvent 
                 onClick={() => handleSelectSkinType('box', box.index)}
-                isSelected={boxType === box.index}>
+                isSelected={typeData.data.boxType === box.index}>
                   <S.ImageButton
                     src={box.imgSrc} 
                     style={{width: "60px", height: "90px"}}
@@ -227,7 +236,7 @@ function SkinModal({closeModal, isOpen}: Props) {
           {StarThumbnail.map((star, index) => (
                 <S.SelectClickEvent 
                 onClick={() => handleSelectSkinType('star', star.index)}
-                isSelected={starType === star.index}>
+                isSelected={typeData.data.starType === star.index}>
                   <S.ImageButton
                     src={star.imgSrc} 
                     style={{width: "60px", height: "90px"}}
@@ -249,7 +258,7 @@ function SkinModal({closeModal, isOpen}: Props) {
           {Character.map((character) => (
                 <S.SelectClickEvent 
                 onClick={() => {setCharacterType(character.index)}}
-                isSelected={characterType === character.index}
+                isSelected={typeData.data.characterType === character.index}
                 >
                   <S.ImageButton
                     src={character.imgSrc} 
