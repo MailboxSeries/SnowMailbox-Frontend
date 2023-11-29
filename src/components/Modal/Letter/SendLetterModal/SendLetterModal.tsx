@@ -62,7 +62,7 @@ function SendLetterModal({closeModal, isOpen}: Props) {
     };
 
     const handleCheckExistSenderContent = async () => {
-        if (!imageFile || !content.value.trim()) {
+        if (!content.value.trim()) {
             alert('이름과 편지 모두 입력해야 해요.');
             return;
         } else {
