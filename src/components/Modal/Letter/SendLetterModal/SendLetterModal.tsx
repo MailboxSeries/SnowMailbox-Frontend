@@ -18,7 +18,7 @@ function SendLetterModal({closeModal, isOpen}: Props) {
     const sender = useInput<HTMLInputElement>(); // 보내는 사람 이름을 관리하는 상태
     const content = useInput<HTMLTextAreaElement>(); // 편지 내용을 관리하는 상태
     const [imageFile, setImageFile] = useState<File>(null); // 업로드할 이미지 파일을 관리하는 상태
-    const [uploadedImage, setUploadedImage] = useState<string | ArrayBuffer>(''); // 업로드 된 이미지 url 관리하는 상태
+    const [uploadedImage, setUploadedImage] = useState<string | ArrayBuffer>(null); // 업로드 된 이미지 url 관리하는 상태
     const queryClient = useQueryClient();
     //const nowDate = new Date().getDate(); //TODO: 
     const nowDate = 1;
@@ -29,7 +29,12 @@ function SendLetterModal({closeModal, isOpen}: Props) {
         postLetter(nowDate, ownerId, myId, imageFile, sender.value, content.value),
         onSuccess: async () => {
             await queryClient.invalidateQueries({queryKey: ['sendLetter']});
-            alert("따뜻한 마음이 담긴 편지가 보내졌어요.")
+            alert("따뜻한 마음이 담긴 편지가 보내졌어요.");
+            // 상태 초기화
+            sender.reset();
+            content.reset();
+            setImageFile(null); // 이미지 파일 상태 초기화
+            setUploadedImage(null); // 업로드된 이미지 URL 상태 초기화
             closeModal();
         },
         onError: (error) => {
@@ -116,7 +121,7 @@ function SendLetterModal({closeModal, isOpen}: Props) {
             
             <LongButton margin="12px 0 0 0">
                 <S.ButtonText onClick={
-                  handleCheckExistSenderContent
+                    handleCheckExistSenderContent
                 }>{'보내기'}</S.ButtonText>
             </LongButton>
         </S.Wrapper>
