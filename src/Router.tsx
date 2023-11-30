@@ -7,14 +7,10 @@ import Home from './pages/Home/Home';
 import ImageAll from './pages/ImageAll/ImageAll';
 import Redirect from './pages/Redirect/Redirect';
 import RouteChangeTracker from './RouteChangeTracker';
-import ScrollToTop from './components/ScrollToTop/ScrollToTop';
 export default function Router() {
   RouteChangeTracker();
 
   return (
-    <>
-    <ScrollToTop />
-
       <Routes>
         <Route path="/" element={<OnBoarding />} />
         <Route path="/signin" element={<SignIn />} />
@@ -27,6 +23,5 @@ export default function Router() {
         <Route path="*" element={<Navigate to="/" replace />} />
 
       </Routes>
-      </>
   );
 }
