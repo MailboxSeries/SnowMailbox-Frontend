@@ -88,7 +88,11 @@ function SendLetterModal({closeModal, isOpen}: Props) {
                 <S.ImageUploadLabel
                     htmlFor="image-upload"
                     onClick={(event) => event.stopPropagation()}
-                >
+                > 
+                <S.ImageUploadLabelText>
+                {`사진 올리기(선택)`}
+                </S.ImageUploadLabelText>
+                
                     <S.ImageInput
                         id="image-upload"
                         type="file"

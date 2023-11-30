@@ -135,6 +135,17 @@ export const ImageUploadLabel = styled.label`
   margin-top: 50px;
 `;
 
+export const ImageUploadLabelText = styled.div`
+  font-size: 12px;
+  color: ${theme.colors.textMain};
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 108px;
+`;
+
+
 export const ImageInput = styled.input`
   opacity: 0; // 투명하게 설정
   position: absolute; // 절대적 위치 설정
