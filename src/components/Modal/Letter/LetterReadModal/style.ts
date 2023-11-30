@@ -79,6 +79,7 @@ export const InnerWrapper = styled.div`
   height: 450px;
   margin-top: 55px;
   padding-top: 45px;
+  top: 120px;
   overflow-y: auto;
   flex-direction: column;
   display: flex;
