@@ -49,7 +49,7 @@ function LetterReadModal({closeModal, isOpen, selectedDate}: Props) {
       if (isOpen) {
           fetchData();
       }
-  }, [isOpen, selectedDate]);
+  }, [isOpen, selectedDate]); 
 
     return (
         <Modal
@@ -60,6 +60,7 @@ function LetterReadModal({closeModal, isOpen, selectedDate}: Props) {
         >
         <S.Wrapper>
           <S.InnerWrapper>
+          </S.InnerWrapper>
             {letters !== null && letters.length > 0 ? (
               letters.map((letter, index) => (
                 <S.LetterContent key={index}>
@@ -77,7 +78,7 @@ function LetterReadModal({closeModal, isOpen, selectedDate}: Props) {
                       아직 받은 편지가 없어요.
                   </S.NoContent>
               )}  
-          </S.InnerWrapper>
+
         </S.Wrapper>
         </Modal>
     );

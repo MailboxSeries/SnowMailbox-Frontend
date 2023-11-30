@@ -59,6 +59,7 @@ function ImageAllModal({closeModal, isOpen, selectedDate}: Props) {
         >
             <S.Wrapper>
                 <S.InnerWrapper>
+                </S.InnerWrapper>
                     {imageList !== null && imageList.length > 0 ? (
                         imageList.map((imageSrc, index) => (
                             <S.LetterContent key={index}>
@@ -70,7 +71,6 @@ function ImageAllModal({closeModal, isOpen, selectedDate}: Props) {
                             아직 모인 사진이 없어요.
                         </S.NoContent>
                     )}  
-                </S.InnerWrapper>
             </S.Wrapper>
         </Modal>
     );
