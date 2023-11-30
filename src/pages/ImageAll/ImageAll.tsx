@@ -16,8 +16,8 @@ export default function ImageAll() {
   const images = [Picture1Img, Picture2Img, Picture3Img];
   const [day, setDay] = useState<number>(1);
   const [imageAllModalOpen, setImageAllModalOpen] = useState<boolean>(false);
-  //const nowDate = new Date().getDate(); //TODO: 
-  const nowDate = 1;
+  const nowDate = new Date().getDate(); //TODO: 
+  //const nowDate = 1;
 
   const handleImageAll = useCallback((day) => {
     if(day+1 === nowDate) {
