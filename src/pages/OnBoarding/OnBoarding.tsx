@@ -4,6 +4,7 @@ import useModal from '@/hooks/useModal';
 import * as S from './style';
 import PageLayout from '@/components/PageLayout/PageLayout';
 import LongButton from '@/components/Button/LongButton/LongButton';
+import PolicyLinkText from '@/components/PolicyLinkText/PolicyLinkText';
 
 export default function OnBoarding() {
   // 모달 상태관리
@@ -27,6 +28,7 @@ export default function OnBoarding() {
         <LongButton margin="12px 0 0 0" route="/signup">
           <S.ButtonText>{'회원가입'}</S.ButtonText>
         </LongButton>
+        <PolicyLinkText />
       </PageLayout>
     
       <Modal

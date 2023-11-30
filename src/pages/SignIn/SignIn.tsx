@@ -9,6 +9,7 @@ import SocialButton from '@/components/Button/SocialButton/SocialButton';
 import { postSignIn } from '@/apis/auth';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { useNavigate } from 'react-router-dom';
+import PolicyLinkText from '@/components/PolicyLinkText/PolicyLinkText';
 
 export default function SignIn() {
     // 모달 상태관리
@@ -93,6 +94,9 @@ export default function SignIn() {
             socialType="NaverSignIn"
             onClick={handleButtonNaver}
             />
+
+            <PolicyLinkText />
+
         </PageLayout>
         
         <Modal
