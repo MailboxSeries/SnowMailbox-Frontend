@@ -44,7 +44,7 @@ export const LetterContent = styled.div`
 `;
 
 export const NoContent = styled.div`
-    margin-top: -10px;
+    margin-top: -30px;
     color: ${theme.colors.textNavy};
     width: 250px;
     display: flex;
