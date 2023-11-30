@@ -1,4 +1,4 @@
-import { Route, Routes} from 'react-router-dom';
+import { Navigate, Route, Routes, useNavigate} from 'react-router-dom';
 import OnBoarding from './pages/OnBoarding/OnBoarding';
 //import ScrollToTop from './components/ScrollToTop/ScrollToTop';
 import SignIn from './pages/SignIn/SignIn';
@@ -23,6 +23,8 @@ export default function Router() {
         <Route path="/home/:ownerId" element={<Home />} />
         <Route path="/image-all/:ownerId" element={<ImageAll />} />
 
+        {/* 다른 모든 경로 처리 */}
+        <Route path="*" element={<Navigate to="/" replace />} />
 
       </Routes>
       </>
