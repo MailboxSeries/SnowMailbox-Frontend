@@ -23,9 +23,12 @@ export default function ImageAll() {
     if(day+1 === nowDate) {
       setDay(day + 1);
       setImageAllModalOpen(true);
-    } else {
-      alert(`${day + 1 - nowDate}일 뒤에 열어봐요!`)
-    }
+    } else if(day+1 > nowDate){
+      alert(`${day + 1 - nowDate}일 뒤에 열어봐요!`);
+    } else if(day+1 < nowDate){
+      setDay(day + 1);
+      setImageAllModalOpen(true);
+    } 
   }, [setDay, setImageAllModalOpen]);
   
 
