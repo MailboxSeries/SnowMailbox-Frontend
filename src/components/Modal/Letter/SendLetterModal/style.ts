@@ -142,7 +142,9 @@ export const ImageUploadLabelText = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 108px;
+  top: 108px;
+  left: 78px;
+  position: absolute;
 `;
 
 
@@ -164,4 +166,6 @@ export const ImagePreview = styled.div<ImagePreviewProps>`
   background-repeat: no-repeat;
   border-radius: 10px;
   background-image: url(${(props) => props.src});
+  z-index: 2;
+  position: absolute;
 `;
