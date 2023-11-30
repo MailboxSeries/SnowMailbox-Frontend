@@ -169,7 +169,7 @@ function SkinModal({closeModal, isOpen}: Props) {
           <Carousel 
           showThumbs={false} 
           showStatus={false} 
-          centerMode 
+          centerMode={false} // 중앙정렬 해제
           centerSlidePercentage={33}>
           {Tree.map((tree, index) => (
                 <S.SelectClickEvent 

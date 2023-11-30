@@ -13,7 +13,7 @@ function ServiceModal({closeModal, isOpen}: Props) {
   const handleNavigateInstagram = () => {
     window.location.href = 'https://instagram.com/snowmailbox_official?igshid=NzZlODBkYWE4Ng%3D%3D&utm_source=qr';
 }
- //TODO: 내용 집어넣어야 함
+
   return (
     <Modal
       isOpen={isOpen}
