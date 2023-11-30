@@ -49,7 +49,7 @@ function LetterReadModal({closeModal, isOpen, selectedDate}: Props) {
       if (isOpen) {
           fetchData();
       }
-  }, [isOpen, selectedDate, myId]); // 의존성 배열에 isOpen, selectedDate, myId 추가
+  }, [isOpen, selectedDate]);
 
     return (
         <Modal
