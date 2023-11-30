@@ -22,6 +22,7 @@ import ArrowButton from '@/components/Button/ArrowButton/ArrowButton';
 import RightArrowButtonImg from '@/assets/Button/RightArrow.png'
 import { loginStateAtom, userInfoAtom } from '@/atoms/SignInAtom';
 import { useNavigate } from 'react-router-dom';
+import ModalButton from '@/components/Button/ModalButton/ModalButton';
 
 const STALE_MIN = 5;
 
@@ -30,6 +31,8 @@ function Home() {
     const homeData = useRecoilValue(HomeDataAtom);
     const setHomeData = useSetRecoilState(HomeDataAtom);
     const navigate = useNavigate();
+    const nowDate = new Date().getDate();
+    const dDay = 25 - nowDate;
     const [shareModalOpen, setShareModalOpen] = useState<boolean>(false);
     const handleShare = useCallback(() => { 
         setShareModalOpen(true);
@@ -136,9 +139,23 @@ function Home() {
                 </S.ObjectWrapper>
                 {isMyHome ? (
                     <>
-                        <LongButton margin="52px 0 0 0" onClick={() => {handleLetterList()}}>
+                    <S.RowContainer>
+                        <ModalButton margin="0px 0 0 0" onClick={() => {handleLetterList()}}>
                             <S.ButtonText>{'편지 확인하기'}</S.ButtonText>
-                        </LongButton>
+                        </ModalButton>
+                        {
+                            dDay === null ? (
+                            <S.DdayCount>"로딩중"</S.DdayCount>
+                            ) : 
+                            dDay === 0 ? (
+                            <S.DdayCount>D-Day</S.DdayCount>
+                            ) : dDay < 0 ? (
+                            <S.DdayCount>2024</S.DdayCount>
+                            ) : (
+                            <S.DdayCount>{`D-${dDay}`}</S.DdayCount>
+                            )
+                        }
+                        </S.RowContainer>
                         <LongButton margin="12px 0 0 0" onClick={() => {handleShare()}}>
                             <S.ButtonText>{'링크 공유하기'}</S.ButtonText>
                         </LongButton>
