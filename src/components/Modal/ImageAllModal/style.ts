@@ -35,6 +35,7 @@ export const LetterImage = styled.div<{src: string}>`
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
+  margin-top: 7px;
 `;
 
 export const NoContent = styled.div`
@@ -51,7 +52,7 @@ export const InnerWrapper = styled.div`
   width: 250px;
   height: 450px;
   margin-top: 75px;
-  padding-top: 45px;
+  padding-top: 75px;
   overflow-y: auto;
   display: flex;
   flex-direction: column;
