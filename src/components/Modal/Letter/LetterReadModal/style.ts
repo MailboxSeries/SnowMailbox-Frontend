@@ -52,14 +52,16 @@ export const NoContent = styled.div`
     align-items: center;
 `;
 
-export const SenderNameText = styled.span`
+export const SenderNameText = styled.div`
 font-size: 20px;
+width: 180px;
 `;
 
-export const LetterContentText = styled.span`
+export const LetterContentText = styled.div`
 margin-top:5px;
 margin-bottom:10px;
 font-size: 20px;
+width: 180px;
 `;
 
 export const LetterImage = styled.div<{src: string}>`
