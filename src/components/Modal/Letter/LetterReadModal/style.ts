@@ -62,6 +62,8 @@ margin-top:5px;
 margin-bottom:10px;
 font-size: 20px;
 width: 180px;
+white-space: pre-line;
+word-wrap: break-word;// 긴 단어가 너비를 넘어갈 때 자동으로 줄바꿈
 `;
 
 export const LetterImage = styled.div<{src: string}>`
