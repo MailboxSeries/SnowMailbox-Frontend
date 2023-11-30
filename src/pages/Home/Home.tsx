@@ -148,7 +148,7 @@ function Home() {
                             <S.DdayCount>"로딩중"</S.DdayCount>
                             ) : 
                             dDay === 0 ? (
-                            <S.DdayCount>D-Day</S.DdayCount>
+                            <S.DdayCount>X-mas</S.DdayCount>
                             ) : dDay < 0 ? (
                             <S.DdayCount>2024</S.DdayCount>
                             ) : (
