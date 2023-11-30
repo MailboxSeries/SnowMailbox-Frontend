@@ -17,13 +17,15 @@ export const postLetter = async (
     nowDate: number, 
     ownerId: string, 
     myId: string,
-    image: File,
+    image: File | null,
     sender: string,
     content: string,
 ) => {
 
     const formData = new FormData();
-    formData.append('image', image);
+    if (image) {
+      formData.append('image', image);
+    }
     formData.append('content', content);
     formData.append('sender', sender);
     try {

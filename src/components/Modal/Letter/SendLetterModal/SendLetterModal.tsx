@@ -17,7 +17,7 @@ function SendLetterModal({closeModal, isOpen}: Props) {
     const {ownerId, myId, isMyHome} = useIsMyHome();
     const sender = useInput<HTMLInputElement>(); // 보내는 사람 이름을 관리하는 상태
     const content = useInput<HTMLTextAreaElement>(); // 편지 내용을 관리하는 상태
-    const [imageFile, setImageFile] = useState<File>(null); // 업로드할 이미지 파일을 관리하는 상태
+    const [imageFile, setImageFile] = useState<File | null>(null); // 업로드할 이미지 파일을 관리하는 상태
     const [uploadedImage, setUploadedImage] = useState<string | ArrayBuffer>(null); // 업로드 된 이미지 url 관리하는 상태
     const queryClient = useQueryClient();
     const nowDate = new Date().getDate(); //TODO: 
