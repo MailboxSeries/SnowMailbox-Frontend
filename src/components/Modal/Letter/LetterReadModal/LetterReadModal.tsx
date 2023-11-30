@@ -32,6 +32,7 @@ function LetterReadModal({closeModal, isOpen, selectedDate}: Props) {
         }
     ]); // 선택된 날짜의 편지들을 저장할 상태입니다.
 
+    
     const {data} = useSuspenseQuery({
         queryKey: ['dayLetter', myId],
         queryFn: () => getDayLetter(selectedDate, myId),

@@ -19,8 +19,8 @@ function ImageAllModal({closeModal, isOpen, selectedDate}: Props) {
     const {data} = useQuery({
         queryKey: ['images', myId],
         queryFn: () => getDayImages(selectedDate, myId),
-        staleTime: 10000,
-        gcTime: 15000
+        staleTime: 0,
+        gcTime: 0
     });
 
 
