@@ -74,6 +74,14 @@ export const LetterImage = styled.div<{src: string}>`
   background-repeat: no-repeat;
 `;
 
+export const ImageWrapper = styled.div`
+  width: 100%;
+  flex-direction: column;
+  display: flex;
+  justify-content: center; // 가로 중앙 정렬
+  align-items: center; 
+`;
+
 export const InnerWrapper = styled.div`
   width: 250px;
   height: 450px;

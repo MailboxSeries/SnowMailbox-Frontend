@@ -59,7 +59,9 @@ function LetterReadModal({closeModal, isOpen, selectedDate}: Props) {
                 <S.LetterContent key={index}>
                     <S.TextsStyle>
                     <S.SenderNameText>보낸이: {letter.sender}</S.SenderNameText>
-                    <S.LetterImage src={letter.image} />
+                    <S.ImageWrapper>
+                      <S.LetterImage src={letter.image} />
+                    </S.ImageWrapper>
                     <S.LetterContentText>{letter.content}</S.LetterContentText>
                     </S.TextsStyle>
                 </S.LetterContent>
