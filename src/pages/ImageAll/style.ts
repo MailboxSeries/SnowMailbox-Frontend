@@ -11,6 +11,10 @@ export const Layout = styled.div`
   height: 100vh;
   min-height: 1020px;
   max-height: 1180px;
+  @media (min-height: 1021px) {
+    min-height: 1180px;
+
+    }
 `;
 export const Container = styled.div`
     position: absolute;
@@ -18,6 +22,9 @@ export const Container = styled.div`
     max-height: 1180px;
     //height: 100%;
     min-height: 1020px;
+    @media (min-height: 1021px) {
+    min-height: 1180px;
+    }
     max-width: 820px; // 최대 너비 설정
     width: 100%;
     margin: 0;
