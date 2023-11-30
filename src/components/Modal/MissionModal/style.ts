@@ -33,7 +33,7 @@ export const MissionDiscription = styled.span`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 110px;
+  margin-top: 70px;
   font-family: 'BareunHipi';
 `;
 
@@ -88,7 +88,7 @@ export const SelectClickEvent = styled.div<{ isSelected?: boolean }>`
 
 export const NameInput = styled.input`
 font-family: 'BareunHipi';
-margin-top: 50px;
+margin-top: 20px;
 width: 180px;
 height: 10px;
 border-radius: 20px;
@@ -98,6 +98,7 @@ color: ${theme.colors.textMain};
 margin-bottom: 0px;
 background-color: ${theme.colors.textNavy};;
 font-size: 16px;
+position: relative;
 &::placeholder {
     color: ${theme.colors.textMain};
     font-size: 16px;
