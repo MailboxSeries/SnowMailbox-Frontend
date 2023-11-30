@@ -47,11 +47,9 @@ function Home() {
         if(loggedIn == true) {
             setSendLetterModalOpen(true);
         } else {
-            setSendLetterModalOpen(true);
-
-            // alert('로그인을 하면 이용 가능해요!')
-            // navigate("/signin");
-            // localStorage.setItem("redirectOwnerId", `${ownerId}`) //다시 이동하기 위함.
+            alert('로그인을 하면 이용 가능해요!')
+            navigate("/signin");
+            localStorage.setItem("redirectOwnerId", `${ownerId}`) //다시 이동하기 위함.
         }
     }, []);
     const myURL = `https://snowmailbox.com/home/${myId}`;
