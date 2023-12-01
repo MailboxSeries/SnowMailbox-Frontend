@@ -30,8 +30,8 @@ export default function SignUp() {
         mutationFn: () =>
         postSignUp(email.value, userName.value, password.value),
         onSuccess: async () => {
-            await queryClient.invalidateQueries({queryKey: ['userInfo']});
-            navigate('/redirect');
+            alert('회원가입이 되었어요. 로그인 해주세요!')
+            navigate('/signin');
         },
     });
 

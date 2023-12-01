@@ -28,7 +28,6 @@ export default function SignIn() {
         mutationFn: () =>
         postSignIn(email.value, password.value),
         onSuccess: async () => {
-            await queryClient.invalidateQueries({queryKey: ['userInfo']});
             navigate('/redirect');
         },
     });
