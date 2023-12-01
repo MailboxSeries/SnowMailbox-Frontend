@@ -53,8 +53,8 @@ export default function SignIn() {
     };
 
     const handleButtonNaver = () => {
-        //window.location.href = `https://snowmailbox.com/oauth2/authorization/naver`; //TODO: 검수 끝나면 주석 해제
-        alert("네이버 로그인은 1일 뒤에 오픈됩니다! 카카오 로그인을 이용해주세요!")
+        window.location.href = `https://snowmailbox.com/oauth2/authorization/naver`; 
+        //alert("네이버 로그인은 1일 뒤에 오픈됩니다! 카카오 로그인을 이용해주세요!")
     };
 
     return (
