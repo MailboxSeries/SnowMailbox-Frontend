@@ -40,8 +40,6 @@ export default function Redirect() {
       } else {
         navigate(`/home/${userInfo.myId}`);
       }
-    } else if (userInfo.myId ) {
-      navigate(`/home/${userInfo.myId}`);
     }
   }, [userInfo]);
 

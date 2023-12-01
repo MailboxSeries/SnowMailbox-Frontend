@@ -4,7 +4,7 @@ import {atom} from 'recoil';
 export const HomeDataAtom = atom<HomeData>({
   key: 'Data',
   default: {
-    nickname : "-",
+    nickname : "",
 	treeType : 1, // 디폴트는 1
 	characterType : 1, // 디폴트는 1
 	starType : 0, //없을 경우 0

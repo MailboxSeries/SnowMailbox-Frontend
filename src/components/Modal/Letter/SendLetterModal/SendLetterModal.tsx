@@ -28,7 +28,6 @@ function SendLetterModal({closeModal, isOpen}: Props) {
         mutationFn: () =>
         postLetter(nowDate, ownerId, myId, imageFile, sender.value, content.value),
         onSuccess: async () => {
-            await queryClient.invalidateQueries({queryKey: ['sendLetter']});
             alert("따뜻한 마음이 담긴 편지가 보내졌어요.");
             // 상태 초기화
             sender.reset();
