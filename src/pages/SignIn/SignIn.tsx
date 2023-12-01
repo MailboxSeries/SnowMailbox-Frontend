@@ -69,7 +69,7 @@ export default function SignIn() {
     return (
         <>
         <PageLayout>
-            <S.LoginForm >
+            {/* <S.LoginForm >
                     <S.LoginInput
                         type="text"
                         placeholder="이메일"
@@ -90,7 +90,7 @@ export default function SignIn() {
                     <S.ButtonText>{'로그인하기'}</S.ButtonText>
                 </LongButton>
                 
-            </S.LoginForm>
+            </S.LoginForm> */}
 
         
             <SocialButton 

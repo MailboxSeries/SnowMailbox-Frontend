@@ -77,7 +77,7 @@ export default function SignUp() {
   return (
     <>
       <PageLayout>
-        <S.SignUpForm >
+        {/* <S.SignUpForm >
             
             <S.SignUpInput
                 type="text"
@@ -102,7 +102,7 @@ export default function SignUp() {
             <LongButton margin="64px 0 0 0" onClick={handleSignUp} type = "submit">
                 <S.ButtonText>{'회원가입하기'}</S.ButtonText>
             </LongButton>
-        </S.SignUpForm>
+        </S.SignUpForm> */}
 
             
             <SocialButton 
