@@ -76,6 +76,16 @@ function SkinModal({closeModal, isOpen}: Props) {
       }
     }, [data]);
 
+    useEffect(() => {
+      if (homeData) {
+        setTreeType(homeData?.treeType);
+        setCharacterType(homeData?.characterType);
+        setStarType(homeData?.starType);
+        setBoxType(homeData?.boxType);
+        setOrnamentType(homeData?.ornamentType)
+      }
+    }, [homeData]);
+
   const getSkinStatus = (type, index) => {
     const item = skinData[type + 'List'] && skinData[type + 'List'][index];
     if (!item) return 'disabled'; // 유효하지 않은 type 또는 index
