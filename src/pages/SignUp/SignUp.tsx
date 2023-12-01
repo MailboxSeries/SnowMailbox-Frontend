@@ -104,17 +104,19 @@ export default function SignUp() {
             </LongButton>
         </S.SignUpForm> */}
 
+            <S.Container>
+                <SocialButton 
+                margin="8px 0 0 0" 
+                socialType="KakaoSignUp"
+                onClick={handleButtonKakao}
+                />
+                <SocialButton 
+                margin="8px 0 0 0" 
+                socialType="NaverSignUp"
+                onClick={handleButtonNaver}
+                />
+            </S.Container>
             
-            <SocialButton 
-            margin="8px 0 0 0" 
-            socialType="KakaoSignUp"
-            onClick={handleButtonKakao}
-            />
-            <SocialButton 
-            margin="8px 0 0 0" 
-            socialType="NaverSignUp"
-            onClick={handleButtonNaver}
-            />
 
             <PolicyLinkText />
 

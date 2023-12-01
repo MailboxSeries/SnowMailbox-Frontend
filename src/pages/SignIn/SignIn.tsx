@@ -92,7 +92,7 @@ export default function SignIn() {
                 
             </S.LoginForm> */}
 
-        
+        <S.Container>
             <SocialButton 
             margin="8px 0 0 0" 
             socialType="KakaoSignIn"
@@ -103,6 +103,9 @@ export default function SignIn() {
             socialType="NaverSignIn"
             onClick={handleButtonNaver}
             />
+        </S.Container>
+        
+           
 
             <PolicyLinkText />
 
