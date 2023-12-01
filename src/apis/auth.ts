@@ -1,6 +1,5 @@
 import { useNavigate } from 'react-router';
 import {instance} from './axios';
-const navigate = useNavigate();
 
   // 회원가입(기본)
   export const postSignUp = async (
@@ -8,6 +7,8 @@ const navigate = useNavigate();
     nickname: string, 
     password: string
 ) => {
+  const navigate = useNavigate();
+
     try {
       await instance.post(
         `/api/v1/user/sign-up`, {
@@ -29,6 +30,8 @@ const navigate = useNavigate();
         email: string, 
         password: string
     ) => {
+      const navigate = useNavigate();
+
         try {
           await instance.post(
             `/api/v1/user/sign-in`, {
