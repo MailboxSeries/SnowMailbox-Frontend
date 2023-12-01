@@ -83,7 +83,7 @@ export const BoxImage = styled.div<BoxTypeProps>`
     height: 400px;
     background: ${(props) => props.boxType && `url(${Box[props.boxType - 1]})`};
     background-size: 300px 400px;
-    z-index: 1;
+    z-index: 3;
 `;
 
 export const DdayCount = styled.button`
