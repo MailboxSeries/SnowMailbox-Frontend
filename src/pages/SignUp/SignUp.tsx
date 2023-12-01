@@ -41,30 +41,30 @@ export default function SignUp() {
         try {
             await postSignUp(email.value, userName.value, password.value)
 
-            alert("회원가입에 성공했어요. 로그인 페이지로 이동합니다!")
-            navigate('/signin')
+            // alert("회원가입에 성공했어요. 로그인 페이지로 이동합니다!")
+            // navigate('/signin')
 
         } catch (error) {
-            alert("회원가입에 실패했어요. 다시 진행해주세요.")
+            // alert("회원가입에 실패했어요. 다시 진행해주세요.")
         }
     };
     
-
+    
     const handleCheckBlank = () => {
-        // 모든 입력값을 검사합니다.
+        // 입력값을 검사합니다.
         if (!userName.value.trim() || !email.value.trim() || !password.value.trim()) {
-            alert('이름, 이메일, 비밀번호를 모두 입력해주세요!');
-            return; // 검사에 실패하면 false 반환
-        } else {
-            fetchData();
-        }
-        //return true; // 모든 입력값이 있으면 true 반환
+            alert('이메일 혹은 비밀번호를 입력해주세요!');
+            return false; // 검사에 실패하면 false 반환
+        } 
+        return true; // 모든 입력값이 있으면 true 반환
     };
-    
 
     const handleSignUp = () => {
-        handleCheckBlank();
+        if(handleCheckBlank()) {
+            fetchData();
+        }    
     }
+
     const handleButtonKakao = () => {
         window.location.href = `https://snowmailbox.com/oauth2/authorization/kakao`;
     };

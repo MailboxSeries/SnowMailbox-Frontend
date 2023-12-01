@@ -35,10 +35,10 @@ export default function SignIn() {
     const fetchData = async () => {
         try {
             await postSignIn(email.value, password.value)
-            navigate('/redirect')
+            //navigate('/redirect')
 
         } catch (error) {
-            alert("정확한 이메일과 비밀번호를 입력해주세요.")
+            //alert("정확한 이메일과 비밀번호를 입력해주세요.")
         }
     };
 

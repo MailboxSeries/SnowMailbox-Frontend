@@ -1,4 +1,6 @@
+import { useNavigate } from 'react-router';
 import {instance} from './axios';
+const navigate = useNavigate();
 
   // 회원가입(기본)
   export const postSignUp = async (
@@ -13,8 +15,12 @@ import {instance} from './axios';
             "nickname" : nickname,
             "password" : password
         });
+
+        alert("회원가입에 성공했어요. 로그인 페이지로 이동합니다!")
+        navigate('/signin')
     } catch (error) {
-      return null;
+      alert("회원가입에 실패했어요. 다시 진행해주세요.")
+      //return null;
     }
   };
 
@@ -29,8 +35,12 @@ import {instance} from './axios';
                 "email" : email,
                 "password" : password
             });
+
+            navigate('/redirect')
         } catch (error) {
-          return null;
+          alert("정확한 이메일과 비밀번호를 입력해주세요.")
+
+//          return null;
         }
       };
 
