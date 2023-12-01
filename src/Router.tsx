@@ -18,10 +18,6 @@ export default function Router() {
         <Route path="/redirect" element={<Redirect />} />
         <Route path="/home/:ownerId" element={<Home />} />
         <Route path="/image-all/:ownerId" element={<ImageAll />} />
-
-        {/* 다른 모든 경로 처리 */}
-        <Route path="*" element={<Navigate to="/" replace />} />
-
       </Routes>
   );
 }
