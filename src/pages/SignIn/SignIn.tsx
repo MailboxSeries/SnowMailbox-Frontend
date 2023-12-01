@@ -24,13 +24,23 @@ export default function SignIn() {
     const navigate = useNavigate();
     const queryClient = useQueryClient();
 
-    const {mutate} = useMutation({
-        mutationFn: () =>
-        postSignIn(email.value, password.value),
-        onSuccess: async () => {
-            navigate('/redirect');
-        },
-    });
+    // const {mutate} = useMutation({
+    //     mutationFn: () =>
+    //     postSignIn(email.value, password.value),
+    //     onSuccess: async () => {
+    //         navigate('/redirect');//TODO: 
+    //     },
+    // });
+
+    const fetchData = async () => {
+        try {
+            await postSignIn(email.value, password.value)
+            navigate('/redirect')
+
+        } catch (error) {
+            alert("정확한 이메일과 비밀번호를 입력해주세요.")
+        }
+    };
 
     const handleCheckBlank = () => {
         // 입력값을 검사합니다.
@@ -43,7 +53,7 @@ export default function SignIn() {
 
     const handleSignIn = () => {
         if(handleCheckBlank()) {
-            mutate();
+            fetchData();
         }
     }
 
