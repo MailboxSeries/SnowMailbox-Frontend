@@ -15,8 +15,6 @@ type Props = {
 export default function PageLayout({ children }: Props) {
     const homeData = useRecoilValue(HomeDataAtom); // Recoil 상태 사용
     const { ownerId } = useParams<{ ownerId?: string }>(); // useParams 사용
-    const navigate = useNavigate();
-    const { isOpen, openModal, closeModal } = useModal();
 
     // ownerId가 있을 경우 nickname을 사용, 없으면 기본 텍스트
     const titleText = ownerId ? `${homeData?.nickname}의 크리스마스 트리` : "눈꽃 우편함";
