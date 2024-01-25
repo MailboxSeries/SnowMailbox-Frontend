@@ -1,9 +1,9 @@
 import React, { useEffect, useState, CSSProperties } from 'react';
 import MediumSnowImg from "@/assets/Snow/MediumSnow.png"
 import SmallSnowImg from "@/assets/Snow/SmallSnow.png"
-import * as S from './style';
+import { s } from './style'; 
 
-const numSnows = 30;
+const numLeaves = 30;
 
 // CSSProperties를 확장하여 사용자 정의 CSS 변수를 포함
 interface CSSPropertiesWithCustomVars extends CSSProperties {
@@ -13,36 +13,33 @@ interface CSSPropertiesWithCustomVars extends CSSProperties {
   '--rotation-end'?: string;
 }
 
-const SnowFalling: React.FC = () => {
+const LeafFalling: React.FC = () => {
   const [leaves, setLeaves] = useState<Array<JSX.Element>>([]);
 
   useEffect(() => {
     const newLeaves = [];
       
-    for (let i = 0; i < numSnows; i++) {
+    for (let i = 0; i < numLeaves; i++) {
       const leafType = Math.random() > 0.5 ? MediumSnowImg : SmallSnowImg;
-      const delay = Math.random() * 15;
+      const delay = Math.random() * 10;
       const startLeft = `${Math.random() * 200 - 50}%`;  
       const endLeft = `${Math.random() * 200 - 50}%`;   
       const rotateStart = `${Math.floor(Math.random() * 180)}deg`;
       const rotateEnd = `${Math.floor(Math.random() * 180)}deg`;
 
       newLeaves.push(
-        <S.Container>
-          <S.SnowWrapper key={i}>
-            <S.Snow
-              style={{
-                backgroundImage: `url(${leafType})`,
-                animationDelay: `${delay}s`,
-                "--start-left": startLeft,
-                "--end-left": endLeft,
-                "--rotation-start": rotateStart,
-                "--rotation-end": rotateEnd
-              } as CSSPropertiesWithCustomVars}
-            />
-          </S.SnowWrapper>
-        </S.Container>
-        
+        <s.LeafDiv key={i}>
+          <s.Leaf
+            style={{
+              backgroundImage: `url(${leafType})`,
+              animationDelay: `${delay}s`,
+              "--start-left": startLeft,
+              "--end-left": endLeft,
+              "--rotation-start": rotateStart,
+              "--rotation-end": rotateEnd
+            } as CSSPropertiesWithCustomVars}
+          />
+        </s.LeafDiv>
       );
     }
 
@@ -52,4 +49,9 @@ const SnowFalling: React.FC = () => {
   return <>{leaves}</>;
 };
 
-export default SnowFalling
+export default LeafFalling;
+
+
+
+
+
